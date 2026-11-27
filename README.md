@@ -1,0 +1,35 @@
+# Chassis
+
+Chassis is a free Windows app for building a PC in 3D and seeing how it would perform before you buy anything.
+
+- **Build it in 3D.** Pick a case, motherboard, processor, cooler, memory, graphics card, storage and power supply, and watch each part drop into place. Turn it, zoom in, explode it apart, switch the RGB on.
+- **Know it fits.** Live checks catch the wrong CPU socket, the wrong kind of memory, a graphics card that's too long, a cooler that's too tall, a radiator or power supply that won't fit, and a power supply that's too weak. Parts that won't work are marked before you pick them.
+- **Benchmark it.** Estimated frame rates in four kinds of games at 1080p, 1440p and 4K, a CPU/GPU balance meter, multi-core and single-core scores, memory and SSD speeds, power draw, temperatures, noise and value per frame, all rolled into a Chassis Score.
+- **Garage.** Every build is saved as you go. Duplicate, compare any two side by side, and share a build as a short code a friend can paste into Chassis.
+- **Five themes:** Bench, Graphite, Circuit, Frost and Synthwave.
+- **Built-in updater.** New versions install with one click.
+
+## How the benchmarks work
+
+Chassis doesn't run your hardware. Each part carries rounded averages from published reviews, and Chassis combines them with how different games and apps lean on the CPU, GPU, memory and storage. Treat the results as a good estimate (within about 10 to 15%), not a measurement.
+
+## Installing
+
+Download `Chassis-win-Setup.exe` from [Releases](https://github.com/larosa023/Chassis/releases).
+
+Chassis isn't code-signed, so Windows SmartScreen may say it "protected your PC" the first time. Click **More info → Run anyway**. The 3D view uses Microsoft Edge WebView2, which comes with Windows 11.
+
+## Building
+
+Requires the .NET 10 SDK on Windows 10 21H2+ or Windows 11.
+
+```
+dotnet build Chassis.sln
+dotnet test Chassis.sln
+```
+
+The parts list lives in `src/Chassis.Core/Catalog/parts.json`.
+
+## License
+
+MIT. See [LICENSE](LICENSE) and [THIRD-PARTY-NOTICES.md](THIRD-PARTY-NOTICES.md).

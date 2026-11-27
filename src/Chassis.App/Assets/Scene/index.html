@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chassis scene</title>
+<style>
+  :root { --bg: #EEF0F3; --surface: #FFFFFF; --text: #14161A; --muted: #5A606B; --accent: #FF5A1F; --line: #DCDFE5; }
+  html, body { margin: 0; height: 100%; overflow: hidden; background: var(--bg); font: 13px/1.4 "Segoe UI Variable Text", "Segoe UI", system-ui, sans-serif; color: var(--text); user-select: none; }
+  body { background: radial-gradient(120% 90% at 50% 35%, var(--surface) 0%, var(--bg) 70%); }
+  canvas { position: fixed; inset: 0; width: 100%; height: 100%; display: block; outline: none; cursor: grab; }
+  canvas.dragging { cursor: grabbing; }
+  canvas.hovering { cursor: pointer; }
+  #tip { position: fixed; pointer-events: none; padding: 8px 12px; border-radius: 12px; background: var(--surface); color: var(--text);
+         border: 1px solid var(--line); box-shadow: 0 8px 24px rgba(0,0,0,.18); opacity: 0; transform: translateY(4px); transition: opacity .12s, transform .12s; max-width: 280px; }
+  #tip.on { opacity: 1; transform: none; }
+  #tip b { display: block; font-size: 11px; font-weight: 600; color: var(--accent); letter-spacing: .02em; }
+  #tip span { display: block; font-weight: 600; }
+  #tip i { display: block; font-style: normal; color: var(--muted); font-size: 12px; }
+  #hint { position: fixed; left: 16px; bottom: 14px; color: var(--muted); font-size: 12px; pointer-events: none; }
+  #empty { position: fixed; inset: 0; display: none; align-items: center; justify-content: center; pointer-events: none; }
+  #empty div { text-align: center; color: var(--muted); font-size: 15px; max-width: 320px; }
+  #empty strong { display: block; color: var(--text); font-size: 20px; margin-bottom: 6px; }
+</style>
+</head>
+<body>
+<canvas id="c" tabindex="0"></canvas>
+<div id="tip"><b></b><span></span><i></i></div>
+<div id="hint">Drag to turn · Scroll to zoom · Right-drag to move · Click a part to swap it</div>
+<div id="empty"><div><strong>Your bench is empty</strong>Pick a case to start the build.</div></div>
+<script src="three.min.js"></script>
+<script src="scene.js"></script>
+</body>
+</html>
