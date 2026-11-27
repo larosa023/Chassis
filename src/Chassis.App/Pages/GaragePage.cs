@@ -33,11 +33,13 @@ public sealed partial class GaragePage : UserControl
         Render();
     }
 
-    void Render()
+    Grid? _head;
+    readonly TextBlock _count = Ui.Muted("");
+
+    Grid Header()
     {
-        _body.Children.Clear();
         var head = Ui.Columns(Ui.Star(), Ui.Auto);
-        head.Children.Add(Ui.Column(4, Ui.Title("Garage", 32), Ui.Muted($"{_s.Garage.Builds.Count} saved build{(_s.Garage.Builds.Count == 1 ? "" : "s")}. Every change is saved as you go.")).At(0));
+        head.Children.Add(Ui.Column(4, Ui.Title("Garage", 32), _count).At(0));
         var open = Ui.Ghost("Open code", () =>
         {
             if (_s.Import(_code.Text, out var b)) { _code.Text = ""; _msg.Text = ""; OpenRequested?.Invoke(); }
@@ -46,7 +48,15 @@ public sealed partial class GaragePage : UserControl
         var actions = Ui.Row(8, _code, open, Ui.Accent("New build", () => { _s.NewBuild(); OpenRequested?.Invoke(); }));
         actions.VerticalAlignment = VerticalAlignment.Center;
         head.Children.Add(actions.At(1));
-        _body.Children.Add(head);
+        return head;
+    }
+
+    void Render()
+    {
+        _body.Children.Clear();
+        _head ??= Header();
+        _count.Text = $"{_s.Garage.Builds.Count} saved build{(_s.Garage.Builds.Count == 1 ? "" : "s")}. Every change is saved as you go.";
+        _body.Children.Add(_head);
         if (_msg.Text.Length > 0) _body.Children.Add(_msg);
 
         var grid = new VariableSizedWrapGrid { Orientation = Orientation.Horizontal, ItemWidth = 372, ItemHeight = 330 };

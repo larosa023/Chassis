@@ -141,7 +141,20 @@ public sealed class BuildSession : ObservableObject
         Build = b;
         _garage.Save(b);
         Recompute();
-        BuildChanged?.Invoke();
+        Raise(BuildChanged);
+    }
+
+    /// <summary>Calls each listener on its own so one failing page can't stop the others (or the edit itself).</summary>
+    public static Action<Exception>? ListenerFailed { get; set; }
+
+    static void Raise(Action? handlers)
+    {
+        if (handlers is null) return;
+        foreach (var h in handlers.GetInvocationList().Cast<Action>())
+        {
+            try { h(); }
+            catch (Exception e) { ListenerFailed?.Invoke(e); }
+        }
     }
 
     void Recompute()

@@ -83,6 +83,14 @@ public sealed class Garage
             File.Move(tmp, _path, overwrite: true);
         }
         catch (Exception e) when (e is IOException or UnauthorizedAccessException) { /* keep going in memory */ }
-        Changed?.Invoke();
+        if (Changed is { } handlers)
+            foreach (var h in handlers.GetInvocationList().Cast<Action>())
+            {
+                try { h(); }
+                catch (Exception e) { ListenerFailed?.Invoke(e); }
+            }
     }
+
+    /// <summary>Where listener failures are reported (the app logs them). A failing listener never stops a save.</summary>
+    public static Action<Exception>? ListenerFailed { get; set; }
 }
