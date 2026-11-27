@@ -204,7 +204,7 @@ public sealed partial class MainWindow : Window
     void AddNav(string name)
     {
         var (glyph, key) = NavInfo[name];
-        var bar = new Border { Width = 3, CornerRadius = new CornerRadius(2), Margin = new Thickness(0, 6, 0, 6) };
+        var bar = new Border { Width = 3, Height = 20, CornerRadius = new CornerRadius(2), VerticalAlignment = VerticalAlignment.Center };
         var g = new Grid { ColumnSpacing = 12 };
         g.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Auto });
         g.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Auto });
