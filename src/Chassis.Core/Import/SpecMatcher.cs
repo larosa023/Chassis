@@ -64,8 +64,8 @@ public static partial class SpecMatcher
 
     sealed record Window(string Raw, HashSet<string> Set, string Squashed, HashSet<string> Folded);
 
-    /// <summary>Folds letters that text recognition confuses with digits (O/0, l/1, I/1) in tokens that contain a digit.</summary>
-    static string Fold(string t) => t.Any(char.IsDigit) ? t.Replace('o', '0').Replace('l', '1').Replace('i', '1') : t;
+    /// <summary>Folds letters that text recognition confuses with digits (O/0, l/1, I/1, B/8, S/5) in tokens that contain a digit.</summary>
+    static string Fold(string t) => t.Any(char.IsDigit) ? t.Replace('o', '0').Replace('l', '1').Replace('i', '1').Replace('b', '8').Replace('s', '5') : t;
 
     sealed record Pattern(Part Part, string[] Required, string[] Words, string[] Bonus, string[] Brand, bool ModelMode);
 
@@ -155,7 +155,7 @@ public static partial class SpecMatcher
 
     static List<Window> Windows(string text)
     {
-        var lines = text.Split('\n').Select(l => l.Trim()).Where(l => l.Length > 0).ToList();
+        var lines = text.Split(['\r', '\n']).Select(l => l.Trim()).Where(l => l.Length > 0).ToList();
         var result = new List<Window>();
         for (var i = 0; i < lines.Count; i++)
         {

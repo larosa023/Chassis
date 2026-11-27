@@ -36,6 +36,15 @@ public class ImportTests
     }
 
     [Fact]
+    public void Handles_windows_line_breaks()
+    {
+        var r = M(PartPicker.Replace("\n", "\r"));
+        Assert.Equal(7, r.Matches.Count);
+        Assert.DoesNotContain("\r", r.For(Category.Cpu)!.Evidence);
+        Assert.True(r.For(Category.Cpu)!.Evidence.Length < 120);
+    }
+
+    [Fact]
     public void Reads_task_manager_style_specs()
     {
         var r = M("""
@@ -102,6 +111,7 @@ public class ImportTests
     {
         Assert.Equal("lianli-o11-evo", M("Lian Li 011 Dynamic EVO").For(Category.Case)?.Part.Id);
         Assert.Equal("amd-9800x3d", M("AMD Ryzen 7 98OOX3D").For(Category.Cpu)?.Part.Id);
+        Assert.Equal("msi-b650-tomahawk", M("MSI MAG 8650 TOMAHAWK WIFI ATX AM5 Motherboard").For(Category.Motherboard)?.Part.Id);
     }
 
     [Fact]

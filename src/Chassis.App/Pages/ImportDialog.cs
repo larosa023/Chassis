@@ -25,11 +25,11 @@ public sealed class ImportDialog
     readonly ContentDialog _dialog;
     readonly TextBox _text = new()
     {
-        AcceptsReturn = true, TextWrapping = TextWrapping.Wrap, Height = 132, FontFamily = Ui.Mono, FontSize = 12,
+        AcceptsReturn = true, TextWrapping = TextWrapping.Wrap, Height = 96, FontFamily = Ui.Mono, FontSize = 12,
         PlaceholderText = "…or paste the text of a parts list here (PCPartPicker, a store page, Task Manager, a spec sheet)",
         CornerRadius = Ui.R,
     };
-    readonly Image _preview = new() { MaxHeight = 150, Stretch = Microsoft.UI.Xaml.Media.Stretch.Uniform, HorizontalAlignment = HorizontalAlignment.Left };
+    readonly Image _preview = new() { MaxHeight = 96, Stretch = Microsoft.UI.Xaml.Media.Stretch.Uniform, HorizontalAlignment = HorizontalAlignment.Left };
     readonly Border _previewBox;
     readonly TextBlock _status = Ui.Muted("", 13);
     readonly ProgressRing _ring = new() { Width = 18, Height = 18, IsActive = false };
@@ -46,6 +46,9 @@ public sealed class ImportDialog
         var choose = Ui.Ghost("Choose image…", () => _ = PickAsync(), "\uEB9F");
         var paste = Ui.Ghost("Paste", () => _ = PasteAsync(), "\uE77F");
         var buttons = Ui.Row(8, choose, paste, _ring, _status);
+        var media = Ui.Columns(Ui.Auto, Ui.Star());
+        media.Children.Add(_previewBox.At(0));
+        media.Children.Add(_text.At(1));
         _status.VerticalAlignment = VerticalAlignment.Center;
         _ring.VerticalAlignment = VerticalAlignment.Center;
         _text.TextChanged += (_, _) => Rematch();
@@ -54,7 +57,7 @@ public sealed class ImportDialog
 
         var body = Ui.Column(14,
             Ui.Text("Add a screenshot or photo of a parts list, or paste its text. Chassis reads it on this PC (nothing is uploaded), finds each part, and builds it inside your case. You can also drop a picture straight onto the 3D view.", 14),
-            buttons, _previewBox, _text,
+            buttons, media,
             Ui.Label("FOUND IN YOUR LIST"), _results, _keepCase, _caseNote);
 
         _dialog = new ContentDialog
@@ -179,7 +182,7 @@ public sealed class ImportDialog
             var row = Ui.Columns(Ui.Px(120), Ui.Star(), Ui.Auto);
             row.Children.Add(Ui.Label(Categories.Label(m.Category).ToUpperInvariant()).At(0));
             var name = Ui.Column(1, Ui.Text(m.Part.FullName, 14, null, FontWeights.SemiBold),
-                Ui.Label("from: " + (m.Evidence.Length > 90 ? m.Evidence[..90] + "…" : m.Evidence)));
+                Ui.Label("from: " + (m.Evidence.Length > 80 ? m.Evidence[..80] + "…" : m.Evidence)));
             row.Children.Add(name.At(1));
             var (label, bg, fg) = m.Strength switch
             {
