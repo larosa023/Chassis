@@ -98,7 +98,7 @@ public sealed partial class BuildPage : UserControl
 
     // ---------- layout ----------
 
-    UIElement Toolbar()
+    FrameworkElement Toolbar()
     {
         var g = Ui.Columns(Ui.Star(), Ui.Auto);
         _name.FontFamily = Ui.Display;
@@ -146,7 +146,7 @@ public sealed partial class BuildPage : UserControl
         return g;
     }
 
-    UIElement Left()
+    FrameworkElement Left()
     {
         var g = new Grid { RowSpacing = 14 };
         g.RowDefinitions.Add(new RowDefinition { Height = new GridLength(1, GridUnitType.Star) });
@@ -185,7 +185,7 @@ public sealed partial class BuildPage : UserControl
         return b;
     }
 
-    UIElement Right()
+    FrameworkElement Right()
     {
         var g = new Grid { RowSpacing = 14 };
         g.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
