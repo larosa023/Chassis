@@ -14,7 +14,7 @@ public class CatalogTests
     [Fact]
     public void Every_category_has_parts_and_each_part_has_its_spec()
     {
-        foreach (var cat in Categories.All) Assert.True(_c.In(cat).Count() >= 5, $"{cat} needs at least 5 parts");
+        foreach (var cat in Categories.All) Assert.True(_c.In(cat).Count() >= 35, $"{cat} needs at least 35 parts");
         foreach (var p in _c.Parts)
         {
             object? spec = p.Category switch
@@ -25,6 +25,7 @@ public class CatalogTests
             Assert.True(spec is not null, $"{p.Id} is missing its {p.Category} spec");
             Assert.True(p.Price > 0, $"{p.Id} has no price");
             Assert.NotEmpty(p.Facts);
+            Assert.True(p.Specs.Count >= 5, $"{p.Id} spec sheet is thin");
         }
     }
 
@@ -38,6 +39,7 @@ public class CatalogTests
     public void Search_matches_all_words()
     {
         var hits = _c.Search(Category.Gpu, "rtx founders").ToList();
+        Assert.True(_c.Search(Category.Case, "o11").Count() >= 3);
         Assert.True(hits.Count >= 4);
         Assert.All(hits, h => Assert.Contains("Founders", h.Name));
         Assert.All(hits, h => Assert.Contains("RTX", h.Name));
@@ -106,6 +108,8 @@ public class CheckTests
     {
         var r = CompatibilityChecker.Check(R(new PcBuild()));
         Assert.Equal("Start with a case", Assert.Single(r.Findings).Title);
+        Assert.Equal("Start with a case", r.Headline);
+        Assert.Equal("So far so good, 7 parts to go", CompatibilityChecker.Check(R(new PcBuild().With(Category.Case, "fractal-north"))).Headline);
     }
 
     [Fact]

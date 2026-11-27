@@ -8,7 +8,7 @@ public enum Severity { Good, Info, Warning, Problem }
 /// <summary>One finding about a build. Problems mean it won't physically fit or won't boot.</summary>
 public sealed record Finding(Severity Severity, string Title, string Detail, params Category[] Parts);
 
-public sealed record CheckReport(IReadOnlyList<Finding> Findings)
+public sealed record CheckReport(IReadOnlyList<Finding> Findings, int Missing = 0)
 {
     public int Problems => Findings.Count(f => f.Severity == Severity.Problem);
     public int Warnings => Findings.Count(f => f.Severity == Severity.Warning);
@@ -17,6 +17,8 @@ public sealed record CheckReport(IReadOnlyList<Finding> Findings)
 
     public string Headline => Problems > 0
         ? $"{Problems} problem{(Problems == 1 ? "" : "s")} to fix"
+        : Missing == Categories.All.Count ? "Start with a case"
+        : Missing > 0 ? $"So far so good, {Missing} part{(Missing == 1 ? "" : "s")} to go"
         : Warnings > 0 ? $"Works, with {Warnings} thing{(Warnings == 1 ? "" : "s")} to know" : "Everything fits and works together";
 }
 
@@ -146,6 +148,6 @@ public static class CompatibilityChecker
                 "Still needed: " + string.Join(", ", missing.Select(Categories.Label)) + ".", [.. missing]));
 
         var ordered = f.OrderByDescending(x => x.Severity).ToList();
-        return new CheckReport(ordered);
+        return new CheckReport(ordered, missing.Count);
     }
 }

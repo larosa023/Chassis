@@ -173,6 +173,7 @@
   function boardSize(form) {
     if (form === 'ITX') return { w: 17, h: 17 };
     if (form === 'mATX') return { w: 24.4, h: 24.4 };
+    if (form === 'E-ATX') return { w: 27.7, h: 30.5 };
     return { w: 24.4, h: 30.5 };
   }
 
@@ -430,7 +431,11 @@
   function buildStorage(b, L) {
     const g = new THREE.Group();
     const s = b.storage;
-    if (s.iface === 'SATA') {
+    if (s.iface === 'HDD') {
+      const hdd = mat(s.color, { metal: 0.6, rough: 0.45 });
+      box(14.7, 2.6, 10.2, hdd, L.D / 2 - 10, 1.9, L.W / 2 - 7, g);
+      box(10, 0.05, 6, mat('#c9ccd1', { metal: 0.9, rough: 0.3 }), L.D / 2 - 10, 3.22, L.W / 2 - 7, g);
+    } else if (s.iface === 'SATA') {
       box(10, 0.7, 7, mat('#2b2b2b', { metal: 0.5, rough: 0.4 }), L.D / 2 - 9, 1.0, L.W / 2 - 6, g);
     } else {
       box(8, 2.2, 0.15, mat('#1f5132', { rough: 0.6 }), L.m2.x, L.m2.y, L.bz + 0.7, g);

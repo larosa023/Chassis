@@ -1,145 +1,6862 @@
 {
-  "version": 1,
-  "notes": "Prices are typical US street prices (approximate). Benchmark figures are rounded averages of published reviews and are used only to estimate performance.",
-  "parts": [
-    { "id": "fractal-north", "cat": "Case", "brand": "Fractal Design", "name": "North", "price": 139, "color": "#3A2A1E",
-      "case": { "boards": ["ATX", "mATX", "ITX"], "psus": ["ATX", "SFX"], "maxGpuMm": 355, "maxCoolerMm": 170, "maxRadMm": 360, "depthMm": 447, "heightMm": 469, "widthMm": 215, "fans": 2 } },
-    { "id": "lianli-o11-evo", "cat": "Case", "brand": "Lian Li", "name": "O11 Dynamic EVO", "price": 159, "color": "#E9E9EC",
-      "case": { "boards": ["ATX", "mATX", "ITX"], "psus": ["ATX", "SFX"], "maxGpuMm": 422, "maxCoolerMm": 167, "maxRadMm": 360, "depthMm": 465, "heightMm": 459, "widthMm": 285, "fans": 0 } },
-    { "id": "nzxt-h5-flow", "cat": "Case", "brand": "NZXT", "name": "H5 Flow (2024)", "price": 94, "color": "#141416",
-      "case": { "boards": ["ATX", "mATX", "ITX"], "psus": ["ATX", "SFX"], "maxGpuMm": 365, "maxCoolerMm": 165, "maxRadMm": 360, "depthMm": 430, "heightMm": 464, "widthMm": 220, "fans": 2 } },
-    { "id": "hyte-y70", "cat": "Case", "brand": "HYTE", "name": "Y70", "price": 219, "color": "#F2F2F2",
-      "case": { "boards": ["ATX", "mATX", "ITX"], "psus": ["ATX"], "maxGpuMm": 422, "maxCoolerMm": 180, "maxRadMm": 360, "depthMm": 470, "heightMm": 517, "widthMm": 320, "fans": 0 } },
-    { "id": "cm-nr200p-v2", "cat": "Case", "brand": "Cooler Master", "name": "NR200P V2 (mini-ITX)", "price": 109, "color": "#1B1B1E",
-      "case": { "boards": ["ITX"], "psus": ["SFX"], "maxGpuMm": 336, "maxCoolerMm": 155, "maxRadMm": 280, "depthMm": 376, "heightMm": 292, "widthMm": 185, "fans": 2 } },
-
-    { "id": "asus-x870e-hero", "cat": "Motherboard", "brand": "ASUS", "name": "ROG Crosshair X870E Hero", "price": 699, "color": "#202024",
-      "board": { "socket": "AM5", "chipset": "X870E", "form": "ATX", "memory": "DDR5", "memorySlots": 4, "m2Slots": 5, "pcie5M2": true, "wifi": true } },
-    { "id": "msi-x870-tomahawk", "cat": "Motherboard", "brand": "MSI", "name": "MAG X870 Tomahawk WiFi", "price": 299, "color": "#2B2D2E",
-      "board": { "socket": "AM5", "chipset": "X870", "form": "ATX", "memory": "DDR5", "memorySlots": 4, "m2Slots": 4, "pcie5M2": true, "wifi": true } },
-    { "id": "msi-b650-tomahawk", "cat": "Motherboard", "brand": "MSI", "name": "MAG B650 Tomahawk WiFi", "price": 199, "color": "#2B2D2E",
-      "board": { "socket": "AM5", "chipset": "B650", "form": "ATX", "memory": "DDR5", "memorySlots": 4, "m2Slots": 3, "pcie5M2": false, "wifi": true } },
-    { "id": "gb-b650m-elite", "cat": "Motherboard", "brand": "Gigabyte", "name": "B650M Aorus Elite AX", "price": 169, "color": "#26282B",
-      "board": { "socket": "AM5", "chipset": "B650", "form": "mATX", "memory": "DDR5", "memorySlots": 4, "m2Slots": 2, "pcie5M2": false, "wifi": true } },
-    { "id": "asus-b650e-i", "cat": "Motherboard", "brand": "ASUS", "name": "ROG Strix B650E-I Gaming WiFi", "price": 329, "color": "#1E1F22",
-      "board": { "socket": "AM5", "chipset": "B650E", "form": "ITX", "memory": "DDR5", "memorySlots": 2, "m2Slots": 2, "pcie5M2": true, "wifi": true } },
-    { "id": "asus-z890-e", "cat": "Motherboard", "brand": "ASUS", "name": "ROG Strix Z890-E Gaming WiFi", "price": 499, "color": "#1E1F22",
-      "board": { "socket": "LGA1851", "chipset": "Z890", "form": "ATX", "memory": "DDR5", "memorySlots": 4, "m2Slots": 5, "pcie5M2": true, "wifi": true } },
-    { "id": "msi-z790-tomahawk", "cat": "Motherboard", "brand": "MSI", "name": "MAG Z790 Tomahawk WiFi", "price": 239, "color": "#2B2D2E",
-      "board": { "socket": "LGA1700", "chipset": "Z790", "form": "ATX", "memory": "DDR5", "memorySlots": 4, "m2Slots": 4, "pcie5M2": false, "wifi": true } },
-    { "id": "msi-b760m-ddr4", "cat": "Motherboard", "brand": "MSI", "name": "PRO B760M-A WiFi DDR4", "price": 139, "color": "#2E3136",
-      "board": { "socket": "LGA1700", "chipset": "B760", "form": "mATX", "memory": "DDR4", "memorySlots": 4, "m2Slots": 2, "pcie5M2": false, "wifi": true } },
-    { "id": "gb-z790i-ultra", "cat": "Motherboard", "brand": "Gigabyte", "name": "Z790I Aorus Ultra", "price": 329, "color": "#1E1F22",
-      "board": { "socket": "LGA1700", "chipset": "Z790", "form": "ITX", "memory": "DDR5", "memorySlots": 2, "m2Slots": 3, "pcie5M2": true, "wifi": true } },
-
-    { "id": "amd-9950x3d", "cat": "Cpu", "brand": "AMD", "name": "Ryzen 9 9950X3D", "price": 699, "color": "#C9CBD1",
-      "cpu": { "socket": "AM5", "cores": 16, "threads": 32, "boostGhz": 5.7, "powerW": 200, "multi": 42000, "single": 2230, "game": 99, "igpu": true } },
-    { "id": "amd-9950x", "cat": "Cpu", "brand": "AMD", "name": "Ryzen 9 9950X", "price": 549, "color": "#C9CBD1",
-      "cpu": { "socket": "AM5", "cores": 16, "threads": 32, "boostGhz": 5.7, "powerW": 200, "multi": 42500, "single": 2250, "game": 84, "igpu": true } },
-    { "id": "amd-9900x", "cat": "Cpu", "brand": "AMD", "name": "Ryzen 9 9900X", "price": 399, "color": "#C9CBD1",
-      "cpu": { "socket": "AM5", "cores": 12, "threads": 24, "boostGhz": 5.6, "powerW": 162, "multi": 33000, "single": 2220, "game": 82, "igpu": true } },
-    { "id": "amd-9800x3d", "cat": "Cpu", "brand": "AMD", "name": "Ryzen 7 9800X3D", "price": 479, "color": "#C9CBD1",
-      "cpu": { "socket": "AM5", "cores": 8, "threads": 16, "boostGhz": 5.2, "powerW": 140, "multi": 23000, "single": 2050, "game": 100, "igpu": true } },
-    { "id": "amd-9700x", "cat": "Cpu", "brand": "AMD", "name": "Ryzen 7 9700X", "price": 299, "color": "#C9CBD1",
-      "cpu": { "socket": "AM5", "cores": 8, "threads": 16, "boostGhz": 5.5, "powerW": 88, "multi": 20000, "single": 2200, "game": 78, "igpu": true } },
-    { "id": "amd-9600x", "cat": "Cpu", "brand": "AMD", "name": "Ryzen 5 9600X", "price": 229, "color": "#C9CBD1",
-      "cpu": { "socket": "AM5", "cores": 6, "threads": 12, "boostGhz": 5.4, "powerW": 88, "multi": 16000, "single": 2170, "game": 74, "igpu": true } },
-    { "id": "amd-7900x", "cat": "Cpu", "brand": "AMD", "name": "Ryzen 9 7900X", "price": 329, "color": "#C9CBD1",
-      "cpu": { "socket": "AM5", "cores": 12, "threads": 24, "boostGhz": 5.6, "powerW": 162, "multi": 29000, "single": 1980, "game": 76, "igpu": true } },
-    { "id": "amd-7800x3d", "cat": "Cpu", "brand": "AMD", "name": "Ryzen 7 7800X3D", "price": 369, "color": "#C9CBD1",
-      "cpu": { "socket": "AM5", "cores": 8, "threads": 16, "boostGhz": 5.0, "powerW": 120, "multi": 18000, "single": 1800, "game": 90, "igpu": true } },
-    { "id": "amd-7600", "cat": "Cpu", "brand": "AMD", "name": "Ryzen 5 7600", "price": 179, "color": "#C9CBD1",
-      "cpu": { "socket": "AM5", "cores": 6, "threads": 12, "boostGhz": 5.1, "powerW": 88, "multi": 14500, "single": 1900, "game": 68, "igpu": true } },
-    { "id": "intel-285k", "cat": "Cpu", "brand": "Intel", "name": "Core Ultra 9 285K", "price": 589, "color": "#B8C2CF",
-      "cpu": { "socket": "LGA1851", "cores": 24, "threads": 24, "boostGhz": 5.7, "powerW": 250, "multi": 42000, "single": 2400, "game": 82, "igpu": true } },
-    { "id": "intel-265k", "cat": "Cpu", "brand": "Intel", "name": "Core Ultra 7 265K", "price": 299, "color": "#B8C2CF",
-      "cpu": { "socket": "LGA1851", "cores": 20, "threads": 20, "boostGhz": 5.5, "powerW": 250, "multi": 36000, "single": 2300, "game": 79, "igpu": true } },
-    { "id": "intel-14900k", "cat": "Cpu", "brand": "Intel", "name": "Core i9-14900K", "price": 449, "color": "#B8C2CF",
-      "cpu": { "socket": "LGA1700", "cores": 24, "threads": 32, "boostGhz": 6.0, "powerW": 253, "multi": 38500, "single": 2300, "game": 86, "igpu": true } },
-    { "id": "intel-14700k", "cat": "Cpu", "brand": "Intel", "name": "Core i7-14700K", "price": 339, "color": "#B8C2CF",
-      "cpu": { "socket": "LGA1700", "cores": 20, "threads": 28, "boostGhz": 5.6, "powerW": 253, "multi": 35000, "single": 2150, "game": 83, "igpu": true } },
-    { "id": "intel-14600k", "cat": "Cpu", "brand": "Intel", "name": "Core i5-14600K", "price": 229, "color": "#B8C2CF",
-      "cpu": { "socket": "LGA1700", "cores": 14, "threads": 20, "boostGhz": 5.3, "powerW": 181, "multi": 24500, "single": 2050, "game": 77, "igpu": true } },
-    { "id": "intel-13400f", "cat": "Cpu", "brand": "Intel", "name": "Core i5-13400F", "price": 159, "color": "#B8C2CF",
-      "cpu": { "socket": "LGA1700", "cores": 10, "threads": 16, "boostGhz": 4.6, "powerW": 148, "multi": 16500, "single": 1800, "game": 60, "igpu": false } },
-
-    { "id": "noctua-nh-d15-g2", "cat": "Cooler", "brand": "Noctua", "name": "NH-D15 G2", "price": 149, "color": "#8B6A55",
-      "cooler": { "kind": "Air", "heightMm": 168, "radMm": 0, "capacityW": 260, "noiseDb": 25 } },
-    { "id": "bequiet-drp5", "cat": "Cooler", "brand": "be quiet!", "name": "Dark Rock Pro 5", "price": 99, "color": "#151515",
-      "cooler": { "kind": "Air", "heightMm": 168, "radMm": 0, "capacityW": 250, "noiseDb": 24 } },
-    { "id": "thermalright-pa120se", "cat": "Cooler", "brand": "Thermalright", "name": "Peerless Assassin 120 SE", "price": 35, "color": "#B9BCC2",
-      "cooler": { "kind": "Air", "heightMm": 155, "radMm": 0, "capacityW": 230, "noiseDb": 27 } },
-    { "id": "noctua-nh-l12s", "cat": "Cooler", "brand": "Noctua", "name": "NH-L12S (low profile)", "price": 59, "color": "#8B6A55",
-      "cooler": { "kind": "Air", "heightMm": 70, "radMm": 0, "capacityW": 140, "noiseDb": 23 } },
-    { "id": "arctic-lf3-360", "cat": "Cooler", "brand": "Arctic", "name": "Liquid Freezer III 360", "price": 109, "color": "#111214",
-      "cooler": { "kind": "Liquid", "heightMm": 0, "radMm": 360, "capacityW": 320, "noiseDb": 27 } },
-    { "id": "corsair-h150i", "cat": "Cooler", "brand": "Corsair", "name": "iCUE H150i Elite LCD XT", "price": 259, "color": "#141414",
-      "cooler": { "kind": "Liquid", "heightMm": 0, "radMm": 360, "capacityW": 310, "noiseDb": 30 } },
-    { "id": "nzxt-kraken-240", "cat": "Cooler", "brand": "NZXT", "name": "Kraken 240", "price": 139, "color": "#121212",
-      "cooler": { "kind": "Liquid", "heightMm": 0, "radMm": 240, "capacityW": 250, "noiseDb": 28 } },
-    { "id": "lianli-gaII-280", "cat": "Cooler", "brand": "Lian Li", "name": "Galahad II Trinity 280", "price": 149, "color": "#F0F0F0",
-      "cooler": { "kind": "Liquid", "heightMm": 0, "radMm": 280, "capacityW": 285, "noiseDb": 28 } },
-
-    { "id": "crucial-16-5600", "cat": "Memory", "brand": "Crucial", "name": "16 GB (2×8) DDR5-5600 CL46", "price": 49, "color": "#2E7D4F",
-      "memory": { "type": "DDR5", "capacityGb": 16, "speed": 5600, "cl": 46, "modules": 2 } },
-    { "id": "kingston-fury-32-5600", "cat": "Memory", "brand": "Kingston", "name": "Fury Beast 32 GB (2×16) DDR5-5600 CL36", "price": 89, "color": "#1C1C1C",
-      "memory": { "type": "DDR5", "capacityGb": 32, "speed": 5600, "cl": 36, "modules": 2 } },
-    { "id": "gskill-z5-32-6000", "cat": "Memory", "brand": "G.Skill", "name": "Trident Z5 RGB 32 GB (2×16) DDR5-6000 CL30", "price": 109, "color": "#C0C3C8",
-      "memory": { "type": "DDR5", "capacityGb": 32, "speed": 6000, "cl": 30, "modules": 2, "rgb": true } },
-    { "id": "corsair-v-64-6000", "cat": "Memory", "brand": "Corsair", "name": "Vengeance RGB 64 GB (2×32) DDR5-6000 CL30", "price": 199, "color": "#1A1A1A",
-      "memory": { "type": "DDR5", "capacityGb": 64, "speed": 6000, "cl": 30, "modules": 2, "rgb": true } },
-    { "id": "gskill-z5-96-6400", "cat": "Memory", "brand": "G.Skill", "name": "Trident Z5 RGB 96 GB (2×48) DDR5-6400 CL32", "price": 299, "color": "#C0C3C8",
-      "memory": { "type": "DDR5", "capacityGb": 96, "speed": 6400, "cl": 32, "modules": 2, "rgb": true } },
-    { "id": "corsair-lpx-32-3200", "cat": "Memory", "brand": "Corsair", "name": "Vengeance LPX 32 GB (2×16) DDR4-3200 CL16", "price": 59, "color": "#111111",
-      "memory": { "type": "DDR4", "capacityGb": 32, "speed": 3200, "cl": 16, "modules": 2 } },
-
-    { "id": "nv-5090", "cat": "Gpu", "brand": "NVIDIA", "name": "GeForce RTX 5090 Founders Edition", "price": 1999, "color": "#2A2B2E",
-      "gpu": { "lengthMm": 304, "slots": 2, "powerW": 575, "raster": 130, "rt": 140, "vramGb": 32, "connector": "12V-2x6" } },
-    { "id": "nv-5080", "cat": "Gpu", "brand": "NVIDIA", "name": "GeForce RTX 5080 Founders Edition", "price": 999, "color": "#2A2B2E",
-      "gpu": { "lengthMm": 304, "slots": 2, "powerW": 360, "raster": 82, "rt": 85, "vramGb": 16, "connector": "12V-2x6" } },
-    { "id": "nv-5070ti", "cat": "Gpu", "brand": "ASUS", "name": "TUF Gaming RTX 5070 Ti", "price": 799, "color": "#3B3D40",
-      "gpu": { "lengthMm": 329, "slots": 3, "powerW": 300, "raster": 70, "rt": 70, "vramGb": 16, "connector": "12V-2x6" } },
-    { "id": "nv-5070", "cat": "Gpu", "brand": "NVIDIA", "name": "GeForce RTX 5070 Founders Edition", "price": 549, "color": "#2A2B2E",
-      "gpu": { "lengthMm": 242, "slots": 2, "powerW": 250, "raster": 55, "rt": 55, "vramGb": 12, "connector": "12V-2x6" } },
-    { "id": "nv-5060ti", "cat": "Gpu", "brand": "MSI", "name": "RTX 5060 Ti 16 GB Ventus 2X", "price": 429, "color": "#2F3236",
-      "gpu": { "lengthMm": 199, "slots": 2, "powerW": 180, "raster": 38, "rt": 37, "vramGb": 16, "connector": "8-pin" } },
-    { "id": "nv-4090", "cat": "Gpu", "brand": "NVIDIA", "name": "GeForce RTX 4090 Founders Edition", "price": 1599, "color": "#2A2B2E",
-      "gpu": { "lengthMm": 304, "slots": 3, "powerW": 450, "raster": 100, "rt": 100, "vramGb": 24, "connector": "12V-2x6" } },
-    { "id": "amd-9070xt", "cat": "Gpu", "brand": "Sapphire", "name": "Pulse Radeon RX 9070 XT", "price": 649, "color": "#232427",
-      "gpu": { "lengthMm": 280, "slots": 3, "powerW": 304, "raster": 68, "rt": 58, "vramGb": 16, "connector": "8-pin" } },
-    { "id": "amd-9070", "cat": "Gpu", "brand": "PowerColor", "name": "Reaper Radeon RX 9070", "price": 549, "color": "#1E1F22",
-      "gpu": { "lengthMm": 248, "slots": 2, "powerW": 220, "raster": 60, "rt": 50, "vramGb": 16, "connector": "8-pin" } },
-    { "id": "amd-7900xtx", "cat": "Gpu", "brand": "AMD", "name": "Radeon RX 7900 XTX", "price": 899, "color": "#1B1C1F",
-      "gpu": { "lengthMm": 287, "slots": 3, "powerW": 355, "raster": 80, "rt": 55, "vramGb": 24, "connector": "8-pin" } },
-    { "id": "intel-b580", "cat": "Gpu", "brand": "Intel", "name": "Arc B580 Limited Edition", "price": 249, "color": "#202124",
-      "gpu": { "lengthMm": 272, "slots": 2, "powerW": 190, "raster": 30, "rt": 28, "vramGb": 12, "connector": "8-pin" } },
-
-    { "id": "samsung-9100pro-2t", "cat": "Storage", "brand": "Samsung", "name": "9100 Pro 2 TB (PCIe 5.0)", "price": 229, "color": "#1A1A1A",
-      "storage": { "iface": "NVMe5", "capacityGb": 2000, "readMBs": 14700, "writeMBs": 13400 } },
-    { "id": "crucial-t705-2t", "cat": "Storage", "brand": "Crucial", "name": "T705 2 TB (PCIe 5.0)", "price": 259, "color": "#1A1A1A",
-      "storage": { "iface": "NVMe5", "capacityGb": 2000, "readMBs": 14500, "writeMBs": 12700 } },
-    { "id": "samsung-990pro-2t", "cat": "Storage", "brand": "Samsung", "name": "990 Pro 2 TB (PCIe 4.0)", "price": 169, "color": "#1A1A1A",
-      "storage": { "iface": "NVMe4", "capacityGb": 2000, "readMBs": 7450, "writeMBs": 6900 } },
-    { "id": "wd-sn850x-2t", "cat": "Storage", "brand": "WD", "name": "WD_Black SN850X 2 TB (PCIe 4.0)", "price": 149, "color": "#111111",
-      "storage": { "iface": "NVMe4", "capacityGb": 2000, "readMBs": 7300, "writeMBs": 6600 } },
-    { "id": "crucial-p3plus-1t", "cat": "Storage", "brand": "Crucial", "name": "P3 Plus 1 TB (PCIe 4.0)", "price": 59, "color": "#1F2A44",
-      "storage": { "iface": "NVMe4", "capacityGb": 1000, "readMBs": 5000, "writeMBs": 4200 } },
-    { "id": "samsung-870evo-1t", "cat": "Storage", "brand": "Samsung", "name": "870 EVO 1 TB (SATA)", "price": 89, "color": "#2B2B2B",
-      "storage": { "iface": "SATA", "capacityGb": 1000, "readMBs": 560, "writeMBs": 530 } },
-
-    { "id": "msi-a650bn", "cat": "Psu", "brand": "MSI", "name": "MAG A650BN 650 W", "price": 59, "color": "#1A1A1A",
-      "psu": { "watts": 650, "form": "ATX", "rating": "80+ Bronze", "native12v2x6": false } },
-    { "id": "corsair-rm850x", "cat": "Psu", "brand": "Corsair", "name": "RM850x (2024) 850 W", "price": 139, "color": "#1A1A1A",
-      "psu": { "watts": 850, "form": "ATX", "rating": "80+ Gold", "native12v2x6": true } },
-    { "id": "corsair-rm1000x", "cat": "Psu", "brand": "Corsair", "name": "RM1000x (2024) 1000 W", "price": 189, "color": "#1A1A1A",
-      "psu": { "watts": 1000, "form": "ATX", "rating": "80+ Gold", "native12v2x6": true } },
-    { "id": "bequiet-dp13-1000", "cat": "Psu", "brand": "be quiet!", "name": "Dark Power 13 1000 W", "price": 269, "color": "#111111",
-      "psu": { "watts": 1000, "form": "ATX", "rating": "80+ Titanium", "native12v2x6": true } },
-    { "id": "seasonic-vertex-1200", "cat": "Psu", "brand": "Seasonic", "name": "Vertex GX-1200 1200 W", "price": 279, "color": "#1A1A1A",
-      "psu": { "watts": 1200, "form": "ATX", "rating": "80+ Gold", "native12v2x6": true } },
-    { "id": "corsair-sf750", "cat": "Psu", "brand": "Corsair", "name": "SF750 (2024) 750 W SFX", "price": 169, "color": "#1A1A1A",
-      "psu": { "watts": 750, "form": "SFX", "rating": "80+ Platinum", "native12v2x6": true } },
-    { "id": "corsair-sf1000", "cat": "Psu", "brand": "Corsair", "name": "SF1000 1000 W SFX", "price": 229, "color": "#1A1A1A",
-      "psu": { "watts": 1000, "form": "SFX", "rating": "80+ Platinum", "native12v2x6": true } }
-  ]
+ "version": 2,
+ "notes": "Prices are typical US street prices (approximate). Benchmark figures are rounded averages of published reviews and are used only to estimate performance.",
+ "parts": [
+  {
+   "id": "fractal-north",
+   "cat": "Case",
+   "brand": "Fractal Design",
+   "name": "North",
+   "price": 139,
+   "color": "#3A2A1E",
+   "case": {
+    "boards": [
+     "ATX",
+     "mATX",
+     "ITX"
+    ],
+    "psus": [
+     "ATX",
+     "SFX"
+    ],
+    "maxGpuMm": 355,
+    "maxCoolerMm": 170,
+    "maxRadMm": 360,
+    "depthMm": 447,
+    "heightMm": 469,
+    "widthMm": 215,
+    "fans": 2,
+    "type": "Mid tower",
+    "panel": "Tempered glass + walnut front"
+   }
+  },
+  {
+   "id": "fractal-north-xl",
+   "cat": "Case",
+   "brand": "Fractal Design",
+   "name": "North XL",
+   "price": 169,
+   "color": "#2E241C",
+   "case": {
+    "boards": [
+     "E-ATX",
+     "ATX",
+     "mATX",
+     "ITX"
+    ],
+    "psus": [
+     "ATX",
+     "SFX"
+    ],
+    "maxGpuMm": 413,
+    "maxCoolerMm": 185,
+    "maxRadMm": 420,
+    "depthMm": 503,
+    "heightMm": 509,
+    "widthMm": 240,
+    "fans": 3,
+    "type": "Full tower",
+    "panel": "Tempered glass + walnut front"
+   }
+  },
+  {
+   "id": "fractal-torrent",
+   "cat": "Case",
+   "brand": "Fractal Design",
+   "name": "Torrent",
+   "price": 229,
+   "color": "#141517",
+   "case": {
+    "boards": [
+     "E-ATX",
+     "ATX",
+     "mATX",
+     "ITX"
+    ],
+    "psus": [
+     "ATX"
+    ],
+    "maxGpuMm": 461,
+    "maxCoolerMm": 188,
+    "maxRadMm": 420,
+    "depthMm": 544,
+    "heightMm": 530,
+    "widthMm": 242,
+    "fans": 5,
+    "type": "Mid tower",
+    "panel": "Tempered glass"
+   }
+  },
+  {
+   "id": "fractal-meshify-2",
+   "cat": "Case",
+   "brand": "Fractal Design",
+   "name": "Meshify 2",
+   "price": 159,
+   "color": "#16171A",
+   "case": {
+    "boards": [
+     "E-ATX",
+     "ATX",
+     "mATX",
+     "ITX"
+    ],
+    "psus": [
+     "ATX"
+    ],
+    "maxGpuMm": 467,
+    "maxCoolerMm": 185,
+    "maxRadMm": 420,
+    "depthMm": 542,
+    "heightMm": 474,
+    "widthMm": 240,
+    "fans": 3,
+    "type": "Mid tower",
+    "panel": "Tempered glass"
+   }
+  },
+  {
+   "id": "fractal-define-7-compact",
+   "cat": "Case",
+   "brand": "Fractal Design",
+   "name": "Define 7 Compact",
+   "price": 119,
+   "color": "#1A1B1D",
+   "case": {
+    "boards": [
+     "ATX",
+     "mATX",
+     "ITX"
+    ],
+    "psus": [
+     "ATX"
+    ],
+    "maxGpuMm": 341,
+    "maxCoolerMm": 169,
+    "maxRadMm": 360,
+    "depthMm": 427,
+    "heightMm": 474,
+    "widthMm": 210,
+    "fans": 2,
+    "type": "Mid tower",
+    "panel": "Tempered glass, sound-dampened"
+   }
+  },
+  {
+   "id": "fractal-pop-air",
+   "cat": "Case",
+   "brand": "Fractal Design",
+   "name": "Pop Air",
+   "price": 89,
+   "color": "#1C1D20",
+   "case": {
+    "boards": [
+     "ATX",
+     "mATX",
+     "ITX"
+    ],
+    "psus": [
+     "ATX"
+    ],
+    "maxGpuMm": 405,
+    "maxCoolerMm": 170,
+    "maxRadMm": 360,
+    "depthMm": 474,
+    "heightMm": 454,
+    "widthMm": 215,
+    "fans": 3,
+    "type": "Mid tower",
+    "panel": "Tempered glass"
+   }
+  },
+  {
+   "id": "fractal-terra",
+   "cat": "Case",
+   "brand": "Fractal Design",
+   "name": "Terra (mini-ITX)",
+   "price": 179,
+   "color": "#9A8F7E",
+   "case": {
+    "boards": [
+     "ITX"
+    ],
+    "psus": [
+     "SFX"
+    ],
+    "maxGpuMm": 322,
+    "maxCoolerMm": 77,
+    "maxRadMm": 0,
+    "depthMm": 337,
+    "heightMm": 228,
+    "widthMm": 145,
+    "fans": 0,
+    "type": "Small form factor",
+    "panel": "Aluminium + walnut"
+   }
+  },
+  {
+   "id": "lianli-o11-evo",
+   "cat": "Case",
+   "brand": "Lian Li",
+   "name": "O11 Dynamic EVO",
+   "price": 159,
+   "color": "#E9E9EC",
+   "case": {
+    "boards": [
+     "E-ATX",
+     "ATX",
+     "mATX",
+     "ITX"
+    ],
+    "psus": [
+     "ATX",
+     "SFX"
+    ],
+    "maxGpuMm": 422,
+    "maxCoolerMm": 167,
+    "maxRadMm": 360,
+    "depthMm": 465,
+    "heightMm": 459,
+    "widthMm": 285,
+    "fans": 0,
+    "type": "Mid tower (dual chamber)",
+    "panel": "Dual tempered glass"
+   }
+  },
+  {
+   "id": "lianli-o11-evo-xl",
+   "cat": "Case",
+   "brand": "Lian Li",
+   "name": "O11 Dynamic EVO XL",
+   "price": 239,
+   "color": "#1A1A1C",
+   "case": {
+    "boards": [
+     "E-ATX",
+     "ATX",
+     "mATX",
+     "ITX"
+    ],
+    "psus": [
+     "ATX"
+    ],
+    "maxGpuMm": 460,
+    "maxCoolerMm": 167,
+    "maxRadMm": 420,
+    "depthMm": 522,
+    "heightMm": 531,
+    "widthMm": 304,
+    "fans": 0,
+    "type": "Full tower (dual chamber)",
+    "panel": "Dual tempered glass"
+   }
+  },
+  {
+   "id": "lianli-o11-vision",
+   "cat": "Case",
+   "brand": "Lian Li",
+   "name": "O11 Vision",
+   "price": 119,
+   "color": "#EDEDEF",
+   "case": {
+    "boards": [
+     "ATX",
+     "mATX",
+     "ITX"
+    ],
+    "psus": [
+     "ATX"
+    ],
+    "maxGpuMm": 455,
+    "maxCoolerMm": 167,
+    "maxRadMm": 360,
+    "depthMm": 465,
+    "heightMm": 457,
+    "widthMm": 272,
+    "fans": 0,
+    "type": "Mid tower (dual chamber)",
+    "panel": "Three-sided glass"
+   }
+  },
+  {
+   "id": "lianli-o11-air-mini",
+   "cat": "Case",
+   "brand": "Lian Li",
+   "name": "O11 Air Mini",
+   "price": 109,
+   "color": "#1E1F22",
+   "case": {
+    "boards": [
+     "ATX",
+     "mATX",
+     "ITX"
+    ],
+    "psus": [
+     "ATX",
+     "SFX"
+    ],
+    "maxGpuMm": 362,
+    "maxCoolerMm": 170,
+    "maxRadMm": 360,
+    "depthMm": 420,
+    "heightMm": 386,
+    "widthMm": 269,
+    "fans": 3,
+    "type": "Mid tower (dual chamber)",
+    "panel": "Tempered glass + mesh"
+   }
+  },
+  {
+   "id": "lianli-lancool-216",
+   "cat": "Case",
+   "brand": "Lian Li",
+   "name": "Lancool 216",
+   "price": 99,
+   "color": "#18191B",
+   "case": {
+    "boards": [
+     "E-ATX",
+     "ATX",
+     "mATX",
+     "ITX"
+    ],
+    "psus": [
+     "ATX"
+    ],
+    "maxGpuMm": 392,
+    "maxCoolerMm": 180,
+    "maxRadMm": 360,
+    "depthMm": 482,
+    "heightMm": 491,
+    "widthMm": 235,
+    "fans": 3,
+    "type": "Mid tower",
+    "panel": "Tempered glass"
+   }
+  },
+  {
+   "id": "lianli-lancool-207",
+   "cat": "Case",
+   "brand": "Lian Li",
+   "name": "Lancool 207",
+   "price": 89,
+   "color": "#F0F0F2",
+   "case": {
+    "boards": [
+     "ATX",
+     "mATX",
+     "ITX"
+    ],
+    "psus": [
+     "ATX"
+    ],
+    "maxGpuMm": 375,
+    "maxCoolerMm": 170,
+    "maxRadMm": 360,
+    "depthMm": 450,
+    "heightMm": 442,
+    "widthMm": 215,
+    "fans": 4,
+    "type": "Mid tower",
+    "panel": "Tempered glass"
+   }
+  },
+  {
+   "id": "lianli-a3-matx",
+   "cat": "Case",
+   "brand": "Lian Li",
+   "name": "A3-mATX",
+   "price": 69,
+   "color": "#1B1C1E",
+   "case": {
+    "boards": [
+     "mATX",
+     "ITX"
+    ],
+    "psus": [
+     "ATX",
+     "SFX"
+    ],
+    "maxGpuMm": 415,
+    "maxCoolerMm": 165,
+    "maxRadMm": 360,
+    "depthMm": 418,
+    "heightMm": 339,
+    "widthMm": 230,
+    "fans": 0,
+    "type": "Micro tower",
+    "panel": "Tempered glass + mesh"
+   }
+  },
+  {
+   "id": "lianli-a4-h2o",
+   "cat": "Case",
+   "brand": "Lian Li",
+   "name": "A4-H2O (mini-ITX)",
+   "price": 149,
+   "color": "#2B2C2E",
+   "case": {
+    "boards": [
+     "ITX"
+    ],
+    "psus": [
+     "SFX"
+    ],
+    "maxGpuMm": 322,
+    "maxCoolerMm": 55,
+    "maxRadMm": 240,
+    "depthMm": 323,
+    "heightMm": 271,
+    "widthMm": 136,
+    "fans": 0,
+    "type": "Small form factor",
+    "panel": "Aluminium + mesh"
+   }
+  },
+  {
+   "id": "nzxt-h5-flow",
+   "cat": "Case",
+   "brand": "NZXT",
+   "name": "H5 Flow (2024)",
+   "price": 94,
+   "color": "#141416",
+   "case": {
+    "boards": [
+     "ATX",
+     "mATX",
+     "ITX"
+    ],
+    "psus": [
+     "ATX",
+     "SFX"
+    ],
+    "maxGpuMm": 365,
+    "maxCoolerMm": 165,
+    "maxRadMm": 360,
+    "depthMm": 430,
+    "heightMm": 464,
+    "widthMm": 220,
+    "fans": 2,
+    "type": "Mid tower",
+    "panel": "Tempered glass"
+   }
+  },
+  {
+   "id": "nzxt-h6-flow",
+   "cat": "Case",
+   "brand": "NZXT",
+   "name": "H6 Flow",
+   "price": 109,
+   "color": "#151517",
+   "case": {
+    "boards": [
+     "ATX",
+     "mATX",
+     "ITX"
+    ],
+    "psus": [
+     "ATX"
+    ],
+    "maxGpuMm": 365,
+    "maxCoolerMm": 163,
+    "maxRadMm": 360,
+    "depthMm": 435,
+    "heightMm": 415,
+    "widthMm": 287,
+    "fans": 3,
+    "type": "Mid tower (dual chamber)",
+    "panel": "Wrap-around glass"
+   }
+  },
+  {
+   "id": "nzxt-h7-flow",
+   "cat": "Case",
+   "brand": "NZXT",
+   "name": "H7 Flow (2024)",
+   "price": 129,
+   "color": "#F2F2F4",
+   "case": {
+    "boards": [
+     "E-ATX",
+     "ATX",
+     "mATX",
+     "ITX"
+    ],
+    "psus": [
+     "ATX"
+    ],
+    "maxGpuMm": 400,
+    "maxCoolerMm": 185,
+    "maxRadMm": 420,
+    "depthMm": 505,
+    "heightMm": 505,
+    "widthMm": 230,
+    "fans": 3,
+    "type": "Mid tower",
+    "panel": "Tempered glass"
+   }
+  },
+  {
+   "id": "nzxt-h9-flow",
+   "cat": "Case",
+   "brand": "NZXT",
+   "name": "H9 Flow",
+   "price": 159,
+   "color": "#121214",
+   "case": {
+    "boards": [
+     "ATX",
+     "mATX",
+     "ITX"
+    ],
+    "psus": [
+     "ATX"
+    ],
+    "maxGpuMm": 435,
+    "maxCoolerMm": 165,
+    "maxRadMm": 360,
+    "depthMm": 495,
+    "heightMm": 466,
+    "widthMm": 290,
+    "fans": 4,
+    "type": "Mid tower (dual chamber)",
+    "panel": "Dual tempered glass"
+   }
+  },
+  {
+   "id": "hyte-y70",
+   "cat": "Case",
+   "brand": "HYTE",
+   "name": "Y70",
+   "price": 219,
+   "color": "#F2F2F2",
+   "case": {
+    "boards": [
+     "E-ATX",
+     "ATX",
+     "mATX",
+     "ITX"
+    ],
+    "psus": [
+     "ATX"
+    ],
+    "maxGpuMm": 422,
+    "maxCoolerMm": 180,
+    "maxRadMm": 360,
+    "depthMm": 470,
+    "heightMm": 517,
+    "widthMm": 320,
+    "fans": 0,
+    "type": "Mid tower (dual chamber)",
+    "panel": "Panoramic glass"
+   }
+  },
+  {
+   "id": "hyte-y60",
+   "cat": "Case",
+   "brand": "HYTE",
+   "name": "Y60",
+   "price": 179,
+   "color": "#E8E8EA",
+   "case": {
+    "boards": [
+     "ATX",
+     "mATX",
+     "ITX"
+    ],
+    "psus": [
+     "ATX"
+    ],
+    "maxGpuMm": 375,
+    "maxCoolerMm": 160,
+    "maxRadMm": 360,
+    "depthMm": 456,
+    "heightMm": 462,
+    "widthMm": 285,
+    "fans": 3,
+    "type": "Mid tower (dual chamber)",
+    "panel": "Panoramic glass"
+   }
+  },
+  {
+   "id": "hyte-y40",
+   "cat": "Case",
+   "brand": "HYTE",
+   "name": "Y40",
+   "price": 149,
+   "color": "#1A1A1C",
+   "case": {
+    "boards": [
+     "ATX",
+     "mATX",
+     "ITX"
+    ],
+    "psus": [
+     "ATX"
+    ],
+    "maxGpuMm": 422,
+    "maxCoolerMm": 180,
+    "maxRadMm": 360,
+    "depthMm": 462,
+    "heightMm": 480,
+    "widthMm": 240,
+    "fans": 2,
+    "type": "Mid tower",
+    "panel": "Panoramic glass"
+   }
+  },
+  {
+   "id": "corsair-4000d-airflow",
+   "cat": "Case",
+   "brand": "Corsair",
+   "name": "4000D Airflow",
+   "price": 94,
+   "color": "#121315",
+   "case": {
+    "boards": [
+     "ATX",
+     "mATX",
+     "ITX"
+    ],
+    "psus": [
+     "ATX"
+    ],
+    "maxGpuMm": 360,
+    "maxCoolerMm": 170,
+    "maxRadMm": 360,
+    "depthMm": 453,
+    "heightMm": 466,
+    "widthMm": 230,
+    "fans": 2,
+    "type": "Mid tower",
+    "panel": "Tempered glass"
+   }
+  },
+  {
+   "id": "corsair-3500x",
+   "cat": "Case",
+   "brand": "Corsair",
+   "name": "3500X",
+   "price": 99,
+   "color": "#121315",
+   "case": {
+    "boards": [
+     "ATX",
+     "mATX",
+     "ITX"
+    ],
+    "psus": [
+     "ATX"
+    ],
+    "maxGpuMm": 410,
+    "maxCoolerMm": 170,
+    "maxRadMm": 360,
+    "depthMm": 461,
+    "heightMm": 462,
+    "widthMm": 240,
+    "fans": 0,
+    "type": "Mid tower (dual chamber)",
+    "panel": "Dual tempered glass"
+   }
+  },
+  {
+   "id": "corsair-5000d-airflow",
+   "cat": "Case",
+   "brand": "Corsair",
+   "name": "5000D Airflow",
+   "price": 164,
+   "color": "#F1F1F3",
+   "case": {
+    "boards": [
+     "E-ATX",
+     "ATX",
+     "mATX",
+     "ITX"
+    ],
+    "psus": [
+     "ATX"
+    ],
+    "maxGpuMm": 420,
+    "maxCoolerMm": 170,
+    "maxRadMm": 360,
+    "depthMm": 520,
+    "heightMm": 520,
+    "widthMm": 245,
+    "fans": 2,
+    "type": "Mid tower",
+    "panel": "Tempered glass"
+   }
+  },
+  {
+   "id": "corsair-6500x",
+   "cat": "Case",
+   "brand": "Corsair",
+   "name": "6500X",
+   "price": 199,
+   "color": "#111214",
+   "case": {
+    "boards": [
+     "ATX",
+     "mATX",
+     "ITX"
+    ],
+    "psus": [
+     "ATX"
+    ],
+    "maxGpuMm": 400,
+    "maxCoolerMm": 190,
+    "maxRadMm": 360,
+    "depthMm": 489,
+    "heightMm": 514,
+    "widthMm": 303,
+    "fans": 0,
+    "type": "Mid tower (dual chamber)",
+    "panel": "Dual tempered glass"
+   }
+  },
+  {
+   "id": "corsair-7000d-airflow",
+   "cat": "Case",
+   "brand": "Corsair",
+   "name": "7000D Airflow",
+   "price": 244,
+   "color": "#111214",
+   "case": {
+    "boards": [
+     "E-ATX",
+     "ATX",
+     "mATX",
+     "ITX"
+    ],
+    "psus": [
+     "ATX"
+    ],
+    "maxGpuMm": 450,
+    "maxCoolerMm": 190,
+    "maxRadMm": 420,
+    "depthMm": 550,
+    "heightMm": 600,
+    "widthMm": 248,
+    "fans": 3,
+    "type": "Full tower",
+    "panel": "Tempered glass"
+   }
+  },
+  {
+   "id": "corsair-2500x",
+   "cat": "Case",
+   "brand": "Corsair",
+   "name": "2500X (micro-ATX)",
+   "price": 139,
+   "color": "#EFEFF1",
+   "case": {
+    "boards": [
+     "mATX",
+     "ITX"
+    ],
+    "psus": [
+     "ATX"
+    ],
+    "maxGpuMm": 400,
+    "maxCoolerMm": 180,
+    "maxRadMm": 360,
+    "depthMm": 469,
+    "heightMm": 376,
+    "widthMm": 304,
+    "fans": 0,
+    "type": "Micro tower (dual chamber)",
+    "panel": "Dual tempered glass"
+   }
+  },
+  {
+   "id": "bequiet-pure-base-500dx",
+   "cat": "Case",
+   "brand": "be quiet!",
+   "name": "Pure Base 500DX",
+   "price": 109,
+   "color": "#121214",
+   "case": {
+    "boards": [
+     "ATX",
+     "mATX",
+     "ITX"
+    ],
+    "psus": [
+     "ATX"
+    ],
+    "maxGpuMm": 369,
+    "maxCoolerMm": 190,
+    "maxRadMm": 360,
+    "depthMm": 463,
+    "heightMm": 488,
+    "widthMm": 232,
+    "fans": 3,
+    "type": "Mid tower",
+    "panel": "Tempered glass"
+   }
+  },
+  {
+   "id": "bequiet-shadow-base-800dx",
+   "cat": "Case",
+   "brand": "be quiet!",
+   "name": "Shadow Base 800 DX",
+   "price": 219,
+   "color": "#101012",
+   "case": {
+    "boards": [
+     "E-ATX",
+     "ATX",
+     "mATX",
+     "ITX"
+    ],
+    "psus": [
+     "ATX"
+    ],
+    "maxGpuMm": 430,
+    "maxCoolerMm": 180,
+    "maxRadMm": 420,
+    "depthMm": 560,
+    "heightMm": 566,
+    "widthMm": 241,
+    "fans": 4,
+    "type": "Full tower",
+    "panel": "Tempered glass"
+   }
+  },
+  {
+   "id": "cm-nr200p-v2",
+   "cat": "Case",
+   "brand": "Cooler Master",
+   "name": "NR200P V2 (mini-ITX)",
+   "price": 109,
+   "color": "#1B1B1E",
+   "case": {
+    "boards": [
+     "ITX"
+    ],
+    "psus": [
+     "SFX"
+    ],
+    "maxGpuMm": 336,
+    "maxCoolerMm": 155,
+    "maxRadMm": 280,
+    "depthMm": 376,
+    "heightMm": 292,
+    "widthMm": 185,
+    "fans": 2,
+    "type": "Small form factor",
+    "panel": "Tempered glass"
+   }
+  },
+  {
+   "id": "cm-td500-mesh-v2",
+   "cat": "Case",
+   "brand": "Cooler Master",
+   "name": "MasterBox TD500 Mesh V2",
+   "price": 109,
+   "color": "#141416",
+   "case": {
+    "boards": [
+     "E-ATX",
+     "ATX",
+     "mATX",
+     "ITX"
+    ],
+    "psus": [
+     "ATX"
+    ],
+    "maxGpuMm": 410,
+    "maxCoolerMm": 165,
+    "maxRadMm": 360,
+    "depthMm": 499,
+    "heightMm": 476,
+    "widthMm": 217,
+    "fans": 3,
+    "type": "Mid tower",
+    "panel": "Tempered glass"
+   }
+  },
+  {
+   "id": "cm-q300l",
+   "cat": "Case",
+   "brand": "Cooler Master",
+   "name": "MasterBox Q300L (micro-ATX)",
+   "price": 49,
+   "color": "#141416",
+   "case": {
+    "boards": [
+     "mATX",
+     "ITX"
+    ],
+    "psus": [
+     "ATX"
+    ],
+    "maxGpuMm": 360,
+    "maxCoolerMm": 157,
+    "maxRadMm": 240,
+    "depthMm": 387,
+    "heightMm": 456,
+    "widthMm": 230,
+    "fans": 1,
+    "type": "Micro tower",
+    "panel": "Acrylic window"
+   }
+  },
+  {
+   "id": "phanteks-xt-pro",
+   "cat": "Case",
+   "brand": "Phanteks",
+   "name": "XT Pro",
+   "price": 79,
+   "color": "#141416",
+   "case": {
+    "boards": [
+     "E-ATX",
+     "ATX",
+     "mATX",
+     "ITX"
+    ],
+    "psus": [
+     "ATX"
+    ],
+    "maxGpuMm": 415,
+    "maxCoolerMm": 184,
+    "maxRadMm": 360,
+    "depthMm": 470,
+    "heightMm": 465,
+    "widthMm": 235,
+    "fans": 4,
+    "type": "Mid tower",
+    "panel": "Tempered glass"
+   }
+  },
+  {
+   "id": "phanteks-g400a",
+   "cat": "Case",
+   "brand": "Phanteks",
+   "name": "Eclipse G400A",
+   "price": 99,
+   "color": "#141416",
+   "case": {
+    "boards": [
+     "ATX",
+     "mATX",
+     "ITX"
+    ],
+    "psus": [
+     "ATX"
+    ],
+    "maxGpuMm": 395,
+    "maxCoolerMm": 185,
+    "maxRadMm": 360,
+    "depthMm": 441,
+    "heightMm": 478,
+    "widthMm": 225,
+    "fans": 4,
+    "type": "Mid tower",
+    "panel": "Tempered glass"
+   }
+  },
+  {
+   "id": "phanteks-nv7",
+   "cat": "Case",
+   "brand": "Phanteks",
+   "name": "NV7",
+   "price": 199,
+   "color": "#141416",
+   "case": {
+    "boards": [
+     "E-ATX",
+     "ATX",
+     "mATX",
+     "ITX"
+    ],
+    "psus": [
+     "ATX"
+    ],
+    "maxGpuMm": 440,
+    "maxCoolerMm": 195,
+    "maxRadMm": 420,
+    "depthMm": 540,
+    "heightMm": 590,
+    "widthMm": 280,
+    "fans": 0,
+    "type": "Full tower (dual chamber)",
+    "panel": "Panoramic glass"
+   }
+  },
+  {
+   "id": "montech-air-903-max",
+   "cat": "Case",
+   "brand": "Montech",
+   "name": "AIR 903 MAX",
+   "price": 89,
+   "color": "#121214",
+   "case": {
+    "boards": [
+     "E-ATX",
+     "ATX",
+     "mATX",
+     "ITX"
+    ],
+    "psus": [
+     "ATX"
+    ],
+    "maxGpuMm": 400,
+    "maxCoolerMm": 180,
+    "maxRadMm": 420,
+    "depthMm": 485,
+    "heightMm": 505,
+    "widthMm": 230,
+    "fans": 4,
+    "type": "Mid tower",
+    "panel": "Tempered glass"
+   }
+  },
+  {
+   "id": "montech-king-95-pro",
+   "cat": "Case",
+   "brand": "Montech",
+   "name": "KING 95 PRO",
+   "price": 139,
+   "color": "#F0F0F2",
+   "case": {
+    "boards": [
+     "E-ATX",
+     "ATX",
+     "mATX",
+     "ITX"
+    ],
+    "psus": [
+     "ATX"
+    ],
+    "maxGpuMm": 420,
+    "maxCoolerMm": 175,
+    "maxRadMm": 360,
+    "depthMm": 465,
+    "heightMm": 486,
+    "widthMm": 304,
+    "fans": 6,
+    "type": "Mid tower (dual chamber)",
+    "panel": "Dual curved glass"
+   }
+  },
+  {
+   "id": "asus-ap201",
+   "cat": "Case",
+   "brand": "ASUS",
+   "name": "Prime AP201 (micro-ATX)",
+   "price": 89,
+   "color": "#F2F2F2",
+   "case": {
+    "boards": [
+     "mATX",
+     "ITX"
+    ],
+    "psus": [
+     "ATX",
+     "SFX"
+    ],
+    "maxGpuMm": 338,
+    "maxCoolerMm": 170,
+    "maxRadMm": 360,
+    "depthMm": 460,
+    "heightMm": 350,
+    "widthMm": 205,
+    "fans": 0,
+    "type": "Micro tower",
+    "panel": "Mesh"
+   }
+  },
+  {
+   "id": "asus-gr701",
+   "cat": "Case",
+   "brand": "ASUS",
+   "name": "ROG Hyperion GR701",
+   "price": 369,
+   "color": "#111214",
+   "case": {
+    "boards": [
+     "E-ATX",
+     "ATX",
+     "mATX",
+     "ITX"
+    ],
+    "psus": [
+     "ATX"
+    ],
+    "maxGpuMm": 460,
+    "maxCoolerMm": 190,
+    "maxRadMm": 420,
+    "depthMm": 595,
+    "heightMm": 662,
+    "widthMm": 260,
+    "fans": 4,
+    "type": "Full tower",
+    "panel": "Tempered glass"
+   }
+  },
+  {
+   "id": "jonsbo-d31",
+   "cat": "Case",
+   "brand": "Jonsbo",
+   "name": "D31 Mesh (micro-ATX)",
+   "price": 79,
+   "color": "#141416",
+   "case": {
+    "boards": [
+     "mATX",
+     "ITX"
+    ],
+    "psus": [
+     "ATX"
+    ],
+    "maxGpuMm": 400,
+    "maxCoolerMm": 168,
+    "maxRadMm": 360,
+    "depthMm": 405,
+    "heightMm": 385,
+    "widthMm": 205,
+    "fans": 0,
+    "type": "Micro tower",
+    "panel": "Tempered glass"
+   }
+  },
+  {
+   "id": "asus-x870e-extreme",
+   "cat": "Motherboard",
+   "brand": "ASUS",
+   "name": "ROG Crosshair X870E Extreme",
+   "price": 1099,
+   "color": "#18181B",
+   "board": {
+    "socket": "AM5",
+    "chipset": "X870E",
+    "form": "E-ATX",
+    "memory": "DDR5",
+    "memorySlots": 4,
+    "m2Slots": 7,
+    "pcie5M2": true,
+    "wifi": true,
+    "maxMemoryGb": 256,
+    "gpuPcie": "5.0"
+   }
+  },
+  {
+   "id": "asus-x870e-hero",
+   "cat": "Motherboard",
+   "brand": "ASUS",
+   "name": "ROG Crosshair X870E Hero",
+   "price": 699,
+   "color": "#202024",
+   "board": {
+    "socket": "AM5",
+    "chipset": "X870E",
+    "form": "ATX",
+    "memory": "DDR5",
+    "memorySlots": 4,
+    "m2Slots": 5,
+    "pcie5M2": true,
+    "wifi": true,
+    "maxMemoryGb": 256,
+    "gpuPcie": "5.0"
+   }
+  },
+  {
+   "id": "asus-x870e-e",
+   "cat": "Motherboard",
+   "brand": "ASUS",
+   "name": "ROG Strix X870E-E Gaming WiFi",
+   "price": 499,
+   "color": "#1E1F22",
+   "board": {
+    "socket": "AM5",
+    "chipset": "X870E",
+    "form": "ATX",
+    "memory": "DDR5",
+    "memorySlots": 4,
+    "m2Slots": 5,
+    "pcie5M2": true,
+    "wifi": true,
+    "maxMemoryGb": 256,
+    "gpuPcie": "5.0"
+   }
+  },
+  {
+   "id": "msi-x870e-carbon",
+   "cat": "Motherboard",
+   "brand": "MSI",
+   "name": "MPG X870E Carbon WiFi",
+   "price": 499,
+   "color": "#1C1D1F",
+   "board": {
+    "socket": "AM5",
+    "chipset": "X870E",
+    "form": "ATX",
+    "memory": "DDR5",
+    "memorySlots": 4,
+    "m2Slots": 4,
+    "pcie5M2": true,
+    "wifi": true,
+    "maxMemoryGb": 256,
+    "gpuPcie": "5.0"
+   }
+  },
+  {
+   "id": "gb-x870e-master",
+   "cat": "Motherboard",
+   "brand": "Gigabyte",
+   "name": "X870E Aorus Master",
+   "price": 499,
+   "color": "#232427",
+   "board": {
+    "socket": "AM5",
+    "chipset": "X870E",
+    "form": "ATX",
+    "memory": "DDR5",
+    "memorySlots": 4,
+    "m2Slots": 4,
+    "pcie5M2": true,
+    "wifi": true,
+    "maxMemoryGb": 256,
+    "gpuPcie": "5.0"
+   }
+  },
+  {
+   "id": "asrock-x870e-taichi",
+   "cat": "Motherboard",
+   "brand": "ASRock",
+   "name": "X870E Taichi",
+   "price": 449,
+   "color": "#2A2622",
+   "board": {
+    "socket": "AM5",
+    "chipset": "X870E",
+    "form": "ATX",
+    "memory": "DDR5",
+    "memorySlots": 4,
+    "m2Slots": 4,
+    "pcie5M2": true,
+    "wifi": true,
+    "maxMemoryGb": 256,
+    "gpuPcie": "5.0"
+   }
+  },
+  {
+   "id": "msi-x870-tomahawk",
+   "cat": "Motherboard",
+   "brand": "MSI",
+   "name": "MAG X870 Tomahawk WiFi",
+   "price": 299,
+   "color": "#2B2D2E",
+   "board": {
+    "socket": "AM5",
+    "chipset": "X870",
+    "form": "ATX",
+    "memory": "DDR5",
+    "memorySlots": 4,
+    "m2Slots": 4,
+    "pcie5M2": true,
+    "wifi": true,
+    "maxMemoryGb": 256,
+    "gpuPcie": "5.0"
+   }
+  },
+  {
+   "id": "asus-tuf-x870-plus",
+   "cat": "Motherboard",
+   "brand": "ASUS",
+   "name": "TUF Gaming X870-Plus WiFi",
+   "price": 279,
+   "color": "#3A3B34",
+   "board": {
+    "socket": "AM5",
+    "chipset": "X870",
+    "form": "ATX",
+    "memory": "DDR5",
+    "memorySlots": 4,
+    "m2Slots": 4,
+    "pcie5M2": true,
+    "wifi": true,
+    "maxMemoryGb": 256,
+    "gpuPcie": "5.0"
+   }
+  },
+  {
+   "id": "gb-x870-elite",
+   "cat": "Motherboard",
+   "brand": "Gigabyte",
+   "name": "X870 Aorus Elite WiFi7",
+   "price": 289,
+   "color": "#26282B",
+   "board": {
+    "socket": "AM5",
+    "chipset": "X870",
+    "form": "ATX",
+    "memory": "DDR5",
+    "memorySlots": 4,
+    "m2Slots": 3,
+    "pcie5M2": true,
+    "wifi": true,
+    "maxMemoryGb": 256,
+    "gpuPcie": "5.0"
+   }
+  },
+  {
+   "id": "asrock-x870-steel-legend",
+   "cat": "Motherboard",
+   "brand": "ASRock",
+   "name": "X870 Steel Legend WiFi",
+   "price": 249,
+   "color": "#C9CACC",
+   "board": {
+    "socket": "AM5",
+    "chipset": "X870",
+    "form": "ATX",
+    "memory": "DDR5",
+    "memorySlots": 4,
+    "m2Slots": 3,
+    "pcie5M2": true,
+    "wifi": true,
+    "maxMemoryGb": 256,
+    "gpuPcie": "5.0"
+   }
+  },
+  {
+   "id": "msi-b850-tomahawk",
+   "cat": "Motherboard",
+   "brand": "MSI",
+   "name": "MAG B850 Tomahawk Max WiFi",
+   "price": 239,
+   "color": "#2B2D2E",
+   "board": {
+    "socket": "AM5",
+    "chipset": "B850",
+    "form": "ATX",
+    "memory": "DDR5",
+    "memorySlots": 4,
+    "m2Slots": 4,
+    "pcie5M2": true,
+    "wifi": true,
+    "maxMemoryGb": 256,
+    "gpuPcie": "5.0"
+   }
+  },
+  {
+   "id": "asus-tuf-b850-plus",
+   "cat": "Motherboard",
+   "brand": "ASUS",
+   "name": "TUF Gaming B850-Plus WiFi",
+   "price": 209,
+   "color": "#3A3B34",
+   "board": {
+    "socket": "AM5",
+    "chipset": "B850",
+    "form": "ATX",
+    "memory": "DDR5",
+    "memorySlots": 4,
+    "m2Slots": 3,
+    "pcie5M2": true,
+    "wifi": true,
+    "maxMemoryGb": 256,
+    "gpuPcie": "4.0"
+   }
+  },
+  {
+   "id": "gb-b850-elite",
+   "cat": "Motherboard",
+   "brand": "Gigabyte",
+   "name": "B850 Aorus Elite WiFi7",
+   "price": 229,
+   "color": "#26282B",
+   "board": {
+    "socket": "AM5",
+    "chipset": "B850",
+    "form": "ATX",
+    "memory": "DDR5",
+    "memorySlots": 4,
+    "m2Slots": 3,
+    "pcie5M2": true,
+    "wifi": true,
+    "maxMemoryGb": 256,
+    "gpuPcie": "4.0"
+   }
+  },
+  {
+   "id": "asus-b850-i",
+   "cat": "Motherboard",
+   "brand": "ASUS",
+   "name": "ROG Strix B850-I Gaming WiFi",
+   "price": 329,
+   "color": "#1E1F22",
+   "board": {
+    "socket": "AM5",
+    "chipset": "B850",
+    "form": "ITX",
+    "memory": "DDR5",
+    "memorySlots": 2,
+    "m2Slots": 2,
+    "pcie5M2": true,
+    "wifi": true,
+    "maxMemoryGb": 96,
+    "gpuPcie": "5.0"
+   }
+  },
+  {
+   "id": "msi-b850m-gaming-plus",
+   "cat": "Motherboard",
+   "brand": "MSI",
+   "name": "B850M Gaming Plus WiFi",
+   "price": 159,
+   "color": "#2E3136",
+   "board": {
+    "socket": "AM5",
+    "chipset": "B850",
+    "form": "mATX",
+    "memory": "DDR5",
+    "memorySlots": 4,
+    "m2Slots": 2,
+    "pcie5M2": true,
+    "wifi": true,
+    "maxMemoryGb": 256,
+    "gpuPcie": "4.0"
+   }
+  },
+  {
+   "id": "asrock-b850m-pro-rs",
+   "cat": "Motherboard",
+   "brand": "ASRock",
+   "name": "B850M Pro RS WiFi",
+   "price": 139,
+   "color": "#2F3135",
+   "board": {
+    "socket": "AM5",
+    "chipset": "B850",
+    "form": "mATX",
+    "memory": "DDR5",
+    "memorySlots": 4,
+    "m2Slots": 3,
+    "pcie5M2": true,
+    "wifi": true,
+    "maxMemoryGb": 256,
+    "gpuPcie": "4.0"
+   }
+  },
+  {
+   "id": "msi-b650-tomahawk",
+   "cat": "Motherboard",
+   "brand": "MSI",
+   "name": "MAG B650 Tomahawk WiFi",
+   "price": 199,
+   "color": "#2B2D2E",
+   "board": {
+    "socket": "AM5",
+    "chipset": "B650",
+    "form": "ATX",
+    "memory": "DDR5",
+    "memorySlots": 4,
+    "m2Slots": 3,
+    "pcie5M2": false,
+    "wifi": true,
+    "maxMemoryGb": 192,
+    "gpuPcie": "4.0"
+   }
+  },
+  {
+   "id": "asus-tuf-b650-plus",
+   "cat": "Motherboard",
+   "brand": "ASUS",
+   "name": "TUF Gaming B650-Plus WiFi",
+   "price": 179,
+   "color": "#3A3B34",
+   "board": {
+    "socket": "AM5",
+    "chipset": "B650",
+    "form": "ATX",
+    "memory": "DDR5",
+    "memorySlots": 4,
+    "m2Slots": 3,
+    "pcie5M2": true,
+    "wifi": true,
+    "maxMemoryGb": 192,
+    "gpuPcie": "4.0"
+   }
+  },
+  {
+   "id": "msi-b650-gaming-plus",
+   "cat": "Motherboard",
+   "brand": "MSI",
+   "name": "B650 Gaming Plus WiFi",
+   "price": 159,
+   "color": "#2E3136",
+   "board": {
+    "socket": "AM5",
+    "chipset": "B650",
+    "form": "ATX",
+    "memory": "DDR5",
+    "memorySlots": 4,
+    "m2Slots": 2,
+    "pcie5M2": false,
+    "wifi": true,
+    "maxMemoryGb": 192,
+    "gpuPcie": "4.0"
+   }
+  },
+  {
+   "id": "gb-b650m-elite",
+   "cat": "Motherboard",
+   "brand": "Gigabyte",
+   "name": "B650M Aorus Elite AX",
+   "price": 169,
+   "color": "#26282B",
+   "board": {
+    "socket": "AM5",
+    "chipset": "B650",
+    "form": "mATX",
+    "memory": "DDR5",
+    "memorySlots": 4,
+    "m2Slots": 2,
+    "pcie5M2": false,
+    "wifi": true,
+    "maxMemoryGb": 192,
+    "gpuPcie": "4.0"
+   }
+  },
+  {
+   "id": "asrock-b650m-riptide",
+   "cat": "Motherboard",
+   "brand": "ASRock",
+   "name": "B650M PG Riptide WiFi",
+   "price": 129,
+   "color": "#2A2C30",
+   "board": {
+    "socket": "AM5",
+    "chipset": "B650",
+    "form": "mATX",
+    "memory": "DDR5",
+    "memorySlots": 4,
+    "m2Slots": 2,
+    "pcie5M2": true,
+    "wifi": true,
+    "maxMemoryGb": 192,
+    "gpuPcie": "4.0"
+   }
+  },
+  {
+   "id": "asus-b650e-i",
+   "cat": "Motherboard",
+   "brand": "ASUS",
+   "name": "ROG Strix B650E-I Gaming WiFi",
+   "price": 329,
+   "color": "#1E1F22",
+   "board": {
+    "socket": "AM5",
+    "chipset": "B650E",
+    "form": "ITX",
+    "memory": "DDR5",
+    "memorySlots": 2,
+    "m2Slots": 2,
+    "pcie5M2": true,
+    "wifi": true,
+    "maxMemoryGb": 96,
+    "gpuPcie": "5.0"
+   }
+  },
+  {
+   "id": "asrock-b650i-lightning",
+   "cat": "Motherboard",
+   "brand": "ASRock",
+   "name": "B650I Lightning WiFi",
+   "price": 199,
+   "color": "#202124",
+   "board": {
+    "socket": "AM5",
+    "chipset": "B650",
+    "form": "ITX",
+    "memory": "DDR5",
+    "memorySlots": 2,
+    "m2Slots": 2,
+    "pcie5M2": true,
+    "wifi": true,
+    "maxMemoryGb": 96,
+    "gpuPcie": "4.0"
+   }
+  },
+  {
+   "id": "asrock-a620m-pro-rs",
+   "cat": "Motherboard",
+   "brand": "ASRock",
+   "name": "A620M Pro RS",
+   "price": 89,
+   "color": "#2F3135",
+   "board": {
+    "socket": "AM5",
+    "chipset": "A620",
+    "form": "mATX",
+    "memory": "DDR5",
+    "memorySlots": 2,
+    "m2Slots": 2,
+    "pcie5M2": false,
+    "wifi": false,
+    "maxMemoryGb": 96,
+    "gpuPcie": "4.0"
+   }
+  },
+  {
+   "id": "gb-a620m-s2h",
+   "cat": "Motherboard",
+   "brand": "Gigabyte",
+   "name": "A620M S2H",
+   "price": 79,
+   "color": "#2B2C2F",
+   "board": {
+    "socket": "AM5",
+    "chipset": "A620",
+    "form": "mATX",
+    "memory": "DDR5",
+    "memorySlots": 2,
+    "m2Slots": 1,
+    "pcie5M2": false,
+    "wifi": false,
+    "maxMemoryGb": 96,
+    "gpuPcie": "4.0"
+   }
+  },
+  {
+   "id": "asus-x570-e",
+   "cat": "Motherboard",
+   "brand": "ASUS",
+   "name": "ROG Strix X570-E Gaming WiFi II",
+   "price": 279,
+   "color": "#1E1F22",
+   "board": {
+    "socket": "AM4",
+    "chipset": "X570",
+    "form": "ATX",
+    "memory": "DDR4",
+    "memorySlots": 4,
+    "m2Slots": 2,
+    "pcie5M2": false,
+    "wifi": true,
+    "maxMemoryGb": 128,
+    "gpuPcie": "4.0"
+   }
+  },
+  {
+   "id": "msi-b550-tomahawk",
+   "cat": "Motherboard",
+   "brand": "MSI",
+   "name": "MAG B550 Tomahawk",
+   "price": 149,
+   "color": "#2B2D2E",
+   "board": {
+    "socket": "AM4",
+    "chipset": "B550",
+    "form": "ATX",
+    "memory": "DDR4",
+    "memorySlots": 4,
+    "m2Slots": 2,
+    "pcie5M2": false,
+    "wifi": false,
+    "maxMemoryGb": 128,
+    "gpuPcie": "4.0"
+   }
+  },
+  {
+   "id": "gb-b550-elite-v2",
+   "cat": "Motherboard",
+   "brand": "Gigabyte",
+   "name": "B550 Aorus Elite V2",
+   "price": 139,
+   "color": "#26282B",
+   "board": {
+    "socket": "AM4",
+    "chipset": "B550",
+    "form": "ATX",
+    "memory": "DDR4",
+    "memorySlots": 4,
+    "m2Slots": 2,
+    "pcie5M2": false,
+    "wifi": false,
+    "maxMemoryGb": 128,
+    "gpuPcie": "4.0"
+   }
+  },
+  {
+   "id": "asus-b550-i",
+   "cat": "Motherboard",
+   "brand": "ASUS",
+   "name": "ROG Strix B550-I Gaming",
+   "price": 199,
+   "color": "#1E1F22",
+   "board": {
+    "socket": "AM4",
+    "chipset": "B550",
+    "form": "ITX",
+    "memory": "DDR4",
+    "memorySlots": 2,
+    "m2Slots": 2,
+    "pcie5M2": false,
+    "wifi": true,
+    "maxMemoryGb": 64,
+    "gpuPcie": "4.0"
+   }
+  },
+  {
+   "id": "msi-b550m-pro-vdh",
+   "cat": "Motherboard",
+   "brand": "MSI",
+   "name": "B550M PRO-VDH WiFi",
+   "price": 99,
+   "color": "#2E3136",
+   "board": {
+    "socket": "AM4",
+    "chipset": "B550",
+    "form": "mATX",
+    "memory": "DDR4",
+    "memorySlots": 4,
+    "m2Slots": 2,
+    "pcie5M2": false,
+    "wifi": true,
+    "maxMemoryGb": 128,
+    "gpuPcie": "4.0"
+   }
+  },
+  {
+   "id": "asrock-a520m-hdv",
+   "cat": "Motherboard",
+   "brand": "ASRock",
+   "name": "A520M-HDV",
+   "price": 59,
+   "color": "#2F3135",
+   "board": {
+    "socket": "AM4",
+    "chipset": "A520",
+    "form": "mATX",
+    "memory": "DDR4",
+    "memorySlots": 2,
+    "m2Slots": 1,
+    "pcie5M2": false,
+    "wifi": false,
+    "maxMemoryGb": 64,
+    "gpuPcie": "3.0"
+   }
+  },
+  {
+   "id": "asus-z890-hero",
+   "cat": "Motherboard",
+   "brand": "ASUS",
+   "name": "ROG Maximus Z890 Hero",
+   "price": 699,
+   "color": "#18181B",
+   "board": {
+    "socket": "LGA1851",
+    "chipset": "Z890",
+    "form": "ATX",
+    "memory": "DDR5",
+    "memorySlots": 4,
+    "m2Slots": 6,
+    "pcie5M2": true,
+    "wifi": true,
+    "maxMemoryGb": 256,
+    "gpuPcie": "5.0"
+   }
+  },
+  {
+   "id": "asus-z890-e",
+   "cat": "Motherboard",
+   "brand": "ASUS",
+   "name": "ROG Strix Z890-E Gaming WiFi",
+   "price": 499,
+   "color": "#1E1F22",
+   "board": {
+    "socket": "LGA1851",
+    "chipset": "Z890",
+    "form": "ATX",
+    "memory": "DDR5",
+    "memorySlots": 4,
+    "m2Slots": 5,
+    "pcie5M2": true,
+    "wifi": true,
+    "maxMemoryGb": 256,
+    "gpuPcie": "5.0"
+   }
+  },
+  {
+   "id": "msi-z890-tomahawk",
+   "cat": "Motherboard",
+   "brand": "MSI",
+   "name": "MAG Z890 Tomahawk WiFi",
+   "price": 299,
+   "color": "#2B2D2E",
+   "board": {
+    "socket": "LGA1851",
+    "chipset": "Z890",
+    "form": "ATX",
+    "memory": "DDR5",
+    "memorySlots": 4,
+    "m2Slots": 4,
+    "pcie5M2": true,
+    "wifi": true,
+    "maxMemoryGb": 256,
+    "gpuPcie": "5.0"
+   }
+  },
+  {
+   "id": "gb-z890-elite",
+   "cat": "Motherboard",
+   "brand": "Gigabyte",
+   "name": "Z890 Aorus Elite WiFi7",
+   "price": 289,
+   "color": "#26282B",
+   "board": {
+    "socket": "LGA1851",
+    "chipset": "Z890",
+    "form": "ATX",
+    "memory": "DDR5",
+    "memorySlots": 4,
+    "m2Slots": 4,
+    "pcie5M2": true,
+    "wifi": true,
+    "maxMemoryGb": 256,
+    "gpuPcie": "5.0"
+   }
+  },
+  {
+   "id": "asrock-z890-pro-rs",
+   "cat": "Motherboard",
+   "brand": "ASRock",
+   "name": "Z890 Pro RS WiFi",
+   "price": 219,
+   "color": "#2F3135",
+   "board": {
+    "socket": "LGA1851",
+    "chipset": "Z890",
+    "form": "ATX",
+    "memory": "DDR5",
+    "memorySlots": 4,
+    "m2Slots": 4,
+    "pcie5M2": true,
+    "wifi": true,
+    "maxMemoryGb": 256,
+    "gpuPcie": "5.0"
+   }
+  },
+  {
+   "id": "asus-z890-i",
+   "cat": "Motherboard",
+   "brand": "ASUS",
+   "name": "ROG Strix Z890-I Gaming WiFi",
+   "price": 449,
+   "color": "#1E1F22",
+   "board": {
+    "socket": "LGA1851",
+    "chipset": "Z890",
+    "form": "ITX",
+    "memory": "DDR5",
+    "memorySlots": 2,
+    "m2Slots": 2,
+    "pcie5M2": true,
+    "wifi": true,
+    "maxMemoryGb": 128,
+    "gpuPcie": "5.0"
+   }
+  },
+  {
+   "id": "msi-b860-tomahawk",
+   "cat": "Motherboard",
+   "brand": "MSI",
+   "name": "MAG B860 Tomahawk WiFi",
+   "price": 229,
+   "color": "#2B2D2E",
+   "board": {
+    "socket": "LGA1851",
+    "chipset": "B860",
+    "form": "ATX",
+    "memory": "DDR5",
+    "memorySlots": 4,
+    "m2Slots": 3,
+    "pcie5M2": false,
+    "wifi": true,
+    "maxMemoryGb": 256,
+    "gpuPcie": "5.0"
+   }
+  },
+  {
+   "id": "asus-tuf-b860m-plus",
+   "cat": "Motherboard",
+   "brand": "ASUS",
+   "name": "TUF Gaming B860M-Plus WiFi",
+   "price": 189,
+   "color": "#3A3B34",
+   "board": {
+    "socket": "LGA1851",
+    "chipset": "B860",
+    "form": "mATX",
+    "memory": "DDR5",
+    "memorySlots": 4,
+    "m2Slots": 3,
+    "pcie5M2": false,
+    "wifi": true,
+    "maxMemoryGb": 256,
+    "gpuPcie": "5.0"
+   }
+  },
+  {
+   "id": "asus-z790-hero",
+   "cat": "Motherboard",
+   "brand": "ASUS",
+   "name": "ROG Maximus Z790 Hero",
+   "price": 629,
+   "color": "#18181B",
+   "board": {
+    "socket": "LGA1700",
+    "chipset": "Z790",
+    "form": "ATX",
+    "memory": "DDR5",
+    "memorySlots": 4,
+    "m2Slots": 5,
+    "pcie5M2": true,
+    "wifi": true,
+    "maxMemoryGb": 192,
+    "gpuPcie": "5.0"
+   }
+  },
+  {
+   "id": "asus-z790-e",
+   "cat": "Motherboard",
+   "brand": "ASUS",
+   "name": "ROG Strix Z790-E Gaming WiFi II",
+   "price": 449,
+   "color": "#1E1F22",
+   "board": {
+    "socket": "LGA1700",
+    "chipset": "Z790",
+    "form": "ATX",
+    "memory": "DDR5",
+    "memorySlots": 4,
+    "m2Slots": 5,
+    "pcie5M2": true,
+    "wifi": true,
+    "maxMemoryGb": 192,
+    "gpuPcie": "5.0"
+   }
+  },
+  {
+   "id": "msi-z790-tomahawk",
+   "cat": "Motherboard",
+   "brand": "MSI",
+   "name": "MAG Z790 Tomahawk WiFi",
+   "price": 239,
+   "color": "#2B2D2E",
+   "board": {
+    "socket": "LGA1700",
+    "chipset": "Z790",
+    "form": "ATX",
+    "memory": "DDR5",
+    "memorySlots": 4,
+    "m2Slots": 4,
+    "pcie5M2": false,
+    "wifi": true,
+    "maxMemoryGb": 192,
+    "gpuPcie": "5.0"
+   }
+  },
+  {
+   "id": "gb-z790-elite-ax",
+   "cat": "Motherboard",
+   "brand": "Gigabyte",
+   "name": "Z790 Aorus Elite AX",
+   "price": 259,
+   "color": "#26282B",
+   "board": {
+    "socket": "LGA1700",
+    "chipset": "Z790",
+    "form": "ATX",
+    "memory": "DDR5",
+    "memorySlots": 4,
+    "m2Slots": 4,
+    "pcie5M2": true,
+    "wifi": true,
+    "maxMemoryGb": 192,
+    "gpuPcie": "5.0"
+   }
+  },
+  {
+   "id": "msi-pro-z790-p",
+   "cat": "Motherboard",
+   "brand": "MSI",
+   "name": "PRO Z790-P WiFi",
+   "price": 189,
+   "color": "#2E3136",
+   "board": {
+    "socket": "LGA1700",
+    "chipset": "Z790",
+    "form": "ATX",
+    "memory": "DDR5",
+    "memorySlots": 4,
+    "m2Slots": 4,
+    "pcie5M2": false,
+    "wifi": true,
+    "maxMemoryGb": 192,
+    "gpuPcie": "5.0"
+   }
+  },
+  {
+   "id": "gb-z790i-ultra",
+   "cat": "Motherboard",
+   "brand": "Gigabyte",
+   "name": "Z790I Aorus Ultra",
+   "price": 329,
+   "color": "#1E1F22",
+   "board": {
+    "socket": "LGA1700",
+    "chipset": "Z790",
+    "form": "ITX",
+    "memory": "DDR5",
+    "memorySlots": 2,
+    "m2Slots": 3,
+    "pcie5M2": true,
+    "wifi": true,
+    "maxMemoryGb": 96,
+    "gpuPcie": "5.0"
+   }
+  },
+  {
+   "id": "msi-b760-gaming-plus",
+   "cat": "Motherboard",
+   "brand": "MSI",
+   "name": "B760 Gaming Plus WiFi",
+   "price": 149,
+   "color": "#2E3136",
+   "board": {
+    "socket": "LGA1700",
+    "chipset": "B760",
+    "form": "ATX",
+    "memory": "DDR5",
+    "memorySlots": 4,
+    "m2Slots": 2,
+    "pcie5M2": false,
+    "wifi": true,
+    "maxMemoryGb": 192,
+    "gpuPcie": "4.0"
+   }
+  },
+  {
+   "id": "asus-tuf-b760-plus-d4",
+   "cat": "Motherboard",
+   "brand": "ASUS",
+   "name": "TUF Gaming B760-Plus WiFi D4",
+   "price": 159,
+   "color": "#3A3B34",
+   "board": {
+    "socket": "LGA1700",
+    "chipset": "B760",
+    "form": "ATX",
+    "memory": "DDR4",
+    "memorySlots": 4,
+    "m2Slots": 3,
+    "pcie5M2": false,
+    "wifi": true,
+    "maxMemoryGb": 128,
+    "gpuPcie": "4.0"
+   }
+  },
+  {
+   "id": "msi-b760m-ddr4",
+   "cat": "Motherboard",
+   "brand": "MSI",
+   "name": "PRO B760M-A WiFi DDR4",
+   "price": 139,
+   "color": "#2E3136",
+   "board": {
+    "socket": "LGA1700",
+    "chipset": "B760",
+    "form": "mATX",
+    "memory": "DDR4",
+    "memorySlots": 4,
+    "m2Slots": 2,
+    "pcie5M2": false,
+    "wifi": true,
+    "maxMemoryGb": 128,
+    "gpuPcie": "4.0"
+   }
+  },
+  {
+   "id": "gb-b760m-ds3h",
+   "cat": "Motherboard",
+   "brand": "Gigabyte",
+   "name": "B760M DS3H",
+   "price": 119,
+   "color": "#2B2C2F",
+   "board": {
+    "socket": "LGA1700",
+    "chipset": "B760",
+    "form": "mATX",
+    "memory": "DDR5",
+    "memorySlots": 4,
+    "m2Slots": 2,
+    "pcie5M2": false,
+    "wifi": false,
+    "maxMemoryGb": 128,
+    "gpuPcie": "4.0"
+   }
+  },
+  {
+   "id": "asrock-b760m-riptide",
+   "cat": "Motherboard",
+   "brand": "ASRock",
+   "name": "B760M PG Riptide",
+   "price": 139,
+   "color": "#2A2C30",
+   "board": {
+    "socket": "LGA1700",
+    "chipset": "B760",
+    "form": "mATX",
+    "memory": "DDR5",
+    "memorySlots": 4,
+    "m2Slots": 3,
+    "pcie5M2": false,
+    "wifi": false,
+    "maxMemoryGb": 192,
+    "gpuPcie": "4.0"
+   }
+  },
+  {
+   "id": "asus-b760-i",
+   "cat": "Motherboard",
+   "brand": "ASUS",
+   "name": "ROG Strix B760-I Gaming WiFi",
+   "price": 239,
+   "color": "#1E1F22",
+   "board": {
+    "socket": "LGA1700",
+    "chipset": "B760",
+    "form": "ITX",
+    "memory": "DDR5",
+    "memorySlots": 2,
+    "m2Slots": 2,
+    "pcie5M2": false,
+    "wifi": true,
+    "maxMemoryGb": 96,
+    "gpuPcie": "5.0"
+   }
+  },
+  {
+   "id": "asus-h610m-e-d4",
+   "cat": "Motherboard",
+   "brand": "ASUS",
+   "name": "Prime H610M-E D4",
+   "price": 89,
+   "color": "#2F3135",
+   "board": {
+    "socket": "LGA1700",
+    "chipset": "H610",
+    "form": "mATX",
+    "memory": "DDR4",
+    "memorySlots": 2,
+    "m2Slots": 1,
+    "pcie5M2": false,
+    "wifi": false,
+    "maxMemoryGb": 64,
+    "gpuPcie": "4.0"
+   }
+  },
+  {
+   "id": "amd-9950x3d",
+   "cat": "Cpu",
+   "brand": "AMD",
+   "name": "Ryzen 9 9950X3D",
+   "price": 699,
+   "color": "#C9CBD1",
+   "cpu": {
+    "socket": "AM5",
+    "cores": 16,
+    "threads": 32,
+    "boostGhz": 5.7,
+    "powerW": 200,
+    "multi": 42000,
+    "single": 2230,
+    "game": 99,
+    "igpu": true,
+    "baseGhz": 4.3,
+    "l3Mb": 128,
+    "tdpW": 170,
+    "arch": "Zen 5"
+   }
+  },
+  {
+   "id": "amd-9950x",
+   "cat": "Cpu",
+   "brand": "AMD",
+   "name": "Ryzen 9 9950X",
+   "price": 549,
+   "color": "#C9CBD1",
+   "cpu": {
+    "socket": "AM5",
+    "cores": 16,
+    "threads": 32,
+    "boostGhz": 5.7,
+    "powerW": 200,
+    "multi": 42500,
+    "single": 2250,
+    "game": 84,
+    "igpu": true,
+    "baseGhz": 4.3,
+    "l3Mb": 64,
+    "tdpW": 170,
+    "arch": "Zen 5"
+   }
+  },
+  {
+   "id": "amd-9900x3d",
+   "cat": "Cpu",
+   "brand": "AMD",
+   "name": "Ryzen 9 9900X3D",
+   "price": 599,
+   "color": "#C9CBD1",
+   "cpu": {
+    "socket": "AM5",
+    "cores": 12,
+    "threads": 24,
+    "boostGhz": 5.5,
+    "powerW": 162,
+    "multi": 32000,
+    "single": 2200,
+    "game": 92,
+    "igpu": true,
+    "baseGhz": 4.4,
+    "l3Mb": 128,
+    "tdpW": 120,
+    "arch": "Zen 5"
+   }
+  },
+  {
+   "id": "amd-9900x",
+   "cat": "Cpu",
+   "brand": "AMD",
+   "name": "Ryzen 9 9900X",
+   "price": 399,
+   "color": "#C9CBD1",
+   "cpu": {
+    "socket": "AM5",
+    "cores": 12,
+    "threads": 24,
+    "boostGhz": 5.6,
+    "powerW": 162,
+    "multi": 33000,
+    "single": 2220,
+    "game": 82,
+    "igpu": true,
+    "baseGhz": 4.4,
+    "l3Mb": 64,
+    "tdpW": 120,
+    "arch": "Zen 5"
+   }
+  },
+  {
+   "id": "amd-9800x3d",
+   "cat": "Cpu",
+   "brand": "AMD",
+   "name": "Ryzen 7 9800X3D",
+   "price": 479,
+   "color": "#C9CBD1",
+   "cpu": {
+    "socket": "AM5",
+    "cores": 8,
+    "threads": 16,
+    "boostGhz": 5.2,
+    "powerW": 140,
+    "multi": 23000,
+    "single": 2050,
+    "game": 100,
+    "igpu": true,
+    "baseGhz": 4.7,
+    "l3Mb": 96,
+    "tdpW": 120,
+    "arch": "Zen 5"
+   }
+  },
+  {
+   "id": "amd-9700x",
+   "cat": "Cpu",
+   "brand": "AMD",
+   "name": "Ryzen 7 9700X",
+   "price": 299,
+   "color": "#C9CBD1",
+   "cpu": {
+    "socket": "AM5",
+    "cores": 8,
+    "threads": 16,
+    "boostGhz": 5.5,
+    "powerW": 88,
+    "multi": 20000,
+    "single": 2200,
+    "game": 78,
+    "igpu": true,
+    "baseGhz": 3.8,
+    "l3Mb": 32,
+    "tdpW": 65,
+    "arch": "Zen 5"
+   }
+  },
+  {
+   "id": "amd-9600x",
+   "cat": "Cpu",
+   "brand": "AMD",
+   "name": "Ryzen 5 9600X",
+   "price": 229,
+   "color": "#C9CBD1",
+   "cpu": {
+    "socket": "AM5",
+    "cores": 6,
+    "threads": 12,
+    "boostGhz": 5.4,
+    "powerW": 88,
+    "multi": 16000,
+    "single": 2170,
+    "game": 74,
+    "igpu": true,
+    "baseGhz": 3.9,
+    "l3Mb": 32,
+    "tdpW": 65,
+    "arch": "Zen 5"
+   }
+  },
+  {
+   "id": "amd-9600",
+   "cat": "Cpu",
+   "brand": "AMD",
+   "name": "Ryzen 5 9600",
+   "price": 199,
+   "color": "#C9CBD1",
+   "cpu": {
+    "socket": "AM5",
+    "cores": 6,
+    "threads": 12,
+    "boostGhz": 5.2,
+    "powerW": 88,
+    "multi": 15500,
+    "single": 2100,
+    "game": 72,
+    "igpu": true,
+    "baseGhz": 3.8,
+    "l3Mb": 32,
+    "tdpW": 65,
+    "arch": "Zen 5"
+   }
+  },
+  {
+   "id": "amd-7950x3d",
+   "cat": "Cpu",
+   "brand": "AMD",
+   "name": "Ryzen 9 7950X3D",
+   "price": 499,
+   "color": "#C9CBD1",
+   "cpu": {
+    "socket": "AM5",
+    "cores": 16,
+    "threads": 32,
+    "boostGhz": 5.7,
+    "powerW": 162,
+    "multi": 36000,
+    "single": 2000,
+    "game": 92,
+    "igpu": true,
+    "baseGhz": 4.2,
+    "l3Mb": 128,
+    "tdpW": 120,
+    "arch": "Zen 4"
+   }
+  },
+  {
+   "id": "amd-7950x",
+   "cat": "Cpu",
+   "brand": "AMD",
+   "name": "Ryzen 9 7950X",
+   "price": 449,
+   "color": "#C9CBD1",
+   "cpu": {
+    "socket": "AM5",
+    "cores": 16,
+    "threads": 32,
+    "boostGhz": 5.7,
+    "powerW": 230,
+    "multi": 38000,
+    "single": 2050,
+    "game": 78,
+    "igpu": true,
+    "baseGhz": 4.5,
+    "l3Mb": 64,
+    "tdpW": 170,
+    "arch": "Zen 4"
+   }
+  },
+  {
+   "id": "amd-7900x3d",
+   "cat": "Cpu",
+   "brand": "AMD",
+   "name": "Ryzen 9 7900X3D",
+   "price": 379,
+   "color": "#C9CBD1",
+   "cpu": {
+    "socket": "AM5",
+    "cores": 12,
+    "threads": 24,
+    "boostGhz": 5.6,
+    "powerW": 162,
+    "multi": 27000,
+    "single": 1990,
+    "game": 86,
+    "igpu": true,
+    "baseGhz": 4.4,
+    "l3Mb": 128,
+    "tdpW": 120,
+    "arch": "Zen 4"
+   }
+  },
+  {
+   "id": "amd-7900x",
+   "cat": "Cpu",
+   "brand": "AMD",
+   "name": "Ryzen 9 7900X",
+   "price": 329,
+   "color": "#C9CBD1",
+   "cpu": {
+    "socket": "AM5",
+    "cores": 12,
+    "threads": 24,
+    "boostGhz": 5.6,
+    "powerW": 162,
+    "multi": 29000,
+    "single": 1980,
+    "game": 76,
+    "igpu": true,
+    "baseGhz": 4.7,
+    "l3Mb": 64,
+    "tdpW": 170,
+    "arch": "Zen 4"
+   }
+  },
+  {
+   "id": "amd-7900",
+   "cat": "Cpu",
+   "brand": "AMD",
+   "name": "Ryzen 9 7900",
+   "price": 299,
+   "color": "#C9CBD1",
+   "cpu": {
+    "socket": "AM5",
+    "cores": 12,
+    "threads": 24,
+    "boostGhz": 5.4,
+    "powerW": 88,
+    "multi": 25000,
+    "single": 1950,
+    "game": 74,
+    "igpu": true,
+    "baseGhz": 3.7,
+    "l3Mb": 64,
+    "tdpW": 65,
+    "arch": "Zen 4"
+   }
+  },
+  {
+   "id": "amd-7800x3d",
+   "cat": "Cpu",
+   "brand": "AMD",
+   "name": "Ryzen 7 7800X3D",
+   "price": 369,
+   "color": "#C9CBD1",
+   "cpu": {
+    "socket": "AM5",
+    "cores": 8,
+    "threads": 16,
+    "boostGhz": 5.0,
+    "powerW": 120,
+    "multi": 18000,
+    "single": 1800,
+    "game": 90,
+    "igpu": true,
+    "baseGhz": 4.2,
+    "l3Mb": 96,
+    "tdpW": 120,
+    "arch": "Zen 4"
+   }
+  },
+  {
+   "id": "amd-7700x",
+   "cat": "Cpu",
+   "brand": "AMD",
+   "name": "Ryzen 7 7700X",
+   "price": 249,
+   "color": "#C9CBD1",
+   "cpu": {
+    "socket": "AM5",
+    "cores": 8,
+    "threads": 16,
+    "boostGhz": 5.4,
+    "powerW": 142,
+    "multi": 19500,
+    "single": 1990,
+    "game": 74,
+    "igpu": true,
+    "baseGhz": 4.5,
+    "l3Mb": 32,
+    "tdpW": 105,
+    "arch": "Zen 4"
+   }
+  },
+  {
+   "id": "amd-7700",
+   "cat": "Cpu",
+   "brand": "AMD",
+   "name": "Ryzen 7 7700",
+   "price": 229,
+   "color": "#C9CBD1",
+   "cpu": {
+    "socket": "AM5",
+    "cores": 8,
+    "threads": 16,
+    "boostGhz": 5.3,
+    "powerW": 88,
+    "multi": 18500,
+    "single": 1960,
+    "game": 72,
+    "igpu": true,
+    "baseGhz": 3.8,
+    "l3Mb": 32,
+    "tdpW": 65,
+    "arch": "Zen 4"
+   }
+  },
+  {
+   "id": "amd-7600x",
+   "cat": "Cpu",
+   "brand": "AMD",
+   "name": "Ryzen 5 7600X",
+   "price": 189,
+   "color": "#C9CBD1",
+   "cpu": {
+    "socket": "AM5",
+    "cores": 6,
+    "threads": 12,
+    "boostGhz": 5.3,
+    "powerW": 142,
+    "multi": 15000,
+    "single": 1950,
+    "game": 70,
+    "igpu": true,
+    "baseGhz": 4.7,
+    "l3Mb": 32,
+    "tdpW": 105,
+    "arch": "Zen 4"
+   }
+  },
+  {
+   "id": "amd-7600",
+   "cat": "Cpu",
+   "brand": "AMD",
+   "name": "Ryzen 5 7600",
+   "price": 179,
+   "color": "#C9CBD1",
+   "cpu": {
+    "socket": "AM5",
+    "cores": 6,
+    "threads": 12,
+    "boostGhz": 5.1,
+    "powerW": 88,
+    "multi": 14500,
+    "single": 1900,
+    "game": 68,
+    "igpu": true,
+    "baseGhz": 3.8,
+    "l3Mb": 32,
+    "tdpW": 65,
+    "arch": "Zen 4"
+   }
+  },
+  {
+   "id": "amd-7500f",
+   "cat": "Cpu",
+   "brand": "AMD",
+   "name": "Ryzen 5 7500F",
+   "price": 159,
+   "color": "#C9CBD1",
+   "cpu": {
+    "socket": "AM5",
+    "cores": 6,
+    "threads": 12,
+    "boostGhz": 5.0,
+    "powerW": 88,
+    "multi": 14000,
+    "single": 1880,
+    "game": 66,
+    "igpu": false,
+    "baseGhz": 3.7,
+    "l3Mb": 32,
+    "tdpW": 65,
+    "arch": "Zen 4"
+   }
+  },
+  {
+   "id": "amd-8700g",
+   "cat": "Cpu",
+   "brand": "AMD",
+   "name": "Ryzen 7 8700G",
+   "price": 279,
+   "color": "#C9CBD1",
+   "cpu": {
+    "socket": "AM5",
+    "cores": 8,
+    "threads": 16,
+    "boostGhz": 5.1,
+    "powerW": 88,
+    "multi": 16500,
+    "single": 1800,
+    "game": 62,
+    "igpu": true,
+    "baseGhz": 4.2,
+    "l3Mb": 16,
+    "tdpW": 65,
+    "arch": "Zen 4 APU"
+   }
+  },
+  {
+   "id": "amd-8600g",
+   "cat": "Cpu",
+   "brand": "AMD",
+   "name": "Ryzen 5 8600G",
+   "price": 199,
+   "color": "#C9CBD1",
+   "cpu": {
+    "socket": "AM5",
+    "cores": 6,
+    "threads": 12,
+    "boostGhz": 5.0,
+    "powerW": 88,
+    "multi": 13000,
+    "single": 1750,
+    "game": 58,
+    "igpu": true,
+    "baseGhz": 4.3,
+    "l3Mb": 16,
+    "tdpW": 65,
+    "arch": "Zen 4 APU"
+   }
+  },
+  {
+   "id": "amd-5950x",
+   "cat": "Cpu",
+   "brand": "AMD",
+   "name": "Ryzen 9 5950X",
+   "price": 349,
+   "color": "#C9CBD1",
+   "cpu": {
+    "socket": "AM4",
+    "cores": 16,
+    "threads": 32,
+    "boostGhz": 4.9,
+    "powerW": 142,
+    "multi": 26000,
+    "single": 1640,
+    "game": 64,
+    "igpu": false,
+    "baseGhz": 3.4,
+    "l3Mb": 64,
+    "tdpW": 105,
+    "arch": "Zen 3"
+   }
+  },
+  {
+   "id": "amd-5900x",
+   "cat": "Cpu",
+   "brand": "AMD",
+   "name": "Ryzen 9 5900X",
+   "price": 249,
+   "color": "#C9CBD1",
+   "cpu": {
+    "socket": "AM4",
+    "cores": 12,
+    "threads": 24,
+    "boostGhz": 4.8,
+    "powerW": 142,
+    "multi": 21500,
+    "single": 1630,
+    "game": 63,
+    "igpu": false,
+    "baseGhz": 3.7,
+    "l3Mb": 64,
+    "tdpW": 105,
+    "arch": "Zen 3"
+   }
+  },
+  {
+   "id": "amd-5800x3d",
+   "cat": "Cpu",
+   "brand": "AMD",
+   "name": "Ryzen 7 5800X3D",
+   "price": 299,
+   "color": "#C9CBD1",
+   "cpu": {
+    "socket": "AM4",
+    "cores": 8,
+    "threads": 16,
+    "boostGhz": 4.5,
+    "powerW": 142,
+    "multi": 15000,
+    "single": 1500,
+    "game": 78,
+    "igpu": false,
+    "baseGhz": 3.4,
+    "l3Mb": 96,
+    "tdpW": 105,
+    "arch": "Zen 3"
+   }
+  },
+  {
+   "id": "amd-5700x3d",
+   "cat": "Cpu",
+   "brand": "AMD",
+   "name": "Ryzen 7 5700X3D",
+   "price": 219,
+   "color": "#C9CBD1",
+   "cpu": {
+    "socket": "AM4",
+    "cores": 8,
+    "threads": 16,
+    "boostGhz": 4.1,
+    "powerW": 142,
+    "multi": 13800,
+    "single": 1400,
+    "game": 74,
+    "igpu": false,
+    "baseGhz": 3.0,
+    "l3Mb": 96,
+    "tdpW": 105,
+    "arch": "Zen 3"
+   }
+  },
+  {
+   "id": "amd-5800x",
+   "cat": "Cpu",
+   "brand": "AMD",
+   "name": "Ryzen 7 5800X",
+   "price": 179,
+   "color": "#C9CBD1",
+   "cpu": {
+    "socket": "AM4",
+    "cores": 8,
+    "threads": 16,
+    "boostGhz": 4.7,
+    "powerW": 142,
+    "multi": 15500,
+    "single": 1600,
+    "game": 64,
+    "igpu": false,
+    "baseGhz": 3.8,
+    "l3Mb": 32,
+    "tdpW": 105,
+    "arch": "Zen 3"
+   }
+  },
+  {
+   "id": "amd-5700x",
+   "cat": "Cpu",
+   "brand": "AMD",
+   "name": "Ryzen 7 5700X",
+   "price": 149,
+   "color": "#C9CBD1",
+   "cpu": {
+    "socket": "AM4",
+    "cores": 8,
+    "threads": 16,
+    "boostGhz": 4.6,
+    "powerW": 88,
+    "multi": 14500,
+    "single": 1550,
+    "game": 62,
+    "igpu": false,
+    "baseGhz": 3.4,
+    "l3Mb": 32,
+    "tdpW": 65,
+    "arch": "Zen 3"
+   }
+  },
+  {
+   "id": "amd-5600x",
+   "cat": "Cpu",
+   "brand": "AMD",
+   "name": "Ryzen 5 5600X",
+   "price": 129,
+   "color": "#C9CBD1",
+   "cpu": {
+    "socket": "AM4",
+    "cores": 6,
+    "threads": 12,
+    "boostGhz": 4.6,
+    "powerW": 88,
+    "multi": 11000,
+    "single": 1600,
+    "game": 60,
+    "igpu": false,
+    "baseGhz": 3.7,
+    "l3Mb": 32,
+    "tdpW": 65,
+    "arch": "Zen 3"
+   }
+  },
+  {
+   "id": "amd-5600",
+   "cat": "Cpu",
+   "brand": "AMD",
+   "name": "Ryzen 5 5600",
+   "price": 109,
+   "color": "#C9CBD1",
+   "cpu": {
+    "socket": "AM4",
+    "cores": 6,
+    "threads": 12,
+    "boostGhz": 4.4,
+    "powerW": 88,
+    "multi": 10700,
+    "single": 1550,
+    "game": 58,
+    "igpu": false,
+    "baseGhz": 3.5,
+    "l3Mb": 32,
+    "tdpW": 65,
+    "arch": "Zen 3"
+   }
+  },
+  {
+   "id": "amd-5500",
+   "cat": "Cpu",
+   "brand": "AMD",
+   "name": "Ryzen 5 5500",
+   "price": 89,
+   "color": "#C9CBD1",
+   "cpu": {
+    "socket": "AM4",
+    "cores": 6,
+    "threads": 12,
+    "boostGhz": 4.2,
+    "powerW": 88,
+    "multi": 9800,
+    "single": 1450,
+    "game": 50,
+    "igpu": false,
+    "baseGhz": 3.6,
+    "l3Mb": 16,
+    "tdpW": 65,
+    "arch": "Zen 3"
+   }
+  },
+  {
+   "id": "intel-285k",
+   "cat": "Cpu",
+   "brand": "Intel",
+   "name": "Core Ultra 9 285K",
+   "price": 589,
+   "color": "#B8C2CF",
+   "cpu": {
+    "socket": "LGA1851",
+    "cores": 24,
+    "threads": 24,
+    "boostGhz": 5.7,
+    "powerW": 250,
+    "multi": 42000,
+    "single": 2400,
+    "game": 82,
+    "igpu": true,
+    "baseGhz": 3.7,
+    "l3Mb": 36,
+    "tdpW": 125,
+    "arch": "Arrow Lake"
+   }
+  },
+  {
+   "id": "intel-265k",
+   "cat": "Cpu",
+   "brand": "Intel",
+   "name": "Core Ultra 7 265K",
+   "price": 299,
+   "color": "#B8C2CF",
+   "cpu": {
+    "socket": "LGA1851",
+    "cores": 20,
+    "threads": 20,
+    "boostGhz": 5.5,
+    "powerW": 250,
+    "multi": 36000,
+    "single": 2300,
+    "game": 79,
+    "igpu": true,
+    "baseGhz": 3.9,
+    "l3Mb": 30,
+    "tdpW": 125,
+    "arch": "Arrow Lake"
+   }
+  },
+  {
+   "id": "intel-265kf",
+   "cat": "Cpu",
+   "brand": "Intel",
+   "name": "Core Ultra 7 265KF",
+   "price": 279,
+   "color": "#B8C2CF",
+   "cpu": {
+    "socket": "LGA1851",
+    "cores": 20,
+    "threads": 20,
+    "boostGhz": 5.5,
+    "powerW": 250,
+    "multi": 36000,
+    "single": 2300,
+    "game": 79,
+    "igpu": false,
+    "baseGhz": 3.9,
+    "l3Mb": 30,
+    "tdpW": 125,
+    "arch": "Arrow Lake"
+   }
+  },
+  {
+   "id": "intel-245k",
+   "cat": "Cpu",
+   "brand": "Intel",
+   "name": "Core Ultra 5 245K",
+   "price": 239,
+   "color": "#B8C2CF",
+   "cpu": {
+    "socket": "LGA1851",
+    "cores": 14,
+    "threads": 14,
+    "boostGhz": 5.2,
+    "powerW": 159,
+    "multi": 24000,
+    "single": 2150,
+    "game": 74,
+    "igpu": true,
+    "baseGhz": 4.2,
+    "l3Mb": 24,
+    "tdpW": 125,
+    "arch": "Arrow Lake"
+   }
+  },
+  {
+   "id": "intel-245kf",
+   "cat": "Cpu",
+   "brand": "Intel",
+   "name": "Core Ultra 5 245KF",
+   "price": 219,
+   "color": "#B8C2CF",
+   "cpu": {
+    "socket": "LGA1851",
+    "cores": 14,
+    "threads": 14,
+    "boostGhz": 5.2,
+    "powerW": 159,
+    "multi": 24000,
+    "single": 2150,
+    "game": 74,
+    "igpu": false,
+    "baseGhz": 4.2,
+    "l3Mb": 24,
+    "tdpW": 125,
+    "arch": "Arrow Lake"
+   }
+  },
+  {
+   "id": "intel-225",
+   "cat": "Cpu",
+   "brand": "Intel",
+   "name": "Core Ultra 5 225",
+   "price": 199,
+   "color": "#B8C2CF",
+   "cpu": {
+    "socket": "LGA1851",
+    "cores": 10,
+    "threads": 10,
+    "boostGhz": 4.9,
+    "powerW": 121,
+    "multi": 17000,
+    "single": 2000,
+    "game": 66,
+    "igpu": true,
+    "baseGhz": 3.3,
+    "l3Mb": 20,
+    "tdpW": 65,
+    "arch": "Arrow Lake"
+   }
+  },
+  {
+   "id": "intel-14900ks",
+   "cat": "Cpu",
+   "brand": "Intel",
+   "name": "Core i9-14900KS",
+   "price": 589,
+   "color": "#B8C2CF",
+   "cpu": {
+    "socket": "LGA1700",
+    "cores": 24,
+    "threads": 32,
+    "boostGhz": 6.2,
+    "powerW": 253,
+    "multi": 40000,
+    "single": 2400,
+    "game": 88,
+    "igpu": true,
+    "baseGhz": 3.2,
+    "l3Mb": 36,
+    "tdpW": 150,
+    "arch": "Raptor Lake Refresh"
+   }
+  },
+  {
+   "id": "intel-14900k",
+   "cat": "Cpu",
+   "brand": "Intel",
+   "name": "Core i9-14900K",
+   "price": 449,
+   "color": "#B8C2CF",
+   "cpu": {
+    "socket": "LGA1700",
+    "cores": 24,
+    "threads": 32,
+    "boostGhz": 6.0,
+    "powerW": 253,
+    "multi": 38500,
+    "single": 2300,
+    "game": 86,
+    "igpu": true,
+    "baseGhz": 3.2,
+    "l3Mb": 36,
+    "tdpW": 125,
+    "arch": "Raptor Lake Refresh"
+   }
+  },
+  {
+   "id": "intel-14700k",
+   "cat": "Cpu",
+   "brand": "Intel",
+   "name": "Core i7-14700K",
+   "price": 339,
+   "color": "#B8C2CF",
+   "cpu": {
+    "socket": "LGA1700",
+    "cores": 20,
+    "threads": 28,
+    "boostGhz": 5.6,
+    "powerW": 253,
+    "multi": 35000,
+    "single": 2150,
+    "game": 83,
+    "igpu": true,
+    "baseGhz": 3.4,
+    "l3Mb": 33,
+    "tdpW": 125,
+    "arch": "Raptor Lake Refresh"
+   }
+  },
+  {
+   "id": "intel-14700kf",
+   "cat": "Cpu",
+   "brand": "Intel",
+   "name": "Core i7-14700KF",
+   "price": 319,
+   "color": "#B8C2CF",
+   "cpu": {
+    "socket": "LGA1700",
+    "cores": 20,
+    "threads": 28,
+    "boostGhz": 5.6,
+    "powerW": 253,
+    "multi": 35000,
+    "single": 2150,
+    "game": 83,
+    "igpu": false,
+    "baseGhz": 3.4,
+    "l3Mb": 33,
+    "tdpW": 125,
+    "arch": "Raptor Lake Refresh"
+   }
+  },
+  {
+   "id": "intel-14600k",
+   "cat": "Cpu",
+   "brand": "Intel",
+   "name": "Core i5-14600K",
+   "price": 229,
+   "color": "#B8C2CF",
+   "cpu": {
+    "socket": "LGA1700",
+    "cores": 14,
+    "threads": 20,
+    "boostGhz": 5.3,
+    "powerW": 181,
+    "multi": 24500,
+    "single": 2050,
+    "game": 77,
+    "igpu": true,
+    "baseGhz": 3.5,
+    "l3Mb": 24,
+    "tdpW": 125,
+    "arch": "Raptor Lake Refresh"
+   }
+  },
+  {
+   "id": "intel-14600kf",
+   "cat": "Cpu",
+   "brand": "Intel",
+   "name": "Core i5-14600KF",
+   "price": 209,
+   "color": "#B8C2CF",
+   "cpu": {
+    "socket": "LGA1700",
+    "cores": 14,
+    "threads": 20,
+    "boostGhz": 5.3,
+    "powerW": 181,
+    "multi": 24500,
+    "single": 2050,
+    "game": 77,
+    "igpu": false,
+    "baseGhz": 3.5,
+    "l3Mb": 24,
+    "tdpW": 125,
+    "arch": "Raptor Lake Refresh"
+   }
+  },
+  {
+   "id": "intel-14400",
+   "cat": "Cpu",
+   "brand": "Intel",
+   "name": "Core i5-14400",
+   "price": 179,
+   "color": "#B8C2CF",
+   "cpu": {
+    "socket": "LGA1700",
+    "cores": 10,
+    "threads": 16,
+    "boostGhz": 4.7,
+    "powerW": 148,
+    "multi": 17500,
+    "single": 1900,
+    "game": 64,
+    "igpu": true,
+    "baseGhz": 2.5,
+    "l3Mb": 20,
+    "tdpW": 65,
+    "arch": "Raptor Lake Refresh"
+   }
+  },
+  {
+   "id": "intel-14400f",
+   "cat": "Cpu",
+   "brand": "Intel",
+   "name": "Core i5-14400F",
+   "price": 149,
+   "color": "#B8C2CF",
+   "cpu": {
+    "socket": "LGA1700",
+    "cores": 10,
+    "threads": 16,
+    "boostGhz": 4.7,
+    "powerW": 148,
+    "multi": 17500,
+    "single": 1900,
+    "game": 64,
+    "igpu": false,
+    "baseGhz": 2.5,
+    "l3Mb": 20,
+    "tdpW": 65,
+    "arch": "Raptor Lake Refresh"
+   }
+  },
+  {
+   "id": "intel-13900k",
+   "cat": "Cpu",
+   "brand": "Intel",
+   "name": "Core i9-13900K",
+   "price": 399,
+   "color": "#B8C2CF",
+   "cpu": {
+    "socket": "LGA1700",
+    "cores": 24,
+    "threads": 32,
+    "boostGhz": 5.8,
+    "powerW": 253,
+    "multi": 38000,
+    "single": 2250,
+    "game": 84,
+    "igpu": true,
+    "baseGhz": 3.0,
+    "l3Mb": 36,
+    "tdpW": 125,
+    "arch": "Raptor Lake"
+   }
+  },
+  {
+   "id": "intel-13700k",
+   "cat": "Cpu",
+   "brand": "Intel",
+   "name": "Core i7-13700K",
+   "price": 299,
+   "color": "#B8C2CF",
+   "cpu": {
+    "socket": "LGA1700",
+    "cores": 16,
+    "threads": 24,
+    "boostGhz": 5.4,
+    "powerW": 253,
+    "multi": 30500,
+    "single": 2100,
+    "game": 80,
+    "igpu": true,
+    "baseGhz": 3.4,
+    "l3Mb": 30,
+    "tdpW": 125,
+    "arch": "Raptor Lake"
+   }
+  },
+  {
+   "id": "intel-13600k",
+   "cat": "Cpu",
+   "brand": "Intel",
+   "name": "Core i5-13600K",
+   "price": 219,
+   "color": "#B8C2CF",
+   "cpu": {
+    "socket": "LGA1700",
+    "cores": 14,
+    "threads": 20,
+    "boostGhz": 5.1,
+    "powerW": 181,
+    "multi": 24000,
+    "single": 2000,
+    "game": 75,
+    "igpu": true,
+    "baseGhz": 3.5,
+    "l3Mb": 24,
+    "tdpW": 125,
+    "arch": "Raptor Lake"
+   }
+  },
+  {
+   "id": "intel-13400f",
+   "cat": "Cpu",
+   "brand": "Intel",
+   "name": "Core i5-13400F",
+   "price": 159,
+   "color": "#B8C2CF",
+   "cpu": {
+    "socket": "LGA1700",
+    "cores": 10,
+    "threads": 16,
+    "boostGhz": 4.6,
+    "powerW": 148,
+    "multi": 16500,
+    "single": 1800,
+    "game": 60,
+    "igpu": false,
+    "baseGhz": 2.5,
+    "l3Mb": 20,
+    "tdpW": 65,
+    "arch": "Raptor Lake"
+   }
+  },
+  {
+   "id": "intel-12900k",
+   "cat": "Cpu",
+   "brand": "Intel",
+   "name": "Core i9-12900K",
+   "price": 279,
+   "color": "#B8C2CF",
+   "cpu": {
+    "socket": "LGA1700",
+    "cores": 16,
+    "threads": 24,
+    "boostGhz": 5.2,
+    "powerW": 241,
+    "multi": 27500,
+    "single": 1990,
+    "game": 74,
+    "igpu": true,
+    "baseGhz": 3.2,
+    "l3Mb": 30,
+    "tdpW": 125,
+    "arch": "Alder Lake"
+   }
+  },
+  {
+   "id": "intel-12600k",
+   "cat": "Cpu",
+   "brand": "Intel",
+   "name": "Core i5-12600K",
+   "price": 169,
+   "color": "#B8C2CF",
+   "cpu": {
+    "socket": "LGA1700",
+    "cores": 10,
+    "threads": 16,
+    "boostGhz": 4.9,
+    "powerW": 150,
+    "multi": 17500,
+    "single": 1920,
+    "game": 68,
+    "igpu": true,
+    "baseGhz": 3.7,
+    "l3Mb": 20,
+    "tdpW": 125,
+    "arch": "Alder Lake"
+   }
+  },
+  {
+   "id": "intel-12400f",
+   "cat": "Cpu",
+   "brand": "Intel",
+   "name": "Core i5-12400F",
+   "price": 109,
+   "color": "#B8C2CF",
+   "cpu": {
+    "socket": "LGA1700",
+    "cores": 6,
+    "threads": 12,
+    "boostGhz": 4.4,
+    "powerW": 117,
+    "multi": 12300,
+    "single": 1750,
+    "game": 58,
+    "igpu": false,
+    "baseGhz": 2.5,
+    "l3Mb": 18,
+    "tdpW": 65,
+    "arch": "Alder Lake"
+   }
+  },
+  {
+   "id": "intel-12100f",
+   "cat": "Cpu",
+   "brand": "Intel",
+   "name": "Core i3-12100F",
+   "price": 79,
+   "color": "#B8C2CF",
+   "cpu": {
+    "socket": "LGA1700",
+    "cores": 4,
+    "threads": 8,
+    "boostGhz": 4.3,
+    "powerW": 89,
+    "multi": 8700,
+    "single": 1700,
+    "game": 50,
+    "igpu": false,
+    "baseGhz": 3.3,
+    "l3Mb": 12,
+    "tdpW": 58,
+    "arch": "Alder Lake"
+   }
+  },
+  {
+   "id": "noctua-nh-d15-g2",
+   "cat": "Cooler",
+   "brand": "Noctua",
+   "name": "NH-D15 G2",
+   "price": 149,
+   "color": "#8B6A55",
+   "cooler": {
+    "kind": "Air",
+    "heightMm": 168,
+    "radMm": 0,
+    "capacityW": 260,
+    "noiseDb": 25,
+    "fans": 2,
+    "rgb": false
+   }
+  },
+  {
+   "id": "noctua-nh-d15-chromax",
+   "cat": "Cooler",
+   "brand": "Noctua",
+   "name": "NH-D15 chromax.black",
+   "price": 119,
+   "color": "#161616",
+   "cooler": {
+    "kind": "Air",
+    "heightMm": 165,
+    "radMm": 0,
+    "capacityW": 250,
+    "noiseDb": 25,
+    "fans": 2,
+    "rgb": false
+   }
+  },
+  {
+   "id": "noctua-nh-u12a",
+   "cat": "Cooler",
+   "brand": "Noctua",
+   "name": "NH-U12A",
+   "price": 109,
+   "color": "#8B6A55",
+   "cooler": {
+    "kind": "Air",
+    "heightMm": 158,
+    "radMm": 0,
+    "capacityW": 220,
+    "noiseDb": 23,
+    "fans": 2,
+    "rgb": false
+   }
+  },
+  {
+   "id": "noctua-nh-u12s",
+   "cat": "Cooler",
+   "brand": "Noctua",
+   "name": "NH-U12S redux",
+   "price": 59,
+   "color": "#5A5C60",
+   "cooler": {
+    "kind": "Air",
+    "heightMm": 158,
+    "radMm": 0,
+    "capacityW": 180,
+    "noiseDb": 22,
+    "fans": 1,
+    "rgb": false
+   }
+  },
+  {
+   "id": "noctua-nh-l12s",
+   "cat": "Cooler",
+   "brand": "Noctua",
+   "name": "NH-L12S (low profile)",
+   "price": 59,
+   "color": "#8B6A55",
+   "cooler": {
+    "kind": "Air",
+    "heightMm": 70,
+    "radMm": 0,
+    "capacityW": 140,
+    "noiseDb": 23,
+    "fans": 1,
+    "rgb": false
+   }
+  },
+  {
+   "id": "noctua-nh-l9a",
+   "cat": "Cooler",
+   "brand": "Noctua",
+   "name": "NH-L9a-AM5 (low profile)",
+   "price": 49,
+   "color": "#8B6A55",
+   "cooler": {
+    "kind": "Air",
+    "heightMm": 37,
+    "radMm": 0,
+    "capacityW": 95,
+    "noiseDb": 23,
+    "fans": 1,
+    "rgb": false
+   }
+  },
+  {
+   "id": "bequiet-drp5",
+   "cat": "Cooler",
+   "brand": "be quiet!",
+   "name": "Dark Rock Pro 5",
+   "price": 99,
+   "color": "#151515",
+   "cooler": {
+    "kind": "Air",
+    "heightMm": 168,
+    "radMm": 0,
+    "capacityW": 250,
+    "noiseDb": 24,
+    "fans": 2,
+    "rgb": false
+   }
+  },
+  {
+   "id": "bequiet-dark-rock-elite",
+   "cat": "Cooler",
+   "brand": "be quiet!",
+   "name": "Dark Rock Elite",
+   "price": 114,
+   "color": "#151515",
+   "cooler": {
+    "kind": "Air",
+    "heightMm": 168,
+    "radMm": 0,
+    "capacityW": 270,
+    "noiseDb": 24,
+    "fans": 2,
+    "rgb": true
+   }
+  },
+  {
+   "id": "bequiet-dark-rock-4",
+   "cat": "Cooler",
+   "brand": "be quiet!",
+   "name": "Dark Rock 4",
+   "price": 69,
+   "color": "#151515",
+   "cooler": {
+    "kind": "Air",
+    "heightMm": 160,
+    "radMm": 0,
+    "capacityW": 200,
+    "noiseDb": 21,
+    "fans": 1,
+    "rgb": false
+   }
+  },
+  {
+   "id": "bequiet-pure-rock-2",
+   "cat": "Cooler",
+   "brand": "be quiet!",
+   "name": "Pure Rock 2",
+   "price": 44,
+   "color": "#1B1B1B",
+   "cooler": {
+    "kind": "Air",
+    "heightMm": 155,
+    "radMm": 0,
+    "capacityW": 150,
+    "noiseDb": 26,
+    "fans": 1,
+    "rgb": false
+   }
+  },
+  {
+   "id": "thermalright-pa120se",
+   "cat": "Cooler",
+   "brand": "Thermalright",
+   "name": "Peerless Assassin 120 SE",
+   "price": 35,
+   "color": "#B9BCC2",
+   "cooler": {
+    "kind": "Air",
+    "heightMm": 155,
+    "radMm": 0,
+    "capacityW": 230,
+    "noiseDb": 27,
+    "fans": 2,
+    "rgb": false
+   }
+  },
+  {
+   "id": "thermalright-phantom-spirit-120se",
+   "cat": "Cooler",
+   "brand": "Thermalright",
+   "name": "Phantom Spirit 120 SE",
+   "price": 39,
+   "color": "#B9BCC2",
+   "cooler": {
+    "kind": "Air",
+    "heightMm": 154,
+    "radMm": 0,
+    "capacityW": 245,
+    "noiseDb": 25,
+    "fans": 2,
+    "rgb": false
+   }
+  },
+  {
+   "id": "thermalright-fc140",
+   "cat": "Cooler",
+   "brand": "Thermalright",
+   "name": "Frost Commander 140",
+   "price": 45,
+   "color": "#B9BCC2",
+   "cooler": {
+    "kind": "Air",
+    "heightMm": 157,
+    "radMm": 0,
+    "capacityW": 245,
+    "noiseDb": 24,
+    "fans": 2,
+    "rgb": false
+   }
+  },
+  {
+   "id": "thermalright-ax120-r",
+   "cat": "Cooler",
+   "brand": "Thermalright",
+   "name": "Assassin X 120 Refined SE",
+   "price": 19,
+   "color": "#B9BCC2",
+   "cooler": {
+    "kind": "Air",
+    "heightMm": 148,
+    "radMm": 0,
+    "capacityW": 180,
+    "noiseDb": 26,
+    "fans": 1,
+    "rgb": false
+   }
+  },
+  {
+   "id": "thermalright-axp90-x47",
+   "cat": "Cooler",
+   "brand": "Thermalright",
+   "name": "AXP90-X47 (low profile)",
+   "price": 35,
+   "color": "#C2C4C8",
+   "cooler": {
+    "kind": "Air",
+    "heightMm": 47,
+    "radMm": 0,
+    "capacityW": 120,
+    "noiseDb": 27,
+    "fans": 1,
+    "rgb": false
+   }
+  },
+  {
+   "id": "deepcool-ak620",
+   "cat": "Cooler",
+   "brand": "DeepCool",
+   "name": "AK620",
+   "price": 64,
+   "color": "#1A1A1A",
+   "cooler": {
+    "kind": "Air",
+    "heightMm": 160,
+    "radMm": 0,
+    "capacityW": 260,
+    "noiseDb": 28,
+    "fans": 2,
+    "rgb": false
+   }
+  },
+  {
+   "id": "deepcool-ak400",
+   "cat": "Cooler",
+   "brand": "DeepCool",
+   "name": "AK400",
+   "price": 34,
+   "color": "#1A1A1A",
+   "cooler": {
+    "kind": "Air",
+    "heightMm": 155,
+    "radMm": 0,
+    "capacityW": 220,
+    "noiseDb": 29,
+    "fans": 1,
+    "rgb": false
+   }
+  },
+  {
+   "id": "deepcool-assassin-iv",
+   "cat": "Cooler",
+   "brand": "DeepCool",
+   "name": "Assassin IV",
+   "price": 99,
+   "color": "#1A1A1A",
+   "cooler": {
+    "kind": "Air",
+    "heightMm": 164,
+    "radMm": 0,
+    "capacityW": 280,
+    "noiseDb": 25,
+    "fans": 2,
+    "rgb": false
+   }
+  },
+  {
+   "id": "arctic-freezer-36",
+   "cat": "Cooler",
+   "brand": "Arctic",
+   "name": "Freezer 36",
+   "price": 35,
+   "color": "#1E1E20",
+   "cooler": {
+    "kind": "Air",
+    "heightMm": 159,
+    "radMm": 0,
+    "capacityW": 210,
+    "noiseDb": 24,
+    "fans": 2,
+    "rgb": false
+   }
+  },
+  {
+   "id": "cm-hyper-212-black",
+   "cat": "Cooler",
+   "brand": "Cooler Master",
+   "name": "Hyper 212 Black Edition",
+   "price": 29,
+   "color": "#141414",
+   "cooler": {
+    "kind": "Air",
+    "heightMm": 154,
+    "radMm": 0,
+    "capacityW": 180,
+    "noiseDb": 27,
+    "fans": 1,
+    "rgb": false
+   }
+  },
+  {
+   "id": "scythe-fuma-3",
+   "cat": "Cooler",
+   "brand": "Scythe",
+   "name": "Fuma 3",
+   "price": 54,
+   "color": "#3A3B3E",
+   "cooler": {
+    "kind": "Air",
+    "heightMm": 154,
+    "radMm": 0,
+    "capacityW": 240,
+    "noiseDb": 25,
+    "fans": 2,
+    "rgb": false
+   }
+  },
+  {
+   "id": "idcooling-se224-xts",
+   "cat": "Cooler",
+   "brand": "ID-Cooling",
+   "name": "SE-224-XTS",
+   "price": 19,
+   "color": "#1A1A1A",
+   "cooler": {
+    "kind": "Air",
+    "heightMm": 154,
+    "radMm": 0,
+    "capacityW": 180,
+    "noiseDb": 28,
+    "fans": 1,
+    "rgb": false
+   }
+  },
+  {
+   "id": "arctic-lf3-240",
+   "cat": "Cooler",
+   "brand": "Arctic",
+   "name": "Liquid Freezer III 240",
+   "price": 74,
+   "color": "#111214",
+   "cooler": {
+    "kind": "Liquid",
+    "heightMm": 0,
+    "radMm": 240,
+    "capacityW": 260,
+    "noiseDb": 27,
+    "fans": 2,
+    "rgb": false
+   }
+  },
+  {
+   "id": "arctic-lf3-280",
+   "cat": "Cooler",
+   "brand": "Arctic",
+   "name": "Liquid Freezer III 280",
+   "price": 89,
+   "color": "#111214",
+   "cooler": {
+    "kind": "Liquid",
+    "heightMm": 0,
+    "radMm": 280,
+    "capacityW": 290,
+    "noiseDb": 26,
+    "fans": 2,
+    "rgb": false
+   }
+  },
+  {
+   "id": "arctic-lf3-360",
+   "cat": "Cooler",
+   "brand": "Arctic",
+   "name": "Liquid Freezer III 360",
+   "price": 109,
+   "color": "#111214",
+   "cooler": {
+    "kind": "Liquid",
+    "heightMm": 0,
+    "radMm": 360,
+    "capacityW": 320,
+    "noiseDb": 27,
+    "fans": 3,
+    "rgb": false
+   }
+  },
+  {
+   "id": "arctic-lf3-420",
+   "cat": "Cooler",
+   "brand": "Arctic",
+   "name": "Liquid Freezer III 420",
+   "price": 119,
+   "color": "#111214",
+   "cooler": {
+    "kind": "Liquid",
+    "heightMm": 0,
+    "radMm": 420,
+    "capacityW": 340,
+    "noiseDb": 25,
+    "fans": 3,
+    "rgb": false
+   }
+  },
+  {
+   "id": "corsair-h100i-elite",
+   "cat": "Cooler",
+   "brand": "Corsair",
+   "name": "iCUE H100i RGB Elite",
+   "price": 139,
+   "color": "#141414",
+   "cooler": {
+    "kind": "Liquid",
+    "heightMm": 0,
+    "radMm": 240,
+    "capacityW": 240,
+    "noiseDb": 31,
+    "fans": 2,
+    "rgb": true
+   }
+  },
+  {
+   "id": "corsair-nautilus-360",
+   "cat": "Cooler",
+   "brand": "Corsair",
+   "name": "Nautilus 360 RS",
+   "price": 119,
+   "color": "#141414",
+   "cooler": {
+    "kind": "Liquid",
+    "heightMm": 0,
+    "radMm": 360,
+    "capacityW": 300,
+    "noiseDb": 30,
+    "fans": 3,
+    "rgb": false
+   }
+  },
+  {
+   "id": "corsair-h150i",
+   "cat": "Cooler",
+   "brand": "Corsair",
+   "name": "iCUE H150i Elite LCD XT",
+   "price": 259,
+   "color": "#141414",
+   "cooler": {
+    "kind": "Liquid",
+    "heightMm": 0,
+    "radMm": 360,
+    "capacityW": 310,
+    "noiseDb": 30,
+    "fans": 3,
+    "rgb": true
+   }
+  },
+  {
+   "id": "nzxt-kraken-240",
+   "cat": "Cooler",
+   "brand": "NZXT",
+   "name": "Kraken 240",
+   "price": 139,
+   "color": "#121212",
+   "cooler": {
+    "kind": "Liquid",
+    "heightMm": 0,
+    "radMm": 240,
+    "capacityW": 250,
+    "noiseDb": 28,
+    "fans": 2,
+    "rgb": true
+   }
+  },
+  {
+   "id": "nzxt-kraken-360",
+   "cat": "Cooler",
+   "brand": "NZXT",
+   "name": "Kraken 360",
+   "price": 179,
+   "color": "#121212",
+   "cooler": {
+    "kind": "Liquid",
+    "heightMm": 0,
+    "radMm": 360,
+    "capacityW": 300,
+    "noiseDb": 30,
+    "fans": 3,
+    "rgb": true
+   }
+  },
+  {
+   "id": "nzxt-kraken-elite-360",
+   "cat": "Cooler",
+   "brand": "NZXT",
+   "name": "Kraken Elite 360",
+   "price": 299,
+   "color": "#121212",
+   "cooler": {
+    "kind": "Liquid",
+    "heightMm": 0,
+    "radMm": 360,
+    "capacityW": 310,
+    "noiseDb": 30,
+    "fans": 3,
+    "rgb": true
+   }
+  },
+  {
+   "id": "lianli-gaII-280",
+   "cat": "Cooler",
+   "brand": "Lian Li",
+   "name": "Galahad II Trinity 280",
+   "price": 149,
+   "color": "#F0F0F0",
+   "cooler": {
+    "kind": "Liquid",
+    "heightMm": 0,
+    "radMm": 280,
+    "capacityW": 285,
+    "noiseDb": 28,
+    "fans": 2,
+    "rgb": true
+   }
+  },
+  {
+   "id": "lianli-gaII-360",
+   "cat": "Cooler",
+   "brand": "Lian Li",
+   "name": "Galahad II Trinity 360",
+   "price": 169,
+   "color": "#F0F0F0",
+   "cooler": {
+    "kind": "Liquid",
+    "heightMm": 0,
+    "radMm": 360,
+    "capacityW": 310,
+    "noiseDb": 29,
+    "fans": 3,
+    "rgb": true
+   }
+  },
+  {
+   "id": "lianli-hydroshift-360",
+   "cat": "Cooler",
+   "brand": "Lian Li",
+   "name": "HydroShift LCD 360",
+   "price": 179,
+   "color": "#1A1A1A",
+   "cooler": {
+    "kind": "Liquid",
+    "heightMm": 0,
+    "radMm": 360,
+    "capacityW": 305,
+    "noiseDb": 29,
+    "fans": 3,
+    "rgb": true
+   }
+  },
+  {
+   "id": "deepcool-ls720",
+   "cat": "Cooler",
+   "brand": "DeepCool",
+   "name": "LS720",
+   "price": 129,
+   "color": "#1A1A1A",
+   "cooler": {
+    "kind": "Liquid",
+    "heightMm": 0,
+    "radMm": 360,
+    "capacityW": 300,
+    "noiseDb": 31,
+    "fans": 3,
+    "rgb": true
+   }
+  },
+  {
+   "id": "msi-coreliquid-a13-360",
+   "cat": "Cooler",
+   "brand": "MSI",
+   "name": "MAG CoreLiquid A13 360",
+   "price": 109,
+   "color": "#1A1A1A",
+   "cooler": {
+    "kind": "Liquid",
+    "heightMm": 0,
+    "radMm": 360,
+    "capacityW": 290,
+    "noiseDb": 30,
+    "fans": 3,
+    "rgb": true
+   }
+  },
+  {
+   "id": "asus-ryujin-iii-360",
+   "cat": "Cooler",
+   "brand": "ASUS",
+   "name": "ROG Ryujin III 360",
+   "price": 299,
+   "color": "#1A1A1A",
+   "cooler": {
+    "kind": "Liquid",
+    "heightMm": 0,
+    "radMm": 360,
+    "capacityW": 320,
+    "noiseDb": 30,
+    "fans": 3,
+    "rgb": true
+   }
+  },
+  {
+   "id": "bequiet-silent-loop-3-360",
+   "cat": "Cooler",
+   "brand": "be quiet!",
+   "name": "Silent Loop 3 360",
+   "price": 159,
+   "color": "#141414",
+   "cooler": {
+    "kind": "Liquid",
+    "heightMm": 0,
+    "radMm": 360,
+    "capacityW": 305,
+    "noiseDb": 26,
+    "fans": 3,
+    "rgb": false
+   }
+  },
+  {
+   "id": "thermalright-frozen-notte-240",
+   "cat": "Cooler",
+   "brand": "Thermalright",
+   "name": "Frozen Notte 240",
+   "price": 59,
+   "color": "#141414",
+   "cooler": {
+    "kind": "Liquid",
+    "heightMm": 0,
+    "radMm": 240,
+    "capacityW": 250,
+    "noiseDb": 30,
+    "fans": 2,
+    "rgb": true
+   }
+  },
+  {
+   "id": "crucial-16-5600",
+   "cat": "Memory",
+   "brand": "Crucial",
+   "name": "16 GB (2×8) DDR5-5600 CL46",
+   "price": 49,
+   "color": "#2E7D4F",
+   "memory": {
+    "type": "DDR5",
+    "capacityGb": 16,
+    "speed": 5600,
+    "cl": 46,
+    "modules": 2,
+    "rgb": false,
+    "profile": "EXPO + XMP"
+   }
+  },
+  {
+   "id": "kingston-fury-16-5200",
+   "cat": "Memory",
+   "brand": "Kingston",
+   "name": "Fury Beast 16 GB (2×8) DDR5-5200 CL40",
+   "price": 54,
+   "color": "#1C1C1C",
+   "memory": {
+    "type": "DDR5",
+    "capacityGb": 16,
+    "speed": 5200,
+    "cl": 40,
+    "modules": 2,
+    "rgb": false,
+    "profile": "EXPO + XMP"
+   }
+  },
+  {
+   "id": "teamgroup-elite-32-5600",
+   "cat": "Memory",
+   "brand": "TeamGroup",
+   "name": "Elite 32 GB (2×16) DDR5-5600 CL46",
+   "price": 69,
+   "color": "#2A5A3A",
+   "memory": {
+    "type": "DDR5",
+    "capacityGb": 32,
+    "speed": 5600,
+    "cl": 46,
+    "modules": 2,
+    "rgb": false,
+    "profile": "EXPO + XMP"
+   }
+  },
+  {
+   "id": "crucial-pro-32-5600",
+   "cat": "Memory",
+   "brand": "Crucial",
+   "name": "Pro 32 GB (2×16) DDR5-5600 CL46",
+   "price": 79,
+   "color": "#2B2D30",
+   "memory": {
+    "type": "DDR5",
+    "capacityGb": 32,
+    "speed": 5600,
+    "cl": 46,
+    "modules": 2,
+    "rgb": false,
+    "profile": "EXPO + XMP"
+   }
+  },
+  {
+   "id": "corsair-v-32-5600",
+   "cat": "Memory",
+   "brand": "Corsair",
+   "name": "Vengeance 32 GB (2×16) DDR5-5600 CL36",
+   "price": 84,
+   "color": "#111111",
+   "memory": {
+    "type": "DDR5",
+    "capacityGb": 32,
+    "speed": 5600,
+    "cl": 36,
+    "modules": 2,
+    "rgb": false,
+    "profile": "EXPO + XMP"
+   }
+  },
+  {
+   "id": "kingston-fury-32-5600",
+   "cat": "Memory",
+   "brand": "Kingston",
+   "name": "Fury Beast 32 GB (2×16) DDR5-5600 CL36",
+   "price": 89,
+   "color": "#1C1C1C",
+   "memory": {
+    "type": "DDR5",
+    "capacityGb": 32,
+    "speed": 5600,
+    "cl": 36,
+    "modules": 2,
+    "rgb": false,
+    "profile": "EXPO + XMP"
+   }
+  },
+  {
+   "id": "gskill-flare-x5-32-6000-cl36",
+   "cat": "Memory",
+   "brand": "G.Skill",
+   "name": "Flare X5 32 GB (2×16) DDR5-6000 CL36",
+   "price": 89,
+   "color": "#1A1A1A",
+   "memory": {
+    "type": "DDR5",
+    "capacityGb": 32,
+    "speed": 6000,
+    "cl": 36,
+    "modules": 2,
+    "rgb": false,
+    "profile": "EXPO + XMP"
+   }
+  },
+  {
+   "id": "gskill-flare-x5-32-6000",
+   "cat": "Memory",
+   "brand": "G.Skill",
+   "name": "Flare X5 32 GB (2×16) DDR5-6000 CL30",
+   "price": 99,
+   "color": "#1A1A1A",
+   "memory": {
+    "type": "DDR5",
+    "capacityGb": 32,
+    "speed": 6000,
+    "cl": 30,
+    "modules": 2,
+    "rgb": false,
+    "profile": "EXPO + XMP"
+   }
+  },
+  {
+   "id": "teamgroup-delta-32-6000",
+   "cat": "Memory",
+   "brand": "TeamGroup",
+   "name": "T-Force Delta RGB 32 GB (2×16) DDR5-6000 CL30",
+   "price": 99,
+   "color": "#F0F0F0",
+   "memory": {
+    "type": "DDR5",
+    "capacityGb": 32,
+    "speed": 6000,
+    "cl": 30,
+    "modules": 2,
+    "rgb": true,
+    "profile": "EXPO + XMP"
+   }
+  },
+  {
+   "id": "patriot-viper-venom-32-6000",
+   "cat": "Memory",
+   "brand": "Patriot",
+   "name": "Viper Venom 32 GB (2×16) DDR5-6000 CL30",
+   "price": 94,
+   "color": "#1A1A1A",
+   "memory": {
+    "type": "DDR5",
+    "capacityGb": 32,
+    "speed": 6000,
+    "cl": 30,
+    "modules": 2,
+    "rgb": false,
+    "profile": "EXPO + XMP"
+   }
+  },
+  {
+   "id": "gskill-z5-32-6000",
+   "cat": "Memory",
+   "brand": "G.Skill",
+   "name": "Trident Z5 RGB 32 GB (2×16) DDR5-6000 CL30",
+   "price": 109,
+   "color": "#C0C3C8",
+   "memory": {
+    "type": "DDR5",
+    "capacityGb": 32,
+    "speed": 6000,
+    "cl": 30,
+    "modules": 2,
+    "rgb": true,
+    "profile": "EXPO + XMP"
+   }
+  },
+  {
+   "id": "gskill-z5neo-32-6000",
+   "cat": "Memory",
+   "brand": "G.Skill",
+   "name": "Trident Z5 Neo RGB 32 GB (2×16) DDR5-6000 CL30",
+   "price": 119,
+   "color": "#1A1A1A",
+   "memory": {
+    "type": "DDR5",
+    "capacityGb": 32,
+    "speed": 6000,
+    "cl": 30,
+    "modules": 2,
+    "rgb": true,
+    "profile": "EXPO + XMP"
+   }
+  },
+  {
+   "id": "kingston-fury-rgb-32-6000",
+   "cat": "Memory",
+   "brand": "Kingston",
+   "name": "Fury Beast RGB 32 GB (2×16) DDR5-6000 CL30",
+   "price": 109,
+   "color": "#1C1C1C",
+   "memory": {
+    "type": "DDR5",
+    "capacityGb": 32,
+    "speed": 6000,
+    "cl": 30,
+    "modules": 2,
+    "rgb": true,
+    "profile": "EXPO + XMP"
+   }
+  },
+  {
+   "id": "corsair-v-32-6000",
+   "cat": "Memory",
+   "brand": "Corsair",
+   "name": "Vengeance RGB 32 GB (2×16) DDR5-6000 CL30",
+   "price": 114,
+   "color": "#1A1A1A",
+   "memory": {
+    "type": "DDR5",
+    "capacityGb": 32,
+    "speed": 6000,
+    "cl": 30,
+    "modules": 2,
+    "rgb": true,
+    "profile": "EXPO + XMP"
+   }
+  },
+  {
+   "id": "adata-lancer-32-6000",
+   "cat": "Memory",
+   "brand": "ADATA",
+   "name": "XPG Lancer RGB 32 GB (2×16) DDR5-6000 CL30",
+   "price": 109,
+   "color": "#1A1A1A",
+   "memory": {
+    "type": "DDR5",
+    "capacityGb": 32,
+    "speed": 6000,
+    "cl": 30,
+    "modules": 2,
+    "rgb": true,
+    "profile": "EXPO + XMP"
+   }
+  },
+  {
+   "id": "corsair-dom-plat-32-6200",
+   "cat": "Memory",
+   "brand": "Corsair",
+   "name": "Dominator Platinum RGB 32 GB (2×16) DDR5-6200 CL36",
+   "price": 179,
+   "color": "#1A1A1A",
+   "memory": {
+    "type": "DDR5",
+    "capacityGb": 32,
+    "speed": 6200,
+    "cl": 36,
+    "modules": 2,
+    "rgb": true,
+    "profile": "EXPO + XMP"
+   }
+  },
+  {
+   "id": "gskill-z5-32-8000",
+   "cat": "Memory",
+   "brand": "G.Skill",
+   "name": "Trident Z5 RGB 32 GB (2×16) DDR5-8000 CL38",
+   "price": 219,
+   "color": "#C0C3C8",
+   "memory": {
+    "type": "DDR5",
+    "capacityGb": 32,
+    "speed": 8000,
+    "cl": 38,
+    "modules": 2,
+    "rgb": true,
+    "profile": "XMP"
+   }
+  },
+  {
+   "id": "gskill-z5-48-7200",
+   "cat": "Memory",
+   "brand": "G.Skill",
+   "name": "Trident Z5 RGB 48 GB (2×24) DDR5-7200 CL34",
+   "price": 189,
+   "color": "#C0C3C8",
+   "memory": {
+    "type": "DDR5",
+    "capacityGb": 48,
+    "speed": 7200,
+    "cl": 34,
+    "modules": 2,
+    "rgb": true,
+    "profile": "XMP"
+   }
+  },
+  {
+   "id": "kingston-renegade-48-7200",
+   "cat": "Memory",
+   "brand": "Kingston",
+   "name": "Fury Renegade RGB 48 GB (2×24) DDR5-7200 CL38",
+   "price": 179,
+   "color": "#1C1C1C",
+   "memory": {
+    "type": "DDR5",
+    "capacityGb": 48,
+    "speed": 7200,
+    "cl": 38,
+    "modules": 2,
+    "rgb": true,
+    "profile": "XMP"
+   }
+  },
+  {
+   "id": "crucial-pro-64-5600",
+   "cat": "Memory",
+   "brand": "Crucial",
+   "name": "Pro 64 GB (2×32) DDR5-5600 CL46",
+   "price": 149,
+   "color": "#2B2D30",
+   "memory": {
+    "type": "DDR5",
+    "capacityGb": 64,
+    "speed": 5600,
+    "cl": 46,
+    "modules": 2,
+    "rgb": false,
+    "profile": "EXPO + XMP"
+   }
+  },
+  {
+   "id": "kingston-fury-64-5600",
+   "cat": "Memory",
+   "brand": "Kingston",
+   "name": "Fury Beast 64 GB (2×32) DDR5-5600 CL40",
+   "price": 169,
+   "color": "#1C1C1C",
+   "memory": {
+    "type": "DDR5",
+    "capacityGb": 64,
+    "speed": 5600,
+    "cl": 40,
+    "modules": 2,
+    "rgb": false,
+    "profile": "EXPO + XMP"
+   }
+  },
+  {
+   "id": "corsair-v-64-6000",
+   "cat": "Memory",
+   "brand": "Corsair",
+   "name": "Vengeance RGB 64 GB (2×32) DDR5-6000 CL30",
+   "price": 199,
+   "color": "#1A1A1A",
+   "memory": {
+    "type": "DDR5",
+    "capacityGb": 64,
+    "speed": 6000,
+    "cl": 30,
+    "modules": 2,
+    "rgb": true,
+    "profile": "EXPO + XMP"
+   }
+  },
+  {
+   "id": "gskill-z5neo-64-6000",
+   "cat": "Memory",
+   "brand": "G.Skill",
+   "name": "Trident Z5 Neo RGB 64 GB (2×32) DDR5-6000 CL30",
+   "price": 219,
+   "color": "#1A1A1A",
+   "memory": {
+    "type": "DDR5",
+    "capacityGb": 64,
+    "speed": 6000,
+    "cl": 30,
+    "modules": 2,
+    "rgb": true,
+    "profile": "EXPO + XMP"
+   }
+  },
+  {
+   "id": "teamgroup-delta-64-6400",
+   "cat": "Memory",
+   "brand": "TeamGroup",
+   "name": "T-Force Delta RGB 64 GB (2×32) DDR5-6400 CL32",
+   "price": 209,
+   "color": "#F0F0F0",
+   "memory": {
+    "type": "DDR5",
+    "capacityGb": 64,
+    "speed": 6400,
+    "cl": 32,
+    "modules": 2,
+    "rgb": true,
+    "profile": "EXPO + XMP"
+   }
+  },
+  {
+   "id": "corsair-dom-titanium-64-6600",
+   "cat": "Memory",
+   "brand": "Corsair",
+   "name": "Dominator Titanium RGB 64 GB (2×32) DDR5-6600 CL32",
+   "price": 289,
+   "color": "#2A2A2A",
+   "memory": {
+    "type": "DDR5",
+    "capacityGb": 64,
+    "speed": 6600,
+    "cl": 32,
+    "modules": 2,
+    "rgb": true,
+    "profile": "XMP"
+   }
+  },
+  {
+   "id": "crucial-pro-96-5600",
+   "cat": "Memory",
+   "brand": "Crucial",
+   "name": "Pro 96 GB (2×48) DDR5-5600 CL46",
+   "price": 239,
+   "color": "#2B2D30",
+   "memory": {
+    "type": "DDR5",
+    "capacityGb": 96,
+    "speed": 5600,
+    "cl": 46,
+    "modules": 2,
+    "rgb": false,
+    "profile": "EXPO + XMP"
+   }
+  },
+  {
+   "id": "corsair-v-96-5600",
+   "cat": "Memory",
+   "brand": "Corsair",
+   "name": "Vengeance 96 GB (2×48) DDR5-5600 CL40",
+   "price": 249,
+   "color": "#111111",
+   "memory": {
+    "type": "DDR5",
+    "capacityGb": 96,
+    "speed": 5600,
+    "cl": 40,
+    "modules": 2,
+    "rgb": false,
+    "profile": "EXPO + XMP"
+   }
+  },
+  {
+   "id": "gskill-z5-96-6400",
+   "cat": "Memory",
+   "brand": "G.Skill",
+   "name": "Trident Z5 RGB 96 GB (2×48) DDR5-6400 CL32",
+   "price": 299,
+   "color": "#C0C3C8",
+   "memory": {
+    "type": "DDR5",
+    "capacityGb": 96,
+    "speed": 6400,
+    "cl": 32,
+    "modules": 2,
+    "rgb": true,
+    "profile": "EXPO + XMP"
+   }
+  },
+  {
+   "id": "gskill-flare-x5-128-5600",
+   "cat": "Memory",
+   "brand": "G.Skill",
+   "name": "Flare X5 128 GB (4×32) DDR5-5600 CL40",
+   "price": 399,
+   "color": "#1A1A1A",
+   "memory": {
+    "type": "DDR5",
+    "capacityGb": 128,
+    "speed": 5600,
+    "cl": 40,
+    "modules": 4,
+    "rgb": false,
+    "profile": "EXPO + XMP"
+   }
+  },
+  {
+   "id": "corsair-lpx-16-3200",
+   "cat": "Memory",
+   "brand": "Corsair",
+   "name": "Vengeance LPX 16 GB (2×8) DDR4-3200 CL16",
+   "price": 39,
+   "color": "#111111",
+   "memory": {
+    "type": "DDR4",
+    "capacityGb": 16,
+    "speed": 3200,
+    "cl": 16,
+    "modules": 2,
+    "rgb": false,
+    "profile": "XMP"
+   }
+  },
+  {
+   "id": "corsair-lpx-32-3200",
+   "cat": "Memory",
+   "brand": "Corsair",
+   "name": "Vengeance LPX 32 GB (2×16) DDR4-3200 CL16",
+   "price": 59,
+   "color": "#111111",
+   "memory": {
+    "type": "DDR4",
+    "capacityGb": 32,
+    "speed": 3200,
+    "cl": 16,
+    "modules": 2,
+    "rgb": false,
+    "profile": "XMP"
+   }
+  },
+  {
+   "id": "kingston-fury-32-3200",
+   "cat": "Memory",
+   "brand": "Kingston",
+   "name": "Fury Beast 32 GB (2×16) DDR4-3200 CL16",
+   "price": 59,
+   "color": "#1C1C1C",
+   "memory": {
+    "type": "DDR4",
+    "capacityGb": 32,
+    "speed": 3200,
+    "cl": 16,
+    "modules": 2,
+    "rgb": false,
+    "profile": "XMP"
+   }
+  },
+  {
+   "id": "teamgroup-vulcan-z-32-3200",
+   "cat": "Memory",
+   "brand": "TeamGroup",
+   "name": "T-Force Vulcan Z 32 GB (2×16) DDR4-3200 CL16",
+   "price": 54,
+   "color": "#5A1E1E",
+   "memory": {
+    "type": "DDR4",
+    "capacityGb": 32,
+    "speed": 3200,
+    "cl": 16,
+    "modules": 2,
+    "rgb": false,
+    "profile": "XMP"
+   }
+  },
+  {
+   "id": "gskill-ripjaws-v-32-3600",
+   "cat": "Memory",
+   "brand": "G.Skill",
+   "name": "Ripjaws V 32 GB (2×16) DDR4-3600 CL16",
+   "price": 64,
+   "color": "#1A1A1A",
+   "memory": {
+    "type": "DDR4",
+    "capacityGb": 32,
+    "speed": 3600,
+    "cl": 16,
+    "modules": 2,
+    "rgb": false,
+    "profile": "XMP"
+   }
+  },
+  {
+   "id": "gskill-tz-neo-32-3600",
+   "cat": "Memory",
+   "brand": "G.Skill",
+   "name": "Trident Z Neo 32 GB (2×16) DDR4-3600 CL16",
+   "price": 89,
+   "color": "#1A1A1A",
+   "memory": {
+    "type": "DDR4",
+    "capacityGb": 32,
+    "speed": 3600,
+    "cl": 16,
+    "modules": 2,
+    "rgb": true,
+    "profile": "XMP"
+   }
+  },
+  {
+   "id": "corsair-rgb-pro-32-3600",
+   "cat": "Memory",
+   "brand": "Corsair",
+   "name": "Vengeance RGB Pro 32 GB (2×16) DDR4-3600 CL18",
+   "price": 79,
+   "color": "#1A1A1A",
+   "memory": {
+    "type": "DDR4",
+    "capacityGb": 32,
+    "speed": 3600,
+    "cl": 18,
+    "modules": 2,
+    "rgb": true,
+    "profile": "XMP"
+   }
+  },
+  {
+   "id": "gskill-ripjaws-v-64-3600",
+   "cat": "Memory",
+   "brand": "G.Skill",
+   "name": "Ripjaws V 64 GB (2×32) DDR4-3600 CL18",
+   "price": 129,
+   "color": "#1A1A1A",
+   "memory": {
+    "type": "DDR4",
+    "capacityGb": 64,
+    "speed": 3600,
+    "cl": 18,
+    "modules": 2,
+    "rgb": false,
+    "profile": "XMP"
+   }
+  },
+  {
+   "id": "asus-rtx5090-astral",
+   "cat": "Gpu",
+   "brand": "ASUS",
+   "name": "ROG Astral RTX 5090 OC",
+   "price": 2799,
+   "color": "#1E1F22",
+   "gpu": {
+    "lengthMm": 358,
+    "slots": 3.8,
+    "powerW": 600,
+    "raster": 133,
+    "rt": 143,
+    "vramGb": 32,
+    "connector": "12V-2x6",
+    "memType": "GDDR7",
+    "boostMhz": 2610
+   }
+  },
+  {
+   "id": "nv-5090",
+   "cat": "Gpu",
+   "brand": "NVIDIA",
+   "name": "GeForce RTX 5090 Founders Edition",
+   "price": 1999,
+   "color": "#2A2B2E",
+   "gpu": {
+    "lengthMm": 304,
+    "slots": 2,
+    "powerW": 575,
+    "raster": 130,
+    "rt": 140,
+    "vramGb": 32,
+    "connector": "12V-2x6",
+    "memType": "GDDR7",
+    "boostMhz": 2407
+   }
+  },
+  {
+   "id": "msi-rtx5090-trio",
+   "cat": "Gpu",
+   "brand": "MSI",
+   "name": "RTX 5090 Gaming Trio OC",
+   "price": 2399,
+   "color": "#202124",
+   "gpu": {
+    "lengthMm": 359,
+    "slots": 3.5,
+    "powerW": 575,
+    "raster": 131,
+    "rt": 141,
+    "vramGb": 32,
+    "connector": "12V-2x6",
+    "memType": "GDDR7",
+    "boostMhz": 2482
+   }
+  },
+  {
+   "id": "nv-4090",
+   "cat": "Gpu",
+   "brand": "NVIDIA",
+   "name": "GeForce RTX 4090 Founders Edition",
+   "price": 1599,
+   "color": "#2A2B2E",
+   "gpu": {
+    "lengthMm": 304,
+    "slots": 3,
+    "powerW": 450,
+    "raster": 100,
+    "rt": 100,
+    "vramGb": 24,
+    "connector": "12V-2x6",
+    "memType": "GDDR6X",
+    "boostMhz": 2520
+   }
+  },
+  {
+   "id": "nv-5080",
+   "cat": "Gpu",
+   "brand": "NVIDIA",
+   "name": "GeForce RTX 5080 Founders Edition",
+   "price": 999,
+   "color": "#2A2B2E",
+   "gpu": {
+    "lengthMm": 304,
+    "slots": 2,
+    "powerW": 360,
+    "raster": 82,
+    "rt": 85,
+    "vramGb": 16,
+    "connector": "12V-2x6",
+    "memType": "GDDR7",
+    "boostMhz": 2617
+   }
+  },
+  {
+   "id": "gb-rtx5080-gaming",
+   "cat": "Gpu",
+   "brand": "Gigabyte",
+   "name": "RTX 5080 Gaming OC",
+   "price": 1199,
+   "color": "#232427",
+   "gpu": {
+    "lengthMm": 340,
+    "slots": 3.5,
+    "powerW": 360,
+    "raster": 84,
+    "rt": 87,
+    "vramGb": 16,
+    "connector": "12V-2x6",
+    "memType": "GDDR7",
+    "boostMhz": 2730
+   }
+  },
+  {
+   "id": "asus-rtx5080-prime",
+   "cat": "Gpu",
+   "brand": "ASUS",
+   "name": "Prime RTX 5080 OC",
+   "price": 1049,
+   "color": "#2B2C2F",
+   "gpu": {
+    "lengthMm": 304,
+    "slots": 2.5,
+    "powerW": 360,
+    "raster": 83,
+    "rt": 86,
+    "vramGb": 16,
+    "connector": "12V-2x6",
+    "memType": "GDDR7",
+    "boostMhz": 2680
+   }
+  },
+  {
+   "id": "nv-4080s",
+   "cat": "Gpu",
+   "brand": "NVIDIA",
+   "name": "GeForce RTX 4080 Super Founders Edition",
+   "price": 999,
+   "color": "#2A2B2E",
+   "gpu": {
+    "lengthMm": 310,
+    "slots": 3,
+    "powerW": 320,
+    "raster": 78,
+    "rt": 80,
+    "vramGb": 16,
+    "connector": "12V-2x6",
+    "memType": "GDDR6X",
+    "boostMhz": 2550
+   }
+  },
+  {
+   "id": "nv-5070ti",
+   "cat": "Gpu",
+   "brand": "ASUS",
+   "name": "TUF Gaming RTX 5070 Ti",
+   "price": 799,
+   "color": "#3B3D40",
+   "gpu": {
+    "lengthMm": 329,
+    "slots": 3.1,
+    "powerW": 300,
+    "raster": 70,
+    "rt": 70,
+    "vramGb": 16,
+    "connector": "12V-2x6",
+    "memType": "GDDR7",
+    "boostMhz": 2588
+   }
+  },
+  {
+   "id": "msi-rtx5070ti-ventus",
+   "cat": "Gpu",
+   "brand": "MSI",
+   "name": "RTX 5070 Ti Ventus 3X OC",
+   "price": 749,
+   "color": "#2F3236",
+   "gpu": {
+    "lengthMm": 303,
+    "slots": 2.5,
+    "powerW": 300,
+    "raster": 69,
+    "rt": 69,
+    "vramGb": 16,
+    "connector": "12V-2x6",
+    "memType": "GDDR7",
+    "boostMhz": 2482
+   }
+  },
+  {
+   "id": "asus-rtx4070tis-tuf",
+   "cat": "Gpu",
+   "brand": "ASUS",
+   "name": "TUF Gaming RTX 4070 Ti Super",
+   "price": 799,
+   "color": "#3B3D40",
+   "gpu": {
+    "lengthMm": 305,
+    "slots": 3.25,
+    "powerW": 285,
+    "raster": 66,
+    "rt": 64,
+    "vramGb": 16,
+    "connector": "12V-2x6",
+    "memType": "GDDR6X",
+    "boostMhz": 2670
+   }
+  },
+  {
+   "id": "nv-5070",
+   "cat": "Gpu",
+   "brand": "NVIDIA",
+   "name": "GeForce RTX 5070 Founders Edition",
+   "price": 549,
+   "color": "#2A2B2E",
+   "gpu": {
+    "lengthMm": 242,
+    "slots": 2,
+    "powerW": 250,
+    "raster": 55,
+    "rt": 55,
+    "vramGb": 12,
+    "connector": "12V-2x6",
+    "memType": "GDDR7",
+    "boostMhz": 2512
+   }
+  },
+  {
+   "id": "zotac-rtx5070-twin",
+   "cat": "Gpu",
+   "brand": "Zotac",
+   "name": "Gaming RTX 5070 Twin Edge OC",
+   "price": 559,
+   "color": "#2C2D30",
+   "gpu": {
+    "lengthMm": 232,
+    "slots": 2,
+    "powerW": 250,
+    "raster": 55,
+    "rt": 55,
+    "vramGb": 12,
+    "connector": "12V-2x6",
+    "memType": "GDDR7",
+    "boostMhz": 2542
+   }
+  },
+  {
+   "id": "nv-4070s",
+   "cat": "Gpu",
+   "brand": "NVIDIA",
+   "name": "GeForce RTX 4070 Super Founders Edition",
+   "price": 599,
+   "color": "#2A2B2E",
+   "gpu": {
+    "lengthMm": 244,
+    "slots": 2,
+    "powerW": 220,
+    "raster": 54,
+    "rt": 52,
+    "vramGb": 12,
+    "connector": "12V-2x6",
+    "memType": "GDDR6X",
+    "boostMhz": 2475
+   }
+  },
+  {
+   "id": "nv-4070",
+   "cat": "Gpu",
+   "brand": "NVIDIA",
+   "name": "GeForce RTX 4070 Founders Edition",
+   "price": 549,
+   "color": "#2A2B2E",
+   "gpu": {
+    "lengthMm": 244,
+    "slots": 2,
+    "powerW": 200,
+    "raster": 46,
+    "rt": 44,
+    "vramGb": 12,
+    "connector": "12V-2x6",
+    "memType": "GDDR6X",
+    "boostMhz": 2475
+   }
+  },
+  {
+   "id": "nv-5060ti",
+   "cat": "Gpu",
+   "brand": "MSI",
+   "name": "RTX 5060 Ti 16 GB Ventus 2X",
+   "price": 429,
+   "color": "#2F3236",
+   "gpu": {
+    "lengthMm": 199,
+    "slots": 2,
+    "powerW": 180,
+    "raster": 38,
+    "rt": 37,
+    "vramGb": 16,
+    "connector": "8-pin",
+    "memType": "GDDR7",
+    "boostMhz": 2572
+   }
+  },
+  {
+   "id": "msi-rtx5060ti8-ventus",
+   "cat": "Gpu",
+   "brand": "MSI",
+   "name": "RTX 5060 Ti 8 GB Ventus 2X",
+   "price": 379,
+   "color": "#2F3236",
+   "gpu": {
+    "lengthMm": 199,
+    "slots": 2,
+    "powerW": 180,
+    "raster": 37,
+    "rt": 36,
+    "vramGb": 8,
+    "connector": "8-pin",
+    "memType": "GDDR7",
+    "boostMhz": 2572
+   }
+  },
+  {
+   "id": "gb-rtx5060-windforce",
+   "cat": "Gpu",
+   "brand": "Gigabyte",
+   "name": "RTX 5060 Windforce OC 8 GB",
+   "price": 299,
+   "color": "#26282B",
+   "gpu": {
+    "lengthMm": 200,
+    "slots": 2,
+    "powerW": 145,
+    "raster": 32,
+    "rt": 31,
+    "vramGb": 8,
+    "connector": "8-pin",
+    "memType": "GDDR7",
+    "boostMhz": 2535
+   }
+  },
+  {
+   "id": "msi-rtx5050-ventus",
+   "cat": "Gpu",
+   "brand": "MSI",
+   "name": "RTX 5050 Ventus 2X OC 8 GB",
+   "price": 249,
+   "color": "#2F3236",
+   "gpu": {
+    "lengthMm": 199,
+    "slots": 2,
+    "powerW": 130,
+    "raster": 24,
+    "rt": 22,
+    "vramGb": 8,
+    "connector": "8-pin",
+    "memType": "GDDR6",
+    "boostMhz": 2617
+   }
+  },
+  {
+   "id": "msi-rtx4060ti16-gamingx",
+   "cat": "Gpu",
+   "brand": "MSI",
+   "name": "RTX 4060 Ti 16 GB Gaming X",
+   "price": 449,
+   "color": "#202124",
+   "gpu": {
+    "lengthMm": 247,
+    "slots": 2.5,
+    "powerW": 165,
+    "raster": 33,
+    "rt": 32,
+    "vramGb": 16,
+    "connector": "8-pin",
+    "memType": "GDDR6",
+    "boostMhz": 2685
+   }
+  },
+  {
+   "id": "nv-4060ti",
+   "cat": "Gpu",
+   "brand": "NVIDIA",
+   "name": "GeForce RTX 4060 Ti 8 GB Founders Edition",
+   "price": 399,
+   "color": "#2A2B2E",
+   "gpu": {
+    "lengthMm": 244,
+    "slots": 2,
+    "powerW": 160,
+    "raster": 33,
+    "rt": 32,
+    "vramGb": 8,
+    "connector": "12V-2x6",
+    "memType": "GDDR6",
+    "boostMhz": 2535
+   }
+  },
+  {
+   "id": "msi-rtx4060-ventus",
+   "cat": "Gpu",
+   "brand": "MSI",
+   "name": "RTX 4060 Ventus 2X 8 GB",
+   "price": 299,
+   "color": "#2F3236",
+   "gpu": {
+    "lengthMm": 199,
+    "slots": 2,
+    "powerW": 115,
+    "raster": 26,
+    "rt": 25,
+    "vramGb": 8,
+    "connector": "8-pin",
+    "memType": "GDDR6",
+    "boostMhz": 2490
+   }
+  },
+  {
+   "id": "nv-3080",
+   "cat": "Gpu",
+   "brand": "NVIDIA",
+   "name": "GeForce RTX 3080 10 GB Founders Edition (used)",
+   "price": 399,
+   "color": "#2A2B2E",
+   "gpu": {
+    "lengthMm": 285,
+    "slots": 2,
+    "powerW": 320,
+    "raster": 52,
+    "rt": 45,
+    "vramGb": 10,
+    "connector": "12-pin",
+    "memType": "GDDR6X",
+    "boostMhz": 1710
+   }
+  },
+  {
+   "id": "nv-3070",
+   "cat": "Gpu",
+   "brand": "NVIDIA",
+   "name": "GeForce RTX 3070 Founders Edition (used)",
+   "price": 279,
+   "color": "#2A2B2E",
+   "gpu": {
+    "lengthMm": 242,
+    "slots": 2,
+    "powerW": 220,
+    "raster": 40,
+    "rt": 34,
+    "vramGb": 8,
+    "connector": "12-pin",
+    "memType": "GDDR6",
+    "boostMhz": 1725
+   }
+  },
+  {
+   "id": "msi-rtx3060-ventus",
+   "cat": "Gpu",
+   "brand": "MSI",
+   "name": "RTX 3060 12 GB Ventus 2X",
+   "price": 279,
+   "color": "#2F3236",
+   "gpu": {
+    "lengthMm": 235,
+    "slots": 2,
+    "powerW": 170,
+    "raster": 25,
+    "rt": 21,
+    "vramGb": 12,
+    "connector": "8-pin",
+    "memType": "GDDR6",
+    "boostMhz": 1777
+   }
+  },
+  {
+   "id": "sapphire-9070xt-nitro",
+   "cat": "Gpu",
+   "brand": "Sapphire",
+   "name": "Nitro+ Radeon RX 9070 XT",
+   "price": 749,
+   "color": "#202124",
+   "gpu": {
+    "lengthMm": 320,
+    "slots": 3.2,
+    "powerW": 340,
+    "raster": 71,
+    "rt": 61,
+    "vramGb": 16,
+    "connector": "12V-2x6",
+    "memType": "GDDR6",
+    "boostMhz": 3060
+   }
+  },
+  {
+   "id": "amd-9070xt",
+   "cat": "Gpu",
+   "brand": "Sapphire",
+   "name": "Pulse Radeon RX 9070 XT",
+   "price": 649,
+   "color": "#232427",
+   "gpu": {
+    "lengthMm": 280,
+    "slots": 3,
+    "powerW": 304,
+    "raster": 68,
+    "rt": 58,
+    "vramGb": 16,
+    "connector": "8-pin",
+    "memType": "GDDR6",
+    "boostMhz": 2970
+   }
+  },
+  {
+   "id": "asrock-9070xt-steel",
+   "cat": "Gpu",
+   "brand": "ASRock",
+   "name": "Steel Legend Radeon RX 9070 XT",
+   "price": 669,
+   "color": "#D9DADC",
+   "gpu": {
+    "lengthMm": 294,
+    "slots": 3,
+    "powerW": 304,
+    "raster": 68,
+    "rt": 58,
+    "vramGb": 16,
+    "connector": "8-pin",
+    "memType": "GDDR6",
+    "boostMhz": 2970
+   }
+  },
+  {
+   "id": "amd-9070",
+   "cat": "Gpu",
+   "brand": "PowerColor",
+   "name": "Reaper Radeon RX 9070",
+   "price": 549,
+   "color": "#1E1F22",
+   "gpu": {
+    "lengthMm": 248,
+    "slots": 2,
+    "powerW": 220,
+    "raster": 60,
+    "rt": 50,
+    "vramGb": 16,
+    "connector": "8-pin",
+    "memType": "GDDR6",
+    "boostMhz": 2520
+   }
+  },
+  {
+   "id": "sapphire-9060xt16-pulse",
+   "cat": "Gpu",
+   "brand": "Sapphire",
+   "name": "Pulse Radeon RX 9060 XT 16 GB",
+   "price": 369,
+   "color": "#232427",
+   "gpu": {
+    "lengthMm": 240,
+    "slots": 2,
+    "powerW": 160,
+    "raster": 36,
+    "rt": 28,
+    "vramGb": 16,
+    "connector": "8-pin",
+    "memType": "GDDR6",
+    "boostMhz": 3130
+   }
+  },
+  {
+   "id": "xfx-9060xt8-swift",
+   "cat": "Gpu",
+   "brand": "XFX",
+   "name": "Swift Radeon RX 9060 XT 8 GB",
+   "price": 299,
+   "color": "#1B1C1F",
+   "gpu": {
+    "lengthMm": 230,
+    "slots": 2,
+    "powerW": 150,
+    "raster": 35,
+    "rt": 26,
+    "vramGb": 8,
+    "connector": "8-pin",
+    "memType": "GDDR6",
+    "boostMhz": 3130
+   }
+  },
+  {
+   "id": "amd-7900xtx",
+   "cat": "Gpu",
+   "brand": "AMD",
+   "name": "Radeon RX 7900 XTX",
+   "price": 899,
+   "color": "#1B1C1F",
+   "gpu": {
+    "lengthMm": 287,
+    "slots": 2.5,
+    "powerW": 355,
+    "raster": 80,
+    "rt": 55,
+    "vramGb": 24,
+    "connector": "8-pin",
+    "memType": "GDDR6",
+    "boostMhz": 2500
+   }
+  },
+  {
+   "id": "sapphire-7900xtx-nitro",
+   "cat": "Gpu",
+   "brand": "Sapphire",
+   "name": "Nitro+ Radeon RX 7900 XTX Vapor-X",
+   "price": 999,
+   "color": "#202124",
+   "gpu": {
+    "lengthMm": 320,
+    "slots": 3.5,
+    "powerW": 420,
+    "raster": 84,
+    "rt": 58,
+    "vramGb": 24,
+    "connector": "8-pin",
+    "memType": "GDDR6",
+    "boostMhz": 2680
+   }
+  },
+  {
+   "id": "amd-7900xt",
+   "cat": "Gpu",
+   "brand": "AMD",
+   "name": "Radeon RX 7900 XT",
+   "price": 679,
+   "color": "#1B1C1F",
+   "gpu": {
+    "lengthMm": 276,
+    "slots": 2.5,
+    "powerW": 315,
+    "raster": 70,
+    "rt": 47,
+    "vramGb": 20,
+    "connector": "8-pin",
+    "memType": "GDDR6",
+    "boostMhz": 2400
+   }
+  },
+  {
+   "id": "sapphire-7900gre-pulse",
+   "cat": "Gpu",
+   "brand": "Sapphire",
+   "name": "Pulse Radeon RX 7900 GRE",
+   "price": 549,
+   "color": "#232427",
+   "gpu": {
+    "lengthMm": 280,
+    "slots": 2.5,
+    "powerW": 260,
+    "raster": 56,
+    "rt": 38,
+    "vramGb": 16,
+    "connector": "8-pin",
+    "memType": "GDDR6",
+    "boostMhz": 2333
+   }
+  },
+  {
+   "id": "sapphire-7800xt-pulse",
+   "cat": "Gpu",
+   "brand": "Sapphire",
+   "name": "Pulse Radeon RX 7800 XT",
+   "price": 479,
+   "color": "#232427",
+   "gpu": {
+    "lengthMm": 280,
+    "slots": 2.5,
+    "powerW": 263,
+    "raster": 52,
+    "rt": 34,
+    "vramGb": 16,
+    "connector": "8-pin",
+    "memType": "GDDR6",
+    "boostMhz": 2430
+   }
+  },
+  {
+   "id": "sapphire-7700xt-pulse",
+   "cat": "Gpu",
+   "brand": "Sapphire",
+   "name": "Pulse Radeon RX 7700 XT",
+   "price": 399,
+   "color": "#232427",
+   "gpu": {
+    "lengthMm": 280,
+    "slots": 2.5,
+    "powerW": 245,
+    "raster": 44,
+    "rt": 29,
+    "vramGb": 12,
+    "connector": "8-pin",
+    "memType": "GDDR6",
+    "boostMhz": 2544
+   }
+  },
+  {
+   "id": "sapphire-7600xt-pulse",
+   "cat": "Gpu",
+   "brand": "Sapphire",
+   "name": "Pulse Radeon RX 7600 XT",
+   "price": 319,
+   "color": "#232427",
+   "gpu": {
+    "lengthMm": 240,
+    "slots": 2,
+    "powerW": 190,
+    "raster": 27,
+    "rt": 17,
+    "vramGb": 16,
+    "connector": "8-pin",
+    "memType": "GDDR6",
+    "boostMhz": 2755
+   }
+  },
+  {
+   "id": "amd-rx7600",
+   "cat": "Gpu",
+   "brand": "AMD",
+   "name": "Radeon RX 7600",
+   "price": 259,
+   "color": "#1B1C1F",
+   "gpu": {
+    "lengthMm": 204,
+    "slots": 2,
+    "powerW": 165,
+    "raster": 26,
+    "rt": 16,
+    "vramGb": 8,
+    "connector": "8-pin",
+    "memType": "GDDR6",
+    "boostMhz": 2655
+   }
+  },
+  {
+   "id": "amd-6800xt",
+   "cat": "Gpu",
+   "brand": "AMD",
+   "name": "Radeon RX 6800 XT (used)",
+   "price": 379,
+   "color": "#1B1C1F",
+   "gpu": {
+    "lengthMm": 267,
+    "slots": 2.5,
+    "powerW": 300,
+    "raster": 50,
+    "rt": 30,
+    "vramGb": 16,
+    "connector": "8-pin",
+    "memType": "GDDR6",
+    "boostMhz": 2250
+   }
+  },
+  {
+   "id": "amd-6700xt",
+   "cat": "Gpu",
+   "brand": "AMD",
+   "name": "Radeon RX 6700 XT (used)",
+   "price": 249,
+   "color": "#1B1C1F",
+   "gpu": {
+    "lengthMm": 267,
+    "slots": 2,
+    "powerW": 230,
+    "raster": 36,
+    "rt": 21,
+    "vramGb": 12,
+    "connector": "8-pin",
+    "memType": "GDDR6",
+    "boostMhz": 2581
+   }
+  },
+  {
+   "id": "intel-b580",
+   "cat": "Gpu",
+   "brand": "Intel",
+   "name": "Arc B580 Limited Edition",
+   "price": 249,
+   "color": "#202124",
+   "gpu": {
+    "lengthMm": 272,
+    "slots": 2,
+    "powerW": 190,
+    "raster": 30,
+    "rt": 28,
+    "vramGb": 12,
+    "connector": "8-pin",
+    "memType": "GDDR6",
+    "boostMhz": 2670
+   }
+  },
+  {
+   "id": "asrock-b570-challenger",
+   "cat": "Gpu",
+   "brand": "ASRock",
+   "name": "Arc B570 Challenger OC",
+   "price": 219,
+   "color": "#1E1F22",
+   "gpu": {
+    "lengthMm": 229,
+    "slots": 2,
+    "powerW": 150,
+    "raster": 26,
+    "rt": 24,
+    "vramGb": 10,
+    "connector": "8-pin",
+    "memType": "GDDR6",
+    "boostMhz": 2600
+   }
+  },
+  {
+   "id": "intel-a770",
+   "cat": "Gpu",
+   "brand": "Intel",
+   "name": "Arc A770 16 GB Limited Edition",
+   "price": 279,
+   "color": "#202124",
+   "gpu": {
+    "lengthMm": 267,
+    "slots": 2,
+    "powerW": 225,
+    "raster": 25,
+    "rt": 22,
+    "vramGb": 16,
+    "connector": "8-pin",
+    "memType": "GDDR6",
+    "boostMhz": 2100
+   }
+  },
+  {
+   "id": "intel-a750",
+   "cat": "Gpu",
+   "brand": "Intel",
+   "name": "Arc A750 Limited Edition",
+   "price": 199,
+   "color": "#202124",
+   "gpu": {
+    "lengthMm": 267,
+    "slots": 2,
+    "powerW": 225,
+    "raster": 22,
+    "rt": 19,
+    "vramGb": 8,
+    "connector": "8-pin",
+    "memType": "GDDR6",
+    "boostMhz": 2050
+   }
+  },
+  {
+   "id": "samsung-9100pro-1t",
+   "cat": "Storage",
+   "brand": "Samsung",
+   "name": "9100 Pro 1 TB (PCIe 5.0)",
+   "price": 149,
+   "color": "#1A1A1A",
+   "storage": {
+    "iface": "NVMe5",
+    "capacityGb": 1000,
+    "readMBs": 14700,
+    "writeMBs": 13300,
+    "dram": true,
+    "tbw": 600,
+    "formFactor": "M.2 2280"
+   }
+  },
+  {
+   "id": "samsung-9100pro-2t",
+   "cat": "Storage",
+   "brand": "Samsung",
+   "name": "9100 Pro 2 TB (PCIe 5.0)",
+   "price": 229,
+   "color": "#1A1A1A",
+   "storage": {
+    "iface": "NVMe5",
+    "capacityGb": 2000,
+    "readMBs": 14700,
+    "writeMBs": 13400,
+    "dram": true,
+    "tbw": 1200,
+    "formFactor": "M.2 2280"
+   }
+  },
+  {
+   "id": "samsung-9100pro-4t",
+   "cat": "Storage",
+   "brand": "Samsung",
+   "name": "9100 Pro 4 TB (PCIe 5.0)",
+   "price": 399,
+   "color": "#1A1A1A",
+   "storage": {
+    "iface": "NVMe5",
+    "capacityGb": 4000,
+    "readMBs": 14800,
+    "writeMBs": 13400,
+    "dram": true,
+    "tbw": 2400,
+    "formFactor": "M.2 2280"
+   }
+  },
+  {
+   "id": "crucial-t705-1t",
+   "cat": "Storage",
+   "brand": "Crucial",
+   "name": "T705 1 TB (PCIe 5.0)",
+   "price": 169,
+   "color": "#1A1A1A",
+   "storage": {
+    "iface": "NVMe5",
+    "capacityGb": 1000,
+    "readMBs": 13600,
+    "writeMBs": 10200,
+    "dram": true,
+    "tbw": 600,
+    "formFactor": "M.2 2280"
+   }
+  },
+  {
+   "id": "crucial-t705-2t",
+   "cat": "Storage",
+   "brand": "Crucial",
+   "name": "T705 2 TB (PCIe 5.0)",
+   "price": 259,
+   "color": "#1A1A1A",
+   "storage": {
+    "iface": "NVMe5",
+    "capacityGb": 2000,
+    "readMBs": 14500,
+    "writeMBs": 12700,
+    "dram": true,
+    "tbw": 1200,
+    "formFactor": "M.2 2280"
+   }
+  },
+  {
+   "id": "crucial-t710-2t",
+   "cat": "Storage",
+   "brand": "Crucial",
+   "name": "T710 2 TB (PCIe 5.0)",
+   "price": 259,
+   "color": "#1A1A1A",
+   "storage": {
+    "iface": "NVMe5",
+    "capacityGb": 2000,
+    "readMBs": 14900,
+    "writeMBs": 13800,
+    "dram": true,
+    "tbw": 1200,
+    "formFactor": "M.2 2280"
+   }
+  },
+  {
+   "id": "crucial-t700-2t",
+   "cat": "Storage",
+   "brand": "Crucial",
+   "name": "T700 2 TB (PCIe 5.0)",
+   "price": 199,
+   "color": "#1A1A1A",
+   "storage": {
+    "iface": "NVMe5",
+    "capacityGb": 2000,
+    "readMBs": 12400,
+    "writeMBs": 11800,
+    "dram": true,
+    "tbw": 1200,
+    "formFactor": "M.2 2280"
+   }
+  },
+  {
+   "id": "wd-sn8100-2t",
+   "cat": "Storage",
+   "brand": "WD",
+   "name": "WD_Black SN8100 2 TB (PCIe 5.0)",
+   "price": 279,
+   "color": "#111111",
+   "storage": {
+    "iface": "NVMe5",
+    "capacityGb": 2000,
+    "readMBs": 14900,
+    "writeMBs": 14000,
+    "dram": true,
+    "tbw": 1200,
+    "formFactor": "M.2 2280"
+   }
+  },
+  {
+   "id": "corsair-mp700-pro-2t",
+   "cat": "Storage",
+   "brand": "Corsair",
+   "name": "MP700 Pro 2 TB (PCIe 5.0)",
+   "price": 219,
+   "color": "#1A1A1A",
+   "storage": {
+    "iface": "NVMe5",
+    "capacityGb": 2000,
+    "readMBs": 12400,
+    "writeMBs": 11800,
+    "dram": true,
+    "tbw": 1400,
+    "formFactor": "M.2 2280"
+   }
+  },
+  {
+   "id": "kingston-renegade-g5-2t",
+   "cat": "Storage",
+   "brand": "Kingston",
+   "name": "Fury Renegade G5 2 TB (PCIe 5.0)",
+   "price": 229,
+   "color": "#1C1C1C",
+   "storage": {
+    "iface": "NVMe5",
+    "capacityGb": 2000,
+    "readMBs": 14700,
+    "writeMBs": 14000,
+    "dram": true,
+    "tbw": 2000,
+    "formFactor": "M.2 2280"
+   }
+  },
+  {
+   "id": "samsung-990pro-1t",
+   "cat": "Storage",
+   "brand": "Samsung",
+   "name": "990 Pro 1 TB (PCIe 4.0)",
+   "price": 109,
+   "color": "#1A1A1A",
+   "storage": {
+    "iface": "NVMe4",
+    "capacityGb": 1000,
+    "readMBs": 7450,
+    "writeMBs": 6900,
+    "dram": true,
+    "tbw": 600,
+    "formFactor": "M.2 2280"
+   }
+  },
+  {
+   "id": "samsung-990pro-2t",
+   "cat": "Storage",
+   "brand": "Samsung",
+   "name": "990 Pro 2 TB (PCIe 4.0)",
+   "price": 169,
+   "color": "#1A1A1A",
+   "storage": {
+    "iface": "NVMe4",
+    "capacityGb": 2000,
+    "readMBs": 7450,
+    "writeMBs": 6900,
+    "dram": true,
+    "tbw": 1200,
+    "formFactor": "M.2 2280"
+   }
+  },
+  {
+   "id": "samsung-990pro-4t",
+   "cat": "Storage",
+   "brand": "Samsung",
+   "name": "990 Pro 4 TB (PCIe 4.0)",
+   "price": 319,
+   "color": "#1A1A1A",
+   "storage": {
+    "iface": "NVMe4",
+    "capacityGb": 4000,
+    "readMBs": 7450,
+    "writeMBs": 6900,
+    "dram": true,
+    "tbw": 2400,
+    "formFactor": "M.2 2280"
+   }
+  },
+  {
+   "id": "samsung-990evoplus-1t",
+   "cat": "Storage",
+   "brand": "Samsung",
+   "name": "990 EVO Plus 1 TB (PCIe 4.0)",
+   "price": 79,
+   "color": "#1A1A1A",
+   "storage": {
+    "iface": "NVMe4",
+    "capacityGb": 1000,
+    "readMBs": 7150,
+    "writeMBs": 6300,
+    "dram": false,
+    "tbw": 600,
+    "formFactor": "M.2 2280"
+   }
+  },
+  {
+   "id": "samsung-990evoplus-2t",
+   "cat": "Storage",
+   "brand": "Samsung",
+   "name": "990 EVO Plus 2 TB (PCIe 4.0)",
+   "price": 129,
+   "color": "#1A1A1A",
+   "storage": {
+    "iface": "NVMe4",
+    "capacityGb": 2000,
+    "readMBs": 7250,
+    "writeMBs": 6300,
+    "dram": false,
+    "tbw": 1200,
+    "formFactor": "M.2 2280"
+   }
+  },
+  {
+   "id": "wd-sn850x-1t",
+   "cat": "Storage",
+   "brand": "WD",
+   "name": "WD_Black SN850X 1 TB (PCIe 4.0)",
+   "price": 89,
+   "color": "#111111",
+   "storage": {
+    "iface": "NVMe4",
+    "capacityGb": 1000,
+    "readMBs": 7300,
+    "writeMBs": 6300,
+    "dram": true,
+    "tbw": 600,
+    "formFactor": "M.2 2280"
+   }
+  },
+  {
+   "id": "wd-sn850x-2t",
+   "cat": "Storage",
+   "brand": "WD",
+   "name": "WD_Black SN850X 2 TB (PCIe 4.0)",
+   "price": 149,
+   "color": "#111111",
+   "storage": {
+    "iface": "NVMe4",
+    "capacityGb": 2000,
+    "readMBs": 7300,
+    "writeMBs": 6600,
+    "dram": true,
+    "tbw": 1200,
+    "formFactor": "M.2 2280"
+   }
+  },
+  {
+   "id": "wd-sn850x-4t",
+   "cat": "Storage",
+   "brand": "WD",
+   "name": "WD_Black SN850X 4 TB (PCIe 4.0)",
+   "price": 279,
+   "color": "#111111",
+   "storage": {
+    "iface": "NVMe4",
+    "capacityGb": 4000,
+    "readMBs": 7300,
+    "writeMBs": 6600,
+    "dram": true,
+    "tbw": 2400,
+    "formFactor": "M.2 2280"
+   }
+  },
+  {
+   "id": "wd-sn7100-2t",
+   "cat": "Storage",
+   "brand": "WD",
+   "name": "WD_Black SN7100 2 TB (PCIe 4.0)",
+   "price": 139,
+   "color": "#111111",
+   "storage": {
+    "iface": "NVMe4",
+    "capacityGb": 2000,
+    "readMBs": 7250,
+    "writeMBs": 6900,
+    "dram": false,
+    "tbw": 1200,
+    "formFactor": "M.2 2280"
+   }
+  },
+  {
+   "id": "wd-sn5000-1t",
+   "cat": "Storage",
+   "brand": "WD",
+   "name": "WD Blue SN5000 1 TB (PCIe 4.0)",
+   "price": 64,
+   "color": "#1F3A6E",
+   "storage": {
+    "iface": "NVMe4",
+    "capacityGb": 1000,
+    "readMBs": 5150,
+    "writeMBs": 4900,
+    "dram": false,
+    "tbw": 600,
+    "formFactor": "M.2 2280"
+   }
+  },
+  {
+   "id": "crucial-t500-2t",
+   "cat": "Storage",
+   "brand": "Crucial",
+   "name": "T500 2 TB (PCIe 4.0)",
+   "price": 139,
+   "color": "#1A1A1A",
+   "storage": {
+    "iface": "NVMe4",
+    "capacityGb": 2000,
+    "readMBs": 7400,
+    "writeMBs": 7000,
+    "dram": true,
+    "tbw": 1200,
+    "formFactor": "M.2 2280"
+   }
+  },
+  {
+   "id": "crucial-p3plus-1t",
+   "cat": "Storage",
+   "brand": "Crucial",
+   "name": "P3 Plus 1 TB (PCIe 4.0)",
+   "price": 59,
+   "color": "#1F2A44",
+   "storage": {
+    "iface": "NVMe4",
+    "capacityGb": 1000,
+    "readMBs": 5000,
+    "writeMBs": 4200,
+    "dram": false,
+    "tbw": 220,
+    "formFactor": "M.2 2280"
+   }
+  },
+  {
+   "id": "crucial-p3plus-2t",
+   "cat": "Storage",
+   "brand": "Crucial",
+   "name": "P3 Plus 2 TB (PCIe 4.0)",
+   "price": 109,
+   "color": "#1F2A44",
+   "storage": {
+    "iface": "NVMe4",
+    "capacityGb": 2000,
+    "readMBs": 5000,
+    "writeMBs": 4200,
+    "dram": false,
+    "tbw": 440,
+    "formFactor": "M.2 2280"
+   }
+  },
+  {
+   "id": "crucial-p310-1t",
+   "cat": "Storage",
+   "brand": "Crucial",
+   "name": "P310 1 TB (PCIe 4.0)",
+   "price": 69,
+   "color": "#1F2A44",
+   "storage": {
+    "iface": "NVMe4",
+    "capacityGb": 1000,
+    "readMBs": 7100,
+    "writeMBs": 6000,
+    "dram": false,
+    "tbw": 220,
+    "formFactor": "M.2 2280"
+   }
+  },
+  {
+   "id": "kingston-kc3000-2t",
+   "cat": "Storage",
+   "brand": "Kingston",
+   "name": "KC3000 2 TB (PCIe 4.0)",
+   "price": 139,
+   "color": "#1C1C1C",
+   "storage": {
+    "iface": "NVMe4",
+    "capacityGb": 2048,
+    "readMBs": 7000,
+    "writeMBs": 7000,
+    "dram": true,
+    "tbw": 1600,
+    "formFactor": "M.2 2280"
+   }
+  },
+  {
+   "id": "kingston-nv3-1t",
+   "cat": "Storage",
+   "brand": "Kingston",
+   "name": "NV3 1 TB (PCIe 4.0)",
+   "price": 59,
+   "color": "#1C1C1C",
+   "storage": {
+    "iface": "NVMe4",
+    "capacityGb": 1000,
+    "readMBs": 6000,
+    "writeMBs": 4000,
+    "dram": false,
+    "tbw": 320,
+    "formFactor": "M.2 2280"
+   }
+  },
+  {
+   "id": "kingston-nv3-2t",
+   "cat": "Storage",
+   "brand": "Kingston",
+   "name": "NV3 2 TB (PCIe 4.0)",
+   "price": 99,
+   "color": "#1C1C1C",
+   "storage": {
+    "iface": "NVMe4",
+    "capacityGb": 2000,
+    "readMBs": 6000,
+    "writeMBs": 5000,
+    "dram": false,
+    "tbw": 640,
+    "formFactor": "M.2 2280"
+   }
+  },
+  {
+   "id": "skhynix-p41-2t",
+   "cat": "Storage",
+   "brand": "SK hynix",
+   "name": "Platinum P41 2 TB (PCIe 4.0)",
+   "price": 149,
+   "color": "#1A1A1A",
+   "storage": {
+    "iface": "NVMe4",
+    "capacityGb": 2000,
+    "readMBs": 7000,
+    "writeMBs": 6500,
+    "dram": true,
+    "tbw": 1200,
+    "formFactor": "M.2 2280"
+   }
+  },
+  {
+   "id": "teamgroup-mp44-2t",
+   "cat": "Storage",
+   "brand": "TeamGroup",
+   "name": "MP44 2 TB (PCIe 4.0)",
+   "price": 119,
+   "color": "#1A1A1A",
+   "storage": {
+    "iface": "NVMe4",
+    "capacityGb": 2000,
+    "readMBs": 7400,
+    "writeMBs": 6900,
+    "dram": false,
+    "tbw": 1500,
+    "formFactor": "M.2 2280"
+   }
+  },
+  {
+   "id": "lexar-nm790-2t",
+   "cat": "Storage",
+   "brand": "Lexar",
+   "name": "NM790 2 TB (PCIe 4.0)",
+   "price": 119,
+   "color": "#1A1A1A",
+   "storage": {
+    "iface": "NVMe4",
+    "capacityGb": 2000,
+    "readMBs": 7400,
+    "writeMBs": 6500,
+    "dram": false,
+    "tbw": 1500,
+    "formFactor": "M.2 2280"
+   }
+  },
+  {
+   "id": "sabrent-rocket4plus-2t",
+   "cat": "Storage",
+   "brand": "Sabrent",
+   "name": "Rocket 4 Plus 2 TB (PCIe 4.0)",
+   "price": 149,
+   "color": "#1A1A1A",
+   "storage": {
+    "iface": "NVMe4",
+    "capacityGb": 2000,
+    "readMBs": 7100,
+    "writeMBs": 6600,
+    "dram": true,
+    "tbw": 1400,
+    "formFactor": "M.2 2280"
+   }
+  },
+  {
+   "id": "samsung-980-1t",
+   "cat": "Storage",
+   "brand": "Samsung",
+   "name": "980 1 TB (PCIe 3.0)",
+   "price": 59,
+   "color": "#1A1A1A",
+   "storage": {
+    "iface": "NVMe3",
+    "capacityGb": 1000,
+    "readMBs": 3500,
+    "writeMBs": 3000,
+    "dram": false,
+    "tbw": 600,
+    "formFactor": "M.2 2280"
+   }
+  },
+  {
+   "id": "crucial-p3-1t",
+   "cat": "Storage",
+   "brand": "Crucial",
+   "name": "P3 1 TB (PCIe 3.0)",
+   "price": 49,
+   "color": "#1F2A44",
+   "storage": {
+    "iface": "NVMe3",
+    "capacityGb": 1000,
+    "readMBs": 3500,
+    "writeMBs": 3000,
+    "dram": false,
+    "tbw": 220,
+    "formFactor": "M.2 2280"
+   }
+  },
+  {
+   "id": "samsung-870evo-1t",
+   "cat": "Storage",
+   "brand": "Samsung",
+   "name": "870 EVO 1 TB (SATA)",
+   "price": 89,
+   "color": "#2B2B2B",
+   "storage": {
+    "iface": "SATA",
+    "capacityGb": 1000,
+    "readMBs": 560,
+    "writeMBs": 530,
+    "dram": true,
+    "tbw": 600,
+    "formFactor": "2.5-inch"
+   }
+  },
+  {
+   "id": "samsung-870evo-2t",
+   "cat": "Storage",
+   "brand": "Samsung",
+   "name": "870 EVO 2 TB (SATA)",
+   "price": 159,
+   "color": "#2B2B2B",
+   "storage": {
+    "iface": "SATA",
+    "capacityGb": 2000,
+    "readMBs": 560,
+    "writeMBs": 530,
+    "dram": true,
+    "tbw": 1200,
+    "formFactor": "2.5-inch"
+   }
+  },
+  {
+   "id": "crucial-mx500-1t",
+   "cat": "Storage",
+   "brand": "Crucial",
+   "name": "MX500 1 TB (SATA)",
+   "price": 64,
+   "color": "#2B2B2B",
+   "storage": {
+    "iface": "SATA",
+    "capacityGb": 1000,
+    "readMBs": 560,
+    "writeMBs": 510,
+    "dram": true,
+    "tbw": 360,
+    "formFactor": "2.5-inch"
+   }
+  },
+  {
+   "id": "crucial-mx500-2t",
+   "cat": "Storage",
+   "brand": "Crucial",
+   "name": "MX500 2 TB (SATA)",
+   "price": 119,
+   "color": "#2B2B2B",
+   "storage": {
+    "iface": "SATA",
+    "capacityGb": 2000,
+    "readMBs": 560,
+    "writeMBs": 510,
+    "dram": true,
+    "tbw": 700,
+    "formFactor": "2.5-inch"
+   }
+  },
+  {
+   "id": "wd-sa510-1t",
+   "cat": "Storage",
+   "brand": "WD",
+   "name": "WD Blue SA510 1 TB (SATA)",
+   "price": 59,
+   "color": "#1F3A6E",
+   "storage": {
+    "iface": "SATA",
+    "capacityGb": 1000,
+    "readMBs": 560,
+    "writeMBs": 520,
+    "dram": false,
+    "tbw": 400,
+    "formFactor": "2.5-inch"
+   }
+  },
+  {
+   "id": "seagate-barracuda-4t",
+   "cat": "Storage",
+   "brand": "Seagate",
+   "name": "BarraCuda 4 TB (hard drive)",
+   "price": 79,
+   "color": "#3A4A5A",
+   "storage": {
+    "iface": "HDD",
+    "capacityGb": 4000,
+    "readMBs": 190,
+    "writeMBs": 190,
+    "dram": false,
+    "tbw": 0,
+    "formFactor": "3.5-inch"
+   }
+  },
+  {
+   "id": "wd-blue-2t",
+   "cat": "Storage",
+   "brand": "WD",
+   "name": "WD Blue 2 TB (hard drive)",
+   "price": 59,
+   "color": "#1F3A6E",
+   "storage": {
+    "iface": "HDD",
+    "capacityGb": 2000,
+    "readMBs": 180,
+    "writeMBs": 180,
+    "dram": false,
+    "tbw": 0,
+    "formFactor": "3.5-inch"
+   }
+  },
+  {
+   "id": "msi-a650bn",
+   "cat": "Psu",
+   "brand": "MSI",
+   "name": "MAG A650BN 650 W",
+   "price": 59,
+   "color": "#1A1A1A",
+   "psu": {
+    "watts": 650,
+    "form": "ATX",
+    "rating": "80+ Bronze",
+    "native12v2x6": false,
+    "modular": "Non-modular",
+    "atx31": false
+   }
+  },
+  {
+   "id": "corsair-cx650",
+   "cat": "Psu",
+   "brand": "Corsair",
+   "name": "CX650 650 W",
+   "price": 69,
+   "color": "#1A1A1A",
+   "psu": {
+    "watts": 650,
+    "form": "ATX",
+    "rating": "80+ Bronze",
+    "native12v2x6": false,
+    "modular": "Non-modular",
+    "atx31": false
+   }
+  },
+  {
+   "id": "bequiet-sfx-power-3-450",
+   "cat": "Psu",
+   "brand": "be quiet!",
+   "name": "SFX Power 3 450 W",
+   "price": 79,
+   "color": "#1A1A1A",
+   "psu": {
+    "watts": 450,
+    "form": "SFX",
+    "rating": "80+ Bronze",
+    "native12v2x6": false,
+    "modular": "Non-modular",
+    "atx31": false
+   }
+  },
+  {
+   "id": "corsair-rm750e",
+   "cat": "Psu",
+   "brand": "Corsair",
+   "name": "RM750e (2025) 750 W",
+   "price": 99,
+   "color": "#1A1A1A",
+   "psu": {
+    "watts": 750,
+    "form": "ATX",
+    "rating": "80+ Gold",
+    "native12v2x6": true,
+    "modular": "Fully modular",
+    "atx31": true
+   }
+  },
+  {
+   "id": "corsair-rm750x",
+   "cat": "Psu",
+   "brand": "Corsair",
+   "name": "RM750x (2024) 750 W",
+   "price": 119,
+   "color": "#1A1A1A",
+   "psu": {
+    "watts": 750,
+    "form": "ATX",
+    "rating": "80+ Gold",
+    "native12v2x6": true,
+    "modular": "Fully modular",
+    "atx31": true
+   }
+  },
+  {
+   "id": "msi-a750gl",
+   "cat": "Psu",
+   "brand": "MSI",
+   "name": "MAG A750GL PCIE5 750 W",
+   "price": 89,
+   "color": "#1A1A1A",
+   "psu": {
+    "watts": 750,
+    "form": "ATX",
+    "rating": "80+ Gold",
+    "native12v2x6": true,
+    "modular": "Fully modular",
+    "atx31": true
+   }
+  },
+  {
+   "id": "seasonic-focus-gx-750",
+   "cat": "Psu",
+   "brand": "Seasonic",
+   "name": "Focus GX-750 ATX 3 750 W",
+   "price": 119,
+   "color": "#1A1A1A",
+   "psu": {
+    "watts": 750,
+    "form": "ATX",
+    "rating": "80+ Gold",
+    "native12v2x6": true,
+    "modular": "Fully modular",
+    "atx31": true
+   }
+  },
+  {
+   "id": "bequiet-pure-power-12-750",
+   "cat": "Psu",
+   "brand": "be quiet!",
+   "name": "Pure Power 12 750 W",
+   "price": 109,
+   "color": "#1A1A1A",
+   "psu": {
+    "watts": 750,
+    "form": "ATX",
+    "rating": "80+ Gold",
+    "native12v2x6": true,
+    "modular": "Semi-modular",
+    "atx31": true
+   }
+  },
+  {
+   "id": "cm-mwe-gold-750-v2",
+   "cat": "Psu",
+   "brand": "Cooler Master",
+   "name": "MWE Gold 750 V2 750 W",
+   "price": 89,
+   "color": "#1A1A1A",
+   "psu": {
+    "watts": 750,
+    "form": "ATX",
+    "rating": "80+ Gold",
+    "native12v2x6": false,
+    "modular": "Fully modular",
+    "atx31": false
+   }
+  },
+  {
+   "id": "corsair-sf750",
+   "cat": "Psu",
+   "brand": "Corsair",
+   "name": "SF750 (2024) 750 W SFX",
+   "price": 169,
+   "color": "#1A1A1A",
+   "psu": {
+    "watts": 750,
+    "form": "SFX",
+    "rating": "80+ Platinum",
+    "native12v2x6": true,
+    "modular": "Fully modular",
+    "atx31": true
+   }
+  },
+  {
+   "id": "seasonic-focus-sgx-750",
+   "cat": "Psu",
+   "brand": "Seasonic",
+   "name": "Focus SGX-750 750 W SFX-L",
+   "price": 159,
+   "color": "#1A1A1A",
+   "psu": {
+    "watts": 750,
+    "form": "SFX",
+    "rating": "80+ Gold",
+    "native12v2x6": false,
+    "modular": "Fully modular",
+    "atx31": false
+   }
+  },
+  {
+   "id": "corsair-rm850e",
+   "cat": "Psu",
+   "brand": "Corsair",
+   "name": "RM850e (2025) 850 W",
+   "price": 109,
+   "color": "#1A1A1A",
+   "psu": {
+    "watts": 850,
+    "form": "ATX",
+    "rating": "80+ Gold",
+    "native12v2x6": true,
+    "modular": "Fully modular",
+    "atx31": true
+   }
+  },
+  {
+   "id": "corsair-rm850x",
+   "cat": "Psu",
+   "brand": "Corsair",
+   "name": "RM850x (2024) 850 W",
+   "price": 139,
+   "color": "#1A1A1A",
+   "psu": {
+    "watts": 850,
+    "form": "ATX",
+    "rating": "80+ Gold",
+    "native12v2x6": true,
+    "modular": "Fully modular",
+    "atx31": true
+   }
+  },
+  {
+   "id": "msi-a850gl",
+   "cat": "Psu",
+   "brand": "MSI",
+   "name": "MAG A850GL PCIE5 850 W",
+   "price": 99,
+   "color": "#1A1A1A",
+   "psu": {
+    "watts": 850,
+    "form": "ATX",
+    "rating": "80+ Gold",
+    "native12v2x6": true,
+    "modular": "Fully modular",
+    "atx31": true
+   }
+  },
+  {
+   "id": "seasonic-focus-gx-850",
+   "cat": "Psu",
+   "brand": "Seasonic",
+   "name": "Focus GX-850 ATX 3 850 W",
+   "price": 139,
+   "color": "#1A1A1A",
+   "psu": {
+    "watts": 850,
+    "form": "ATX",
+    "rating": "80+ Gold",
+    "native12v2x6": true,
+    "modular": "Fully modular",
+    "atx31": true
+   }
+  },
+  {
+   "id": "bequiet-pure-power-12m-850",
+   "cat": "Psu",
+   "brand": "be quiet!",
+   "name": "Pure Power 12 M 850 W",
+   "price": 129,
+   "color": "#1A1A1A",
+   "psu": {
+    "watts": 850,
+    "form": "ATX",
+    "rating": "80+ Gold",
+    "native12v2x6": true,
+    "modular": "Fully modular",
+    "atx31": true
+   }
+  },
+  {
+   "id": "nzxt-c850-gold",
+   "cat": "Psu",
+   "brand": "NZXT",
+   "name": "C850 Gold V2 850 W",
+   "price": 119,
+   "color": "#1A1A1A",
+   "psu": {
+    "watts": 850,
+    "form": "ATX",
+    "rating": "80+ Gold",
+    "native12v2x6": true,
+    "modular": "Fully modular",
+    "atx31": true
+   }
+  },
+  {
+   "id": "tt-gf3-850",
+   "cat": "Psu",
+   "brand": "Thermaltake",
+   "name": "Toughpower GF3 850 W",
+   "price": 119,
+   "color": "#1A1A1A",
+   "psu": {
+    "watts": 850,
+    "form": "ATX",
+    "rating": "80+ Gold",
+    "native12v2x6": true,
+    "modular": "Fully modular",
+    "atx31": true
+   }
+  },
+  {
+   "id": "deepcool-pn850m",
+   "cat": "Psu",
+   "brand": "DeepCool",
+   "name": "PN850M 850 W",
+   "price": 99,
+   "color": "#1A1A1A",
+   "psu": {
+    "watts": 850,
+    "form": "ATX",
+    "rating": "80+ Gold",
+    "native12v2x6": true,
+    "modular": "Fully modular",
+    "atx31": true
+   }
+  },
+  {
+   "id": "evga-850-g7",
+   "cat": "Psu",
+   "brand": "EVGA",
+   "name": "SuperNOVA 850 G7 850 W",
+   "price": 129,
+   "color": "#1A1A1A",
+   "psu": {
+    "watts": 850,
+    "form": "ATX",
+    "rating": "80+ Gold",
+    "native12v2x6": false,
+    "modular": "Fully modular",
+    "atx31": false
+   }
+  },
+  {
+   "id": "corsair-sf850",
+   "cat": "Psu",
+   "brand": "Corsair",
+   "name": "SF850 (2024) 850 W SFX",
+   "price": 199,
+   "color": "#1A1A1A",
+   "psu": {
+    "watts": 850,
+    "form": "SFX",
+    "rating": "80+ Platinum",
+    "native12v2x6": true,
+    "modular": "Fully modular",
+    "atx31": true
+   }
+  },
+  {
+   "id": "lianli-sp850",
+   "cat": "Psu",
+   "brand": "Lian Li",
+   "name": "SP850 850 W SFX",
+   "price": 149,
+   "color": "#1A1A1A",
+   "psu": {
+    "watts": 850,
+    "form": "SFX",
+    "rating": "80+ Gold",
+    "native12v2x6": true,
+    "modular": "Fully modular",
+    "atx31": true
+   }
+  },
+  {
+   "id": "cm-v850-sfx",
+   "cat": "Psu",
+   "brand": "Cooler Master",
+   "name": "V850 SFX Gold 850 W",
+   "price": 169,
+   "color": "#1A1A1A",
+   "psu": {
+    "watts": 850,
+    "form": "SFX",
+    "rating": "80+ Gold",
+    "native12v2x6": true,
+    "modular": "Fully modular",
+    "atx31": true
+   }
+  },
+  {
+   "id": "corsair-rm1000e",
+   "cat": "Psu",
+   "brand": "Corsair",
+   "name": "RM1000e (2025) 1000 W",
+   "price": 159,
+   "color": "#1A1A1A",
+   "psu": {
+    "watts": 1000,
+    "form": "ATX",
+    "rating": "80+ Gold",
+    "native12v2x6": true,
+    "modular": "Fully modular",
+    "atx31": true
+   }
+  },
+  {
+   "id": "corsair-rm1000x",
+   "cat": "Psu",
+   "brand": "Corsair",
+   "name": "RM1000x (2024) 1000 W",
+   "price": 189,
+   "color": "#1A1A1A",
+   "psu": {
+    "watts": 1000,
+    "form": "ATX",
+    "rating": "80+ Gold",
+    "native12v2x6": true,
+    "modular": "Fully modular",
+    "atx31": true
+   }
+  },
+  {
+   "id": "msi-a1000g",
+   "cat": "Psu",
+   "brand": "MSI",
+   "name": "MPG A1000G PCIE5 1000 W",
+   "price": 159,
+   "color": "#1A1A1A",
+   "psu": {
+    "watts": 1000,
+    "form": "ATX",
+    "rating": "80+ Gold",
+    "native12v2x6": true,
+    "modular": "Fully modular",
+    "atx31": true
+   }
+  },
+  {
+   "id": "seasonic-focus-gx-1000",
+   "cat": "Psu",
+   "brand": "Seasonic",
+   "name": "Focus GX-1000 ATX 3 1000 W",
+   "price": 179,
+   "color": "#1A1A1A",
+   "psu": {
+    "watts": 1000,
+    "form": "ATX",
+    "rating": "80+ Gold",
+    "native12v2x6": true,
+    "modular": "Fully modular",
+    "atx31": true
+   }
+  },
+  {
+   "id": "asus-tuf-1000g",
+   "cat": "Psu",
+   "brand": "ASUS",
+   "name": "TUF Gaming 1000G 1000 W",
+   "price": 169,
+   "color": "#1A1A1A",
+   "psu": {
+    "watts": 1000,
+    "form": "ATX",
+    "rating": "80+ Gold",
+    "native12v2x6": true,
+    "modular": "Fully modular",
+    "atx31": true
+   }
+  },
+  {
+   "id": "superflower-leadex-vii-1000",
+   "cat": "Psu",
+   "brand": "Super Flower",
+   "name": "Leadex VII XG 1000 W",
+   "price": 169,
+   "color": "#1A1A1A",
+   "psu": {
+    "watts": 1000,
+    "form": "ATX",
+    "rating": "80+ Gold",
+    "native12v2x6": true,
+    "modular": "Fully modular",
+    "atx31": true
+   }
+  },
+  {
+   "id": "bequiet-straight-power-12-1000",
+   "cat": "Psu",
+   "brand": "be quiet!",
+   "name": "Straight Power 12 1000 W",
+   "price": 199,
+   "color": "#1A1A1A",
+   "psu": {
+    "watts": 1000,
+    "form": "ATX",
+    "rating": "80+ Platinum",
+    "native12v2x6": true,
+    "modular": "Fully modular",
+    "atx31": true
+   }
+  },
+  {
+   "id": "bequiet-dp13-1000",
+   "cat": "Psu",
+   "brand": "be quiet!",
+   "name": "Dark Power 13 1000 W",
+   "price": 269,
+   "color": "#1A1A1A",
+   "psu": {
+    "watts": 1000,
+    "form": "ATX",
+    "rating": "80+ Titanium",
+    "native12v2x6": true,
+    "modular": "Fully modular",
+    "atx31": true
+   }
+  },
+  {
+   "id": "evga-1000-g6",
+   "cat": "Psu",
+   "brand": "EVGA",
+   "name": "SuperNOVA 1000 G6 1000 W",
+   "price": 179,
+   "color": "#1A1A1A",
+   "psu": {
+    "watts": 1000,
+    "form": "ATX",
+    "rating": "80+ Gold",
+    "native12v2x6": false,
+    "modular": "Fully modular",
+    "atx31": false
+   }
+  },
+  {
+   "id": "corsair-sf1000",
+   "cat": "Psu",
+   "brand": "Corsair",
+   "name": "SF1000 1000 W SFX",
+   "price": 229,
+   "color": "#1A1A1A",
+   "psu": {
+    "watts": 1000,
+    "form": "SFX",
+    "rating": "80+ Platinum",
+    "native12v2x6": true,
+    "modular": "Fully modular",
+    "atx31": true
+   }
+  },
+  {
+   "id": "corsair-rm1200x",
+   "cat": "Psu",
+   "brand": "Corsair",
+   "name": "RM1200x Shift 1200 W",
+   "price": 229,
+   "color": "#1A1A1A",
+   "psu": {
+    "watts": 1200,
+    "form": "ATX",
+    "rating": "80+ Gold",
+    "native12v2x6": true,
+    "modular": "Fully modular",
+    "atx31": true
+   }
+  },
+  {
+   "id": "seasonic-vertex-1200",
+   "cat": "Psu",
+   "brand": "Seasonic",
+   "name": "Vertex GX-1200 1200 W",
+   "price": 279,
+   "color": "#1A1A1A",
+   "psu": {
+    "watts": 1200,
+    "form": "ATX",
+    "rating": "80+ Gold",
+    "native12v2x6": true,
+    "modular": "Fully modular",
+    "atx31": true
+   }
+  },
+  {
+   "id": "tt-gf3-1200",
+   "cat": "Psu",
+   "brand": "Thermaltake",
+   "name": "Toughpower GF3 1200 W",
+   "price": 179,
+   "color": "#1A1A1A",
+   "psu": {
+    "watts": 1200,
+    "form": "ATX",
+    "rating": "80+ Gold",
+    "native12v2x6": true,
+    "modular": "Fully modular",
+    "atx31": true
+   }
+  },
+  {
+   "id": "nzxt-c1200-gold",
+   "cat": "Psu",
+   "brand": "NZXT",
+   "name": "C1200 Gold 1200 W",
+   "price": 179,
+   "color": "#1A1A1A",
+   "psu": {
+    "watts": 1200,
+    "form": "ATX",
+    "rating": "80+ Gold",
+    "native12v2x6": true,
+    "modular": "Fully modular",
+    "atx31": true
+   }
+  },
+  {
+   "id": "asus-thor-1200p2",
+   "cat": "Psu",
+   "brand": "ASUS",
+   "name": "ROG Thor 1200W Platinum II",
+   "price": 339,
+   "color": "#1A1A1A",
+   "psu": {
+    "watts": 1200,
+    "form": "ATX",
+    "rating": "80+ Platinum",
+    "native12v2x6": true,
+    "modular": "Fully modular",
+    "atx31": true
+   }
+  },
+  {
+   "id": "corsair-hx1500i",
+   "cat": "Psu",
+   "brand": "Corsair",
+   "name": "HX1500i (2025) 1500 W",
+   "price": 349,
+   "color": "#1A1A1A",
+   "psu": {
+    "watts": 1500,
+    "form": "ATX",
+    "rating": "80+ Platinum",
+    "native12v2x6": true,
+    "modular": "Fully modular",
+    "atx31": true
+   }
+  },
+  {
+   "id": "bequiet-dpp13-1600",
+   "cat": "Psu",
+   "brand": "be quiet!",
+   "name": "Dark Power Pro 13 1600 W",
+   "price": 399,
+   "color": "#1A1A1A",
+   "psu": {
+    "watts": 1600,
+    "form": "ATX",
+    "rating": "80+ Titanium",
+    "native12v2x6": true,
+    "modular": "Fully modular",
+    "atx31": true
+   }
+  },
+  {
+   "id": "seasonic-prime-tx-1600",
+   "cat": "Psu",
+   "brand": "Seasonic",
+   "name": "Prime TX-1600 1600 W",
+   "price": 529,
+   "color": "#1A1A1A",
+   "psu": {
+    "watts": 1600,
+    "form": "ATX",
+    "rating": "80+ Titanium",
+    "native12v2x6": true,
+    "modular": "Fully modular",
+    "atx31": true
+   }
+  }
+ ]
 }
