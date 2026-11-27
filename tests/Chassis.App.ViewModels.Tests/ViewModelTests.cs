@@ -105,6 +105,22 @@ public sealed class SessionTests : IDisposable
     }
 
     [Fact]
+    public void Imported_parts_go_in_as_one_undo_step_and_keep_the_case()
+    {
+        _s.NewBuild();
+        _s.Choose("fractal-north");
+        var found = Chassis.Core.Import.SpecMatcher.Match("Ryzen 7 9800X3D\nGeForce RTX 5080\nNZXT H5 Flow", PartCatalog.Default);
+        _s.ApplyParts(found.Matches.Where(m => m.Category != Category.Case).Select(m => m.Part));
+        Assert.Equal("fractal-north", _s.Build[Category.Case]);
+        Assert.Equal("amd-9800x3d", _s.Build[Category.Cpu]);
+        Assert.Equal("nv-5080", _s.Build[Category.Gpu]);
+        Assert.Equal(Category.Motherboard, _s.Selected);
+        _s.Undo();
+        Assert.Null(_s.Build[Category.Cpu]);
+        Assert.Equal("fractal-north", _s.Build[Category.Case]);
+    }
+
+    [Fact]
     public void Remove_empties_a_slot()
     {
         _s.Remove(Category.Storage);

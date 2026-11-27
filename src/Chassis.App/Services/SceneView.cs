@@ -19,6 +19,9 @@ public sealed partial class SceneView : Grid
 
     public event Action<Category>? Picked;
 
+    /// <summary>A picture was dropped onto the 3D view (bytes, file name).</summary>
+    public event Action<byte[], string>? ImageDropped;
+
     public SceneView()
     {
         _fallback = new Border
@@ -91,6 +94,12 @@ public sealed partial class SceneView : Grid
             }
             else if (type == "pick" && doc.RootElement.TryGetProperty("category", out var c) && Enum.TryParse<Category>(c.GetString(), out var cat))
                 Picked?.Invoke(cat);
+            else if (type == "importImage" && doc.RootElement.TryGetProperty("dataUrl", out var d) && d.GetString() is { } url && url.IndexOf(',') is var comma and > 0)
+            {
+                var name = doc.RootElement.TryGetProperty("name", out var n) ? n.GetString() ?? "the picture" : "the picture";
+                try { ImageDropped?.Invoke(Convert.FromBase64String(url[(comma + 1)..]), name); }
+                catch (FormatException) { }
+            }
         }
         catch (JsonException) { }
     }

@@ -87,6 +87,23 @@ public sealed class BuildSession : ObservableObject
         if (missing.Count > 0) Selected = missing[0];
     }
 
+    /// <summary>Puts several parts in at once (from an imported spec list) as one undo step.</summary>
+    public void ApplyParts(IEnumerable<Part> parts)
+    {
+        var next = Build;
+        var changed = false;
+        foreach (var p in parts)
+        {
+            if (next[p.Category] == p.Id) continue;
+            next = next.With(p.Category, p.Id);
+            changed = true;
+        }
+        if (!changed) return;
+        Apply(next);
+        var missing = Resolved.Missing.ToList();
+        if (missing.Count > 0) Selected = missing[0];
+    }
+
     public void Remove(Category c)
     {
         if (Build[c] is null) return;

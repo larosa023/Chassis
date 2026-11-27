@@ -31,6 +31,7 @@ jobs:
           $tour = Join-Path $env:RUNNER_TEMP "tour"
           New-Item -ItemType Directory -Force $tour | Out-Null
           $env:CHASSIS_TOUR = $tour
+          $env:CHASSIS_TOUR_IMAGE = (Resolve-Path tests/fixtures/spec-list.png).Path
           $env:CHASSIS_SMOKE = "1"
           $p = Start-Process -FilePath smoke/Chassis.exe -PassThru
           $deadline = (Get-Date).AddSeconds(420)
@@ -54,6 +55,7 @@ jobs:
           $logs = Join-Path $env:LOCALAPPDATA "Chassis\logs"
           if (Test-Path $logs) { Get-ChildItem $logs | ForEach-Object { Write-Host "== $($_.Name)"; Get-Content $_.FullName -Tail 80 } }
           Get-ChildItem $tour -Filter *.error.txt -ErrorAction SilentlyContinue | ForEach-Object { Write-Host "TOUR-ERROR $($_.Name)"; Get-Content $_.FullName }
+          if (Test-Path (Join-Path $tour "ocr.txt")) { Write-Host "== OCR"; Get-Content (Join-Path $tour "ocr.txt") | ForEach-Object { Write-Host "OCR: $_" } }
           Get-WinEvent -FilterHashtable @{LogName='Application'; StartTime=(Get-Date).AddMinutes(-10)} -ErrorAction SilentlyContinue |
             Where-Object { $_.ProviderName -in '.NET Runtime','Application Error','Windows Error Reporting' } |
             ForEach-Object { Write-Host "== EVENT $($_.ProviderName) $($_.Id)"; Write-Host $_.Message }

@@ -24,6 +24,11 @@
   #hint { position: fixed; left: 14px; bottom: 12px; color: var(--muted); font: 500 11px "Mono", monospace; pointer-events: none; }
   #empty { position: fixed; inset: 0; display: none; align-items: center; justify-content: center; pointer-events: none; }
   #empty div { text-align: center; color: var(--muted); font-size: 15px; max-width: 320px; }
+  #drop { position: fixed; inset: 12px; border: 2px dashed var(--accent); border-radius: 8px; display: none; align-items: center; justify-content: center;
+          background: color-mix(in srgb, var(--surface) 82%, transparent); pointer-events: none; }
+  #drop.on { display: flex; }
+  #drop div { text-align: center; font: 600 22px "Chakra", sans-serif; color: var(--text); }
+  #drop span { display: block; font: 500 12px "Mono", monospace; color: var(--muted); margin-top: 6px; }
   #empty strong { display: block; color: var(--text); font: 600 22px "Chakra", sans-serif; margin-bottom: 6px; }
 </style>
 </head>
@@ -31,6 +36,7 @@
 <canvas id="c" tabindex="0"></canvas>
 <div id="tip"><b></b><span></span><i></i></div>
 <div id="hint">DRAG turn · SCROLL zoom · RIGHT-DRAG move · CLICK swap part</div>
+<div id="drop"><div>Drop your spec list to build it<span>SCREENSHOT OR PHOTO · READ ON THIS PC</span></div></div>
 <div id="empty"><div><strong>Your bench is empty</strong>Pick a case to start the build.</div></div>
 <script src="three.min.js"></script>
 <script src="scene.js"></script>

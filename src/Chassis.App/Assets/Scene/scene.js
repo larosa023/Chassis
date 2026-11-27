@@ -627,6 +627,24 @@
   }
   canvas.addEventListener('pointerleave', () => { tip.classList.remove('on'); hovered = null; });
 
+  // ---------- drop a spec screenshot ----------
+  const dropZone = document.getElementById('drop');
+  let dragDepth = 0;
+  const isFileDrag = (e) => e.dataTransfer && Array.from(e.dataTransfer.types || []).includes('Files');
+  window.addEventListener('dragenter', (e) => { if (!isFileDrag(e)) return; e.preventDefault(); dragDepth++; dropZone.classList.add('on'); });
+  window.addEventListener('dragover', (e) => { if (!isFileDrag(e)) return; e.preventDefault(); e.dataTransfer.dropEffect = 'copy'; });
+  window.addEventListener('dragleave', () => { dragDepth = Math.max(0, dragDepth - 1); if (!dragDepth) dropZone.classList.remove('on'); });
+  window.addEventListener('drop', (e) => {
+    e.preventDefault();
+    dragDepth = 0; dropZone.classList.remove('on');
+    const f = e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files[0];
+    if (!f || !/^image\//.test(f.type)) return;
+    if (f.size > 25 * 1024 * 1024) return;
+    const r = new FileReader();
+    r.onload = () => send({ type: 'importImage', name: f.name, dataUrl: r.result });
+    r.readAsDataURL(f);
+  });
+
   // ---------- messages ----------
   function applyTheme(t) {
     theme = Object.assign(theme, t);

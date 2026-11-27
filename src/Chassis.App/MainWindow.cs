@@ -38,8 +38,12 @@ public sealed partial class MainWindow : Window
     readonly SettingsPage _settings;
     string _current = "Build";
 
+    /// <summary>The window handle, for Windows dialogs (file picker) that need an owner.</summary>
+    public static nint Hwnd { get; private set; }
+
     public MainWindow()
     {
+        Hwnd = WinRT.Interop.WindowNative.GetWindowHandle(this);
         _garage = new Garage(Garage.DefaultPath);
         ThemeBrushes.Apply(Themes.Get(_garage.Settings.Theme));
         _session = new BuildSession(PartCatalog.Default, _garage);
@@ -307,6 +311,8 @@ public sealed partial class MainWindow : Window
         timer.Start();
     }
 
+    ImportDialog? _tourImport;
+
     IReadOnlyList<ScreenTour.Step> TourSteps()
     {
         var steps = new List<ScreenTour.Step>();
@@ -319,6 +325,24 @@ public sealed partial class MainWindow : Window
                 steps.Add(new($"{t}-exploded", () => _build.SetExploded(true), 3000));
                 steps.Add(new($"{t}-problem", () => { _build.SetExploded(false); _session.Open(_garage.Find("preset-sff")!); _session.Choose("nv-5090"); _session.Choose("noctua-nh-d15-g2"); _session.Selected = Category.Cooler; }, 4000));
                 steps.Add(new($"{t}-empty", () => _session.NewBuild("Tour build"), 3000));
+                if (Environment.GetEnvironmentVariable("CHASSIS_TOUR_IMAGE") is { Length: > 0 } img && File.Exists(img))
+                {
+                    var bytes = File.ReadAllBytes(img);
+                    steps.Add(new($"{t}-import", async () =>
+                    {
+                        _session.NewBuild("Imported build");
+                        _session.Choose("lianli-o11-evo");
+                        _tourImport = await _build.OpenImportAsync(bytes, Path.GetFileName(img), wait: false);
+                    }, 10000));
+                    steps.Add(new($"{t}-imported", () =>
+                    {
+                        if (_tourImport is null) return;
+                        File.WriteAllText(Path.Combine(Environment.GetEnvironmentVariable("CHASSIS_TOUR")!, "ocr.txt"),
+                            _tourImport.RecognizedText + "\n---\n" + string.Join("\n", _tourImport.Found.Select(f => $"{f.Category}: {f.Part.Id} ({f.Strength})")));
+                        _tourImport.Apply();
+                        _tourImport.Hide();
+                    }, 4000));
+                }
             }
             steps.Add(new($"{t}-bench", () => { _session.Open(_garage.Find("preset-1440")!); Navigate("Benchmarks"); _bench.Scroller.ChangeView(null, 0, null, true); }, 2000));
             steps.Add(new($"{t}-bench-bottom", () => _bench.Scroller.ChangeView(null, _bench.Scroller.ScrollableHeight, null, true), 1200));

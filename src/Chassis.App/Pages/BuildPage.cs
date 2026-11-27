@@ -69,6 +69,18 @@ public sealed partial class BuildPage : UserControl
             if (e.PropertyName == nameof(BuildSession.Selected)) { RenderSlots(); RenderHeader(); }
             if (e.PropertyName == nameof(BuildSession.Build) && _name.FocusState == FocusState.Unfocused) _name.Text = _s.Build.Name;
         };
+        Scene.ImageDropped += (bytes, name) => _ = OpenImportAsync(bytes, name);
+        AllowDrop = true;
+        DragOver += (_, e) => { if (e.DataView.Contains(StandardDataFormats.StorageItems)) e.AcceptedOperation = DataPackageOperation.Copy; };
+        Drop += async (_, e) =>
+        {
+            if (!e.DataView.Contains(StandardDataFormats.StorageItems)) return;
+            var file = (await e.DataView.GetStorageItemsAsync()).OfType<Windows.Storage.StorageFile>()
+                .FirstOrDefault(f => f.FileType.ToLowerInvariant() is ".png" or ".jpg" or ".jpeg" or ".bmp" or ".gif" or ".tif" or ".tiff" or ".webp");
+            if (file is null) return;
+            using var st = await file.OpenReadAsync();
+            _ = OpenImportAsync(await SpecReader.BytesAsync(st), file.Name);
+        };
         Scene.Picked += c => { _s.Selected = c; Scene.SetView(new { type = "view", focus = c.ToString() }); };
         ThemeBrushes.Changed += () => Scene.SetTheme(ThemeBrushes.Current.ForScene);
         Scene.SetTheme(ThemeBrushes.Current.ForScene);
@@ -81,6 +93,21 @@ public sealed partial class BuildPage : UserControl
         _rgb.Click += (_, _) => { Scene.SetView(new { type = "view", rgb = _rgb.IsChecked == true }); _s.Garage.Update(x => x with { RgbLighting = _rgb.IsChecked == true }); };
 
         RenderAll();
+    }
+
+    ImportDialog? _import;
+
+    /// <summary>Opens "Build from a spec list", optionally starting with a picture (dropped, or from the tour).</summary>
+    public async Task<ImportDialog?> OpenImportAsync(byte[]? image, string name, bool wait = true)
+    {
+        if (_import is not null || XamlRoot is null) return _import;
+        var d = new ImportDialog(_s, XamlRoot);
+        _import = d;
+        var shown = d.ShowAsync();
+        if (image is not null) _ = d.LoadImageAsync(image, name);
+        if (wait) { try { await shown; } finally { _import = null; } }
+        else _ = shown.ContinueWith(_ => _import = null, TaskScheduler.FromCurrentSynchronizationContext());
+        return d;
     }
 
     public void SetRgb(bool on) { _rgb.IsChecked = on; Scene.SetView(new { type = "view", rgb = on }); }
@@ -143,10 +170,12 @@ public sealed partial class BuildPage : UserControl
         };
         share.Flyout.Opening += (_, _) => { _shareBox.Text = _s.ShareCode; _shareMsg.Text = ""; };
 
+        var import = Ui.Ghost("Import specs", () => _ = OpenImportAsync(null, ""), "\uE8B5");
+        ToolTipService.SetToolTip(import, "Build from a screenshot, photo or text of a parts list");
         var bench = Ui.Accent("Run benchmarks", () => BenchRequested?.Invoke());
         bench.MinHeight = 40;
         bench.Padding = new Thickness(16, 8, 16, 8);
-        g.Children.Add(Ui.Row(8, _undo, _redo, share, Ui.Ghost("New", () => _s.NewBuild(), "\uE710"), bench).At(1));
+        g.Children.Add(Ui.Row(8, _undo, _redo, share, Ui.Ghost("New", () => _s.NewBuild(), "\uE710"), import, bench).At(1));
         return g;
     }
 
@@ -341,8 +370,25 @@ public sealed partial class BuildPage : UserControl
         }.At(0));
         var text = Ui.Column(3,
             Ui.Text(c.Part.Name, 14, null, FontWeights.SemiBold),
-            Ui.Label($"{c.Part.Brand} · {string.Join(" · ", c.Part.Facts)}"));
+            WrapLabel($"{c.Part.Brand} · {string.Join(" · ", c.Part.Facts)}"));
         if (!c.Fits) text.Children.Add(Ui.Text("Won't work: " + c.Reason, 12, ThemeBrushes.Bad, FontWeights.SemiBold));
+        if (c.Selected)
+        {
+            // The part in the build shows its whole spec sheet.
+            var sheet = new Grid { ColumnSpacing = 10, RowSpacing = 3, Margin = new Thickness(0, 6, 0, 0) };
+            sheet.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(120) });
+            sheet.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
+            var r = 0;
+            foreach (var (label, value) in c.Part.Specs)
+            {
+                sheet.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
+                sheet.Children.Add(Ui.Label(label).At(0, r));
+                sheet.Children.Add(Ui.Text(value, 12).At(1, r));
+                r++;
+            }
+            text.Children.Add(new Border { Height = 1, Background = ThemeBrushes.Line, Margin = new Thickness(0, 6, 0, 0) });
+            text.Children.Add(sheet);
+        }
         g.Children.Add(text.At(1));
         var delta = Ui.Num(c.DeltaText, 11, c.Selected ? ThemeBrushes.Accent : c.ScoreDelta > 0 ? ThemeBrushes.Good : ThemeBrushes.Muted);
         delta.HorizontalTextAlignment = TextAlignment.Right;
@@ -357,9 +403,19 @@ public sealed partial class BuildPage : UserControl
             BorderBrush = c.Selected ? ThemeBrushes.Accent : ThemeBrushes.Line, BorderThickness = new Thickness(1),
             Opacity = c.Fits || c.Selected ? 1 : 0.78,
         };
+        if (!c.Selected)
+            ToolTipService.SetToolTip(b, new ToolTip { Content = Ui.Column(2, [Ui.Text(c.Part.FullName, 13, null, FontWeights.SemiBold), .. c.Part.Specs.Select(x => Ui.Text($"{x.Label}: {x.Value}", 12))]) });
         var id = c.Part.Id;
         b.Click += (_, _) => _s.Choose(id);
         return b;
+    }
+
+    static TextBlock WrapLabel(string text)
+    {
+        var t = Ui.Label(text);
+        t.TextWrapping = TextWrapping.WrapWholeWords;
+        t.TextTrimming = TextTrimming.None;
+        return t;
     }
 
     void RenderChecks()
