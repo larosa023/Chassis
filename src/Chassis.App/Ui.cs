@@ -7,18 +7,38 @@ using Chassis.App.Theming;
 
 namespace Chassis.App;
 
-/// <summary>Small helpers for building the UI in code with the theme's brushes.</summary>
+/// <summary>
+/// Chassis's design system, built in code with the theme's brushes.
+/// The look is a hardware spec sheet: squared-off panels with hairline borders, Chakra Petch for headings,
+/// IBM Plex Sans for text and JetBrains Mono for every number and label.
+/// </summary>
 public static class Ui
 {
-    public static readonly FontFamily Display = new("ms-appx:///Assets/Fonts/SpaceGrotesk.ttf#Space Grotesk");
-    public static readonly FontFamily Body = new("ms-appx:///Assets/Fonts/Inter.ttf#Inter");
+    const string F = "ms-appx:///Assets/Fonts/";
+    public static readonly FontFamily Display = new(F + "ChakraPetch-SemiBold.ttf#Chakra Petch");
+    public static readonly FontFamily DisplayBold = new(F + "ChakraPetch-Bold.ttf#Chakra Petch");
+    public static readonly FontFamily Body = new(F + "IBMPlexSans-Regular.ttf#IBM Plex Sans");
+    public static readonly FontFamily BodyStrong = new(F + "IBMPlexSans-SemiBold.ttf#IBM Plex Sans");
+    public static readonly FontFamily Mono = new(F + "JetBrainsMono-Medium.ttf#JetBrains Mono");
+    public static readonly FontFamily MonoBold = new(F + "JetBrainsMono-Bold.ttf#JetBrains Mono");
 
-    public static TextBlock Text(string text, double size = 14, Brush? color = null, Windows.UI.Text.FontWeight? weight = null, bool wrap = true) => new()
+    /// <summary>Corner radius for panels and controls: small and square-ish, like machined parts.</summary>
+    public static readonly CornerRadius R = new(6);
+    public static readonly CornerRadius RSmall = new(3);
+
+    static bool Strong(Windows.UI.Text.FontWeight w) => w.Weight >= 600;
+
+    public static TextBlock Text(string text, double size = 14, Brush? color = null, Windows.UI.Text.FontWeight? weight = null, bool wrap = true)
     {
-        Text = text, FontSize = size, Foreground = color ?? ThemeBrushes.Text, FontFamily = Body,
-        FontWeight = weight ?? FontWeights.Normal, TextWrapping = wrap ? TextWrapping.WrapWholeWords : TextWrapping.NoWrap,
-        TextTrimming = wrap ? TextTrimming.None : TextTrimming.CharacterEllipsis,
-    };
+        var w = weight ?? FontWeights.Normal;
+        return new TextBlock
+        {
+            Text = text, FontSize = size, Foreground = color ?? ThemeBrushes.Text,
+            FontFamily = Strong(w) ? BodyStrong : Body, FontWeight = Strong(w) ? FontWeights.SemiBold : FontWeights.Normal,
+            TextWrapping = wrap ? TextWrapping.WrapWholeWords : TextWrapping.NoWrap,
+            TextTrimming = wrap ? TextTrimming.None : TextTrimming.CharacterEllipsis,
+        };
+    }
 
     public static TextBlock Muted(string text, double size = 13) => Text(text, size, ThemeBrushes.Muted);
 
@@ -28,24 +48,51 @@ public static class Ui
         TextWrapping = TextWrapping.WrapWholeWords, LineHeight = size * 1.1,
     };
 
-    public static Border Card(UIElement child, double padding = 22) => new()
+    /// <summary>A number in the mono face (prices, fps, watts, scores).</summary>
+    public static TextBlock Num(string text, double size = 14, Brush? color = null, bool bold = false) => new()
     {
-        Background = ThemeBrushes.Surface, BorderBrush = ThemeBrushes.Line, BorderThickness = new Thickness(1),
-        CornerRadius = new CornerRadius(22), Padding = new Thickness(padding), Child = child,
+        Text = text, FontSize = size, Foreground = color ?? ThemeBrushes.Text, FontFamily = bold ? MonoBold : Mono,
+        FontWeight = bold ? FontWeights.Bold : FontWeights.Medium, TextWrapping = TextWrapping.NoWrap,
     };
 
-    public static Border Pill(string text, Brush bg, Brush fg, double size = 12) => new()
+    /// <summary>A small spec-sheet label in mono, e.g. "03 · Processor".</summary>
+    public static TextBlock Label(string text, Brush? color = null) => new()
     {
-        Background = bg, CornerRadius = new CornerRadius(999), Padding = new Thickness(10, 3, 10, 4), VerticalAlignment = VerticalAlignment.Center,
-        Child = new TextBlock { Text = text, FontSize = size, Foreground = fg, FontWeight = FontWeights.SemiBold, FontFamily = Body },
+        Text = text, FontSize = 11, Foreground = color ?? ThemeBrushes.Muted, FontFamily = Mono, FontWeight = FontWeights.Medium,
+        TextWrapping = TextWrapping.NoWrap, TextTrimming = TextTrimming.CharacterEllipsis,
+    };
+
+    /// <summary>A panel: flat surface, hairline border, small corners.</summary>
+    public static Border Card(UIElement child, double padding = 20) => new()
+    {
+        Background = ThemeBrushes.Surface, BorderBrush = ThemeBrushes.Line, BorderThickness = new Thickness(1),
+        CornerRadius = R, Padding = new Thickness(padding), Child = child,
+    };
+
+    /// <summary>A panel with a mono caption above its content, like a section of a spec sheet.</summary>
+    public static Border Panel(string caption, UIElement child, double padding = 20, FrameworkElement? right = null)
+    {
+        var head = Columns(Star(), Auto);
+        var cap = Label(caption);
+        cap.VerticalAlignment = VerticalAlignment.Center;
+        head.Children.Add(cap.At(0));
+        if (right is not null) head.Children.Add(right.At(1));
+        return Card(Column(14, head, child), padding);
+    }
+
+    /// <summary>A small square tag (tier, price, status).</summary>
+    public static Border Pill(string text, Brush bg, Brush fg, double size = 11) => new()
+    {
+        Background = bg, CornerRadius = RSmall, Padding = new Thickness(7, 3, 7, 3), VerticalAlignment = VerticalAlignment.Center,
+        Child = new TextBlock { Text = text, FontSize = size, Foreground = fg, FontWeight = FontWeights.Medium, FontFamily = Mono },
     };
 
     public static Button Accent(string text, Action onClick)
     {
         var b = new Button
         {
-            Content = text, Background = ThemeBrushes.Accent, Foreground = ThemeBrushes.OnAccent, FontWeight = FontWeights.SemiBold,
-            CornerRadius = new CornerRadius(14), Padding = new Thickness(20, 10, 20, 10), MinHeight = 44, BorderThickness = new Thickness(0),
+            Content = text, Background = ThemeBrushes.Accent, Foreground = ThemeBrushes.OnAccent, FontWeight = FontWeights.SemiBold, FontFamily = BodyStrong,
+            CornerRadius = R, Padding = new Thickness(18, 9, 18, 9), MinHeight = 40, BorderThickness = new Thickness(0),
         };
         b.Click += (_, _) => onClick();
         return b;
@@ -56,8 +103,8 @@ public static class Ui
         var b = new Button
         {
             Background = ThemeBrushes.Surface, Foreground = ThemeBrushes.Text, BorderBrush = ThemeBrushes.Line, BorderThickness = new Thickness(1),
-            CornerRadius = new CornerRadius(12), Padding = new Thickness(14, 8, 14, 8), MinHeight = 40,
-            Content = glyph is null ? text : Row(6, new FontIcon { Glyph = glyph, FontSize = 14 }, new TextBlock { Text = text, VerticalAlignment = VerticalAlignment.Center }),
+            CornerRadius = R, Padding = new Thickness(12, 7, 12, 7), MinHeight = 38, FontFamily = Body,
+            Content = glyph is null ? text : Row(7, new FontIcon { Glyph = glyph, FontSize = 14 }, new TextBlock { Text = text, VerticalAlignment = VerticalAlignment.Center, FontFamily = Body }),
         };
         AutomationProperties.SetName(b, text);
         b.Click += (_, _) => onClick();
@@ -68,9 +115,9 @@ public static class Ui
     {
         var b = new Button
         {
-            Content = new FontIcon { Glyph = glyph, FontSize = 16 }, Width = 40, Height = 40, Padding = new Thickness(0),
+            Content = new FontIcon { Glyph = glyph, FontSize = 15 }, Width = 38, Height = 38, Padding = new Thickness(0),
             Background = ThemeBrushes.Surface, Foreground = ThemeBrushes.Text, BorderBrush = ThemeBrushes.Line, BorderThickness = new Thickness(1),
-            CornerRadius = new CornerRadius(12),
+            CornerRadius = R,
         };
         ToolTipService.SetToolTip(b, tip);
         AutomationProperties.SetName(b, tip);
@@ -92,14 +139,19 @@ public static class Ui
         return s;
     }
 
-    /// <summary>A horizontal bar: fraction 0..1 of the track filled.</summary>
-    public static Grid Bar(double fraction, Brush fill, double height = 10)
+    /// <summary>A segmented meter like an LED bar: fraction 0..1 of the blocks lit.</summary>
+    public static Grid Bar(double fraction, Brush fill, double height = 10, int segments = 40)
     {
         var f = Math.Clamp(fraction, 0, 1);
-        var g = new Grid { Height = height, CornerRadius = new CornerRadius(height / 2), Background = ThemeBrushes.Track };
-        g.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(Math.Max(f, 0.0001), GridUnitType.Star) });
-        g.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(Math.Max(1 - f, 0.0001), GridUnitType.Star) });
-        g.Children.Add(new Border { Background = fill, CornerRadius = new CornerRadius(height / 2) });
+        var lit = (int)Math.Round(f * segments);
+        var g = new Grid { Height = height, ColumnSpacing = 2 };
+        for (var i = 0; i < segments; i++)
+        {
+            g.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
+            var cell = new Border { Background = i < lit ? fill : ThemeBrushes.Track, CornerRadius = new CornerRadius(1) };
+            Grid.SetColumn(cell, i);
+            g.Children.Add(cell);
+        }
         return g;
     }
 

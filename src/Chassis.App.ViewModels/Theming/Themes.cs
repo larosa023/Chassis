@@ -16,7 +16,7 @@ public static class Themes
         new("bench", "Bench", "#EEF0F3", "#FFFFFF", "#F4F5F7", "#14161A", "#545A65", "#E8480F", "#FFFFFF", "#157A4A", "#E2F4EA", "#C8261B", "#DCDFE5", "#E6E8EC", false),
         new("graphite", "Graphite", "#0E1014", "#171A20", "#20242C", "#F2F3F5", "#9AA1AD", "#FF6A2B", "#0E1014", "#4ADE80", "#13301F", "#FF6B63", "#262A33", "#262A33", true),
         new("circuit", "Circuit", "#0B1A14", "#10241B", "#173226", "#E9F5EE", "#93B5A3", "#E7B84A", "#0B1A14", "#7EE2A8", "#17382A", "#FF7A6E", "#1F3B2F", "#1C3529", true),
-        new("frost", "Frost", "#E9F0F6", "#FFFFFF", "#E2EBF2", "#0E1B26", "#4A5D6C", "#0A6FA8", "#FFFFFF", "#12704B", "#DDF3E9", "#B42318", "#D3E0E9", "#DCE7EF", false),
+        new("aluminum", "Aluminum", "#DFE2E6", "#F3F4F6", "#E8EAED", "#111317", "#464C54", "#1F5EFF", "#FFFFFF", "#0F6B3F", "#DCEFE3", "#B42318", "#C9CDD3", "#D3D7DC", false),
         new("synth", "Synthwave", "#120B1E", "#1C1230", "#271A42", "#F6F1FF", "#B4A6D3", "#22D3EE", "#120B1E", "#A3E635", "#22301A", "#FB7185", "#2E2148", "#2A1E42", true),
     ];
 

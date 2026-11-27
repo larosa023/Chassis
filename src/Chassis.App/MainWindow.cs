@@ -16,7 +16,7 @@ using Windows.System;
 
 namespace Chassis.App;
 
-/// <summary>The window: custom title bar, pill navigation, update banner, and the four pages.</summary>
+/// <summary>The window: side rail (navigation, current build, themes), custom title bar, update banner, and the four pages.</summary>
 public sealed partial class MainWindow : Window
 {
     readonly Garage _garage;
@@ -24,7 +24,7 @@ public sealed partial class MainWindow : Window
     readonly UpdateViewModel _updates;
     readonly Grid _root = new();
     readonly Grid _host = new();
-    readonly StackPanel _nav = new() { Orientation = Orientation.Horizontal, Spacing = 4 };
+    readonly StackPanel _nav = new() { Spacing = 4 };
     readonly Dictionary<string, FrameworkElement> _pages = new();
     readonly Dictionary<string, Button> _navButtons = new();
     readonly Border _updateBar = new();
@@ -93,67 +93,135 @@ public sealed partial class MainWindow : Window
         AppWindow.MoveAndResize(new Windows.Graphics.RectInt32(area.X + (area.Width - w) / 2, area.Y + (area.Height - h) / 2, w, h));
     }
 
+    static readonly Dictionary<string, (string Glyph, string Key)> NavInfo = new()
+    {
+        ["Build"] = ("\uE950", "Ctrl+1"),
+        ["Benchmarks"] = ("\uE9D9", "Ctrl+2"),
+        ["Garage"] = ("\uE8F1", "Ctrl+3"),
+        ["Settings"] = ("\uE713", "Ctrl+4"),
+    };
+
+    readonly StackPanel _swatches = new() { Orientation = Orientation.Horizontal, Spacing = 6 };
+    readonly TextBlock _railBuild = Ui.Text("", 13, null, FontWeights.SemiBold, wrap: false);
+    readonly TextBlock _railStats = Ui.Label("");
+
     UIElement Layout()
     {
         _root.Background = ThemeBrushes.Bg;
-        _root.RowDefinitions.Add(new RowDefinition { Height = new GridLength(40) });
-        _root.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
-        _root.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
+        _root.RowDefinitions.Add(new RowDefinition { Height = new GridLength(36) });
         _root.RowDefinitions.Add(new RowDefinition { Height = new GridLength(1, GridUnitType.Star) });
+        _root.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(212) });
+        _root.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
 
-        // Row 0: draggable title strip (Windows draws the caption buttons on the right).
-        var titleStrip = new Grid { Background = new SolidColorBrush(Colors.Transparent), Padding = new Thickness(18, 0, 150, 0) };
-        titleStrip.Children.Add(Ui.Row(10,
-            new Image { Source = new Microsoft.UI.Xaml.Media.Imaging.BitmapImage(new Uri("ms-appx:///Assets/chassis.png")), Width = 20, Height = 20, VerticalAlignment = VerticalAlignment.Center },
-            new TextBlock { Text = "Chassis", FontFamily = Ui.Display, FontSize = 14, FontWeight = FontWeights.SemiBold, Foreground = ThemeBrushes.Muted, VerticalAlignment = VerticalAlignment.Center }));
+        // Rail: full height on the left, behind the title strip.
+        var rail = new Grid { Background = ThemeBrushes.Surface, BorderBrush = ThemeBrushes.Line, BorderThickness = new Thickness(0, 0, 1, 0), Padding = new Thickness(14, 48, 14, 16) };
+        rail.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
+        rail.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
+        rail.RowDefinitions.Add(new RowDefinition { Height = new GridLength(1, GridUnitType.Star) });
+        rail.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
+        var mark = new Border { Width = 34, Height = 34, CornerRadius = Ui.R, Background = ThemeBrushes.Accent, Child = new Image { Source = new Microsoft.UI.Xaml.Media.Imaging.BitmapImage(new Uri("ms-appx:///Assets/chassis.png")), Width = 34, Height = 34 } };
+        var word = Ui.Column(0,
+            new TextBlock { Text = "CHASSIS", FontFamily = Ui.DisplayBold, FontWeight = FontWeights.Bold, FontSize = 20, Foreground = ThemeBrushes.Text, CharacterSpacing = 80 },
+            Ui.Label("PC bench · v" + (typeof(MainWindow).Assembly.GetName().Version?.ToString(3) ?? "0")));
+        word.VerticalAlignment = VerticalAlignment.Center;
+        var brand = Ui.Row(10, mark, word);
+        brand.Margin = new Thickness(4, 0, 0, 24);
+        rail.Children.Add(brand);
+        _nav.Orientation = Orientation.Vertical;
+        _nav.Spacing = 4;
+        rail.Children.Add(_nav.At(0, 1));
+
+        var current = Ui.Column(4, Ui.Label("ON THE BENCH"), _railBuild, _railStats);
+        var foot = Ui.Column(14, new Border { Height = 1, Background = ThemeBrushes.Line }, current, Ui.Label("THEME"), _swatches);
+        rail.Children.Add(foot.At(0, 3));
+        Grid.SetRowSpan(rail, 2);
+        _root.Children.Add(rail);
+
+        // Title strip over the content column (Windows draws the caption buttons on the right).
+        var titleStrip = new Grid { Background = new SolidColorBrush(Colors.Transparent) };
+        Grid.SetColumn(titleStrip, 1);
         _root.Children.Add(titleStrip);
         SetTitleBar(titleStrip);
 
-        // Row 1: navigation pills.
-        var header = Ui.Columns(Ui.Auto, Ui.Star(), Ui.Auto);
-        header.Padding = new Thickness(28, 4, 28, 12);
-        var brand = Ui.Row(10, new TextBlock { Text = "Chassis", FontFamily = Ui.Display, FontSize = 24, FontWeight = FontWeights.Bold, Foreground = ThemeBrushes.Text, VerticalAlignment = VerticalAlignment.Center });
-        header.Children.Add(brand.At(0));
-        var navPill = new Border
-        {
-            Background = ThemeBrushes.Surface, BorderBrush = ThemeBrushes.Line, BorderThickness = new Thickness(1), CornerRadius = new CornerRadius(999),
-            Padding = new Thickness(5), Margin = new Thickness(24, 0, 0, 0), HorizontalAlignment = HorizontalAlignment.Left, Child = _nav,
-        };
-        header.Children.Add(navPill.At(1));
-        var catalogNote = Ui.Muted($"{PartCatalog.Default.Parts.Count} parts", 12);
-        catalogNote.VerticalAlignment = VerticalAlignment.Center;
-        header.Children.Add(catalogNote.At(2));
-        Grid.SetRow(header, 1);
-        _root.Children.Add(header);
-
-        // Row 2: update banner.
-        var ub = Ui.Columns(Ui.Auto, Ui.Star(), Ui.Auto, Ui.Auto);
-        ub.Children.Add(new FontIcon { Glyph = "\uE896", Foreground = ThemeBrushes.Accent, FontSize = 20 }.At(0));
+        // Content: update banner + pages.
+        var content = new Grid { Padding = new Thickness(26, 4, 26, 22), RowSpacing = 12 };
+        content.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
+        content.RowDefinitions.Add(new RowDefinition { Height = new GridLength(1, GridUnitType.Star) });
+        var ub = Ui.Columns(Ui.Auto, Ui.Star(), Ui.Auto);
+        ub.Children.Add(new FontIcon { Glyph = "\uE896", Foreground = ThemeBrushes.Accent, FontSize = 18 }.At(0));
         ub.Children.Add(Ui.Column(2, _updateTitle, _updateNotes).At(1));
         var later = Ui.Ghost("Later", () => _updates.DismissCommand.Execute(null));
         var buttons = Ui.Row(8, _updateProgress, later, _updateButton);
         buttons.VerticalAlignment = VerticalAlignment.Center;
-        ub.Children.Add(buttons.At(3));
+        ub.Children.Add(buttons.At(2));
         _updateBar.Child = ub;
         _updateBar.Background = ThemeBrushes.AccentSoft;
         _updateBar.BorderBrush = ThemeBrushes.Accent;
-        _updateBar.BorderThickness = new Thickness(1.5);
-        _updateBar.CornerRadius = new CornerRadius(16);
-        _updateBar.Padding = new Thickness(16, 10, 12, 10);
-        _updateBar.Margin = new Thickness(28, 0, 28, 12);
-        Grid.SetRow(_updateBar, 2);
-        _root.Children.Add(_updateBar);
+        _updateBar.BorderThickness = new Thickness(3, 1, 1, 1);
+        _updateBar.CornerRadius = Ui.R;
+        _updateBar.Padding = new Thickness(14, 8, 10, 8);
+        content.Children.Add(_updateBar);
+        Grid.SetRow(_host, 1);
+        content.Children.Add(_host);
+        Grid.SetColumn(content, 1);
+        Grid.SetRow(content, 1);
+        _root.Children.Add(content);
 
-        // Row 3: pages.
-        _host.Margin = new Thickness(28, 0, 28, 24);
-        Grid.SetRow(_host, 3);
-        _root.Children.Add(_host);
+        _session.BuildChanged += RenderRail;
+        _session.PropertyChanged += (_, e) => { if (e.PropertyName == nameof(BuildSession.Build)) RenderRail(); };
+        RenderRail();
         return _root;
+    }
+
+    void RenderRail()
+    {
+        _railBuild.Text = _session.Build.Name;
+        var b = _session.Bench;
+        _railStats.Text = b.Score > 0 ? $"{_session.TotalText} · {b.Score:N0} pts" : $"{_session.TotalText} · {_session.Resolved.Count}/8 parts";
+    }
+
+    void BuildSwatches()
+    {
+        _swatches.Children.Clear();
+        foreach (var t in Themes.All)
+        {
+            var on = t.Key == ThemeBrushes.Current.Key;
+            var chip = new Grid { Width = 18, Height = 18, CornerRadius = Ui.RSmall, Background = Ui.Hex(t.Bg) };
+            chip.Children.Add(new Border { Width = 9, Height = 9, Background = Ui.Hex(t.Accent), HorizontalAlignment = HorizontalAlignment.Right, VerticalAlignment = VerticalAlignment.Bottom });
+            var b = new Button
+            {
+                Content = chip, Padding = new Thickness(3), CornerRadius = Ui.RSmall, MinWidth = 0, MinHeight = 0,
+                Background = new SolidColorBrush(Colors.Transparent), BorderBrush = on ? ThemeBrushes.Accent : ThemeBrushes.Line, BorderThickness = new Thickness(on ? 2 : 1),
+            };
+            ToolTipService.SetToolTip(b, t.Name);
+            Microsoft.UI.Xaml.Automation.AutomationProperties.SetName(b, $"{t.Name} theme");
+            var key = t.Key;
+            b.Click += (_, _) => { _garage.Update(s => s with { Theme = key }); ThemeBrushes.Apply(Themes.Get(key)); };
+            _swatches.Children.Add(b);
+        }
     }
 
     void AddNav(string name)
     {
-        var b = new Button { Content = name, Padding = new Thickness(16, 8, 16, 8), CornerRadius = new CornerRadius(999), BorderThickness = new Thickness(0), MinHeight = 36 };
+        var (glyph, key) = NavInfo[name];
+        var bar = new Border { Width = 3, CornerRadius = new CornerRadius(2), Margin = new Thickness(0, 6, 0, 6) };
+        var g = new Grid { ColumnSpacing = 12 };
+        g.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Auto });
+        g.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Auto });
+        g.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
+        g.ColumnDefinitions.Add(new ColumnDefinition { Width = GridLength.Auto });
+        g.Children.Add(bar.At(0));
+        g.Children.Add(new FontIcon { Glyph = glyph, FontSize = 16, VerticalAlignment = VerticalAlignment.Center }.At(1));
+        g.Children.Add(new TextBlock { Text = name, FontFamily = Ui.Body, FontSize = 14, VerticalAlignment = VerticalAlignment.Center }.At(2));
+        var k = Ui.Label(key);
+        k.VerticalAlignment = VerticalAlignment.Center;
+        k.Opacity = 0.7;
+        g.Children.Add(k.At(3));
+        var b = new Button
+        {
+            Content = g, HorizontalAlignment = HorizontalAlignment.Stretch, HorizontalContentAlignment = HorizontalAlignment.Stretch,
+            Padding = new Thickness(0, 8, 10, 8), CornerRadius = Ui.R, BorderThickness = new Thickness(0), MinHeight = 42, Tag = bar,
+        };
         b.Click += (_, _) => Navigate(name);
         _navButtons[name] = b;
         _nav.Children.Add(b);
@@ -171,9 +239,9 @@ public sealed partial class MainWindow : Window
         foreach (var (name, b) in _navButtons)
         {
             var on = name == _current;
-            b.Background = on ? ThemeBrushes.Text : new SolidColorBrush(Colors.Transparent);
-            b.Foreground = on ? ThemeBrushes.Bg : ThemeBrushes.Muted;
-            b.FontWeight = on ? FontWeights.SemiBold : FontWeights.Normal;
+            b.Background = on ? ThemeBrushes.Surface2 : new SolidColorBrush(Colors.Transparent);
+            b.Foreground = on ? ThemeBrushes.Text : ThemeBrushes.Muted;
+            if (b.Tag is Border bar) bar.Background = on ? ThemeBrushes.Accent : new SolidColorBrush(Colors.Transparent);
         }
     }
 
@@ -181,6 +249,7 @@ public sealed partial class MainWindow : Window
     {
         _root.RequestedTheme = ThemeBrushes.ElementTheme;
         UpdateNav();
+        BuildSwatches();
         var tb = AppWindow.TitleBar;
         tb.ButtonBackgroundColor = Colors.Transparent;
         tb.ButtonInactiveBackgroundColor = Colors.Transparent;
@@ -257,7 +326,7 @@ public sealed partial class MainWindow : Window
             steps.Add(new($"{t}-garage-bottom", () => _garagePage.Scroller.ChangeView(null, _garagePage.Scroller.ScrollableHeight, null, true), 1200));
             steps.Add(new($"{t}-settings", () => Navigate("Settings"), 1500));
         }
-        foreach (var t in new[] { "circuit", "frost", "synth" })
+        foreach (var t in new[] { "circuit", "aluminum", "synth" })
         {
             var k = t;
             steps.Add(new($"{k}-build", () => { ThemeBrushes.Apply(Themes.Get(k)); _session.Open(_garage.Find("preset-sff")!); Navigate("Build"); }, 3500));

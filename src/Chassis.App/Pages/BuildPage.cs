@@ -4,7 +4,6 @@ using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
 using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
-using Microsoft.UI.Xaml.Shapes;
 using Chassis.App.Services;
 using Chassis.App.Theming;
 using Chassis.App.ViewModels;
@@ -20,12 +19,14 @@ public sealed partial class BuildPage : UserControl
 {
     readonly BuildSession _s;
     readonly TextBox _name = new();
-    readonly TextBlock _total = Ui.Title("", 30), _scoreLine = Ui.Muted(""), _wattsLine = Ui.Muted("");
+    readonly TextBlock _total = Ui.Num("", 30, null, bold: true), _scoreLine = Ui.Num("", 13, ThemeBrushes.Muted), _wattsLine = Ui.Num("", 13, ThemeBrushes.Muted);
+    readonly TextBlock _caption = Ui.Label("");
     readonly Grid _slots = new() { ColumnSpacing = 10, RowSpacing = 10 };
     readonly StackPanel _list = new() { Spacing = 8 };
     readonly TextBlock _catTitle = Ui.Title("", 22);
-    readonly TextBox _search = new() { MinHeight = 40, CornerRadius = new CornerRadius(12) };
-    readonly ComboBox _sort = new() { MinWidth = 150, MinHeight = 40, CornerRadius = new CornerRadius(12) };
+    readonly TextBlock _pickCaption = Ui.Label("");
+    readonly TextBox _search = new() { MinHeight = 38, CornerRadius = Ui.R, FontFamily = Ui.Body };
+    readonly ComboBox _sort = new() { MinWidth = 150, MinHeight = 38, CornerRadius = Ui.R, FontFamily = Ui.Body };
     readonly Button _remove;
     readonly StackPanel _checks = new() { Spacing = 10 };
     readonly TextBlock _checksHead = Ui.Text("", 16, null, FontWeights.SemiBold);
@@ -35,6 +36,8 @@ public sealed partial class BuildPage : UserControl
     readonly TextBox _shareBox = new() { IsReadOnly = true, Width = 360, TextWrapping = TextWrapping.Wrap };
     readonly TextBox _importBox = new() { PlaceholderText = "Paste a CHASSIS1- code", Width = 360 };
     readonly TextBlock _shareMsg = Ui.Muted("");
+
+    TextBlock? _viewportCaption;
 
     public SceneView Scene { get; } = new();
     public event Action? BenchRequested;
@@ -88,9 +91,9 @@ public sealed partial class BuildPage : UserControl
     {
         var t = new ToggleButton
         {
-            Content = Ui.Row(6, new FontIcon { Glyph = glyph, FontSize = 14 }, new TextBlock { Text = text, VerticalAlignment = VerticalAlignment.Center }),
-            CornerRadius = new CornerRadius(999), Padding = new Thickness(12, 6, 14, 6), MinHeight = 36,
-            Background = ThemeBrushes.Surface, Foreground = ThemeBrushes.Text, BorderBrush = ThemeBrushes.Line, BorderThickness = new Thickness(1),
+            Content = Ui.Row(6, new FontIcon { Glyph = glyph, FontSize = 13 }, new TextBlock { Text = text, VerticalAlignment = VerticalAlignment.Center, FontFamily = Ui.Mono, FontSize = 12 }),
+            CornerRadius = Ui.RSmall, Padding = new Thickness(10, 5, 12, 5), MinHeight = 32,
+            Background = new SolidColorBrush(Microsoft.UI.Colors.Transparent), Foreground = ThemeBrushes.Text, BorderThickness = new Thickness(0),
         };
         ToolTipService.SetToolTip(t, text);
         return t;
@@ -102,7 +105,7 @@ public sealed partial class BuildPage : UserControl
     {
         var g = Ui.Columns(Ui.Star(), Ui.Auto);
         _name.FontFamily = Ui.Display;
-        _name.FontSize = 26;
+        _name.FontSize = 28;
         _name.FontWeight = FontWeights.SemiBold;
         _name.BorderThickness = new Thickness(0);
         _name.Background = new SolidColorBrush(Microsoft.UI.Colors.Transparent);
@@ -112,7 +115,8 @@ public sealed partial class BuildPage : UserControl
         ToolTipService.SetToolTip(_name, "Rename this build");
         _name.LostFocus += (_, _) => _s.Rename(_name.Text);
         _name.KeyDown += (_, e) => { if (e.Key == VirtualKey.Enter) { _s.Rename(_name.Text); Focus(FocusState.Programmatic); } };
-        g.Children.Add(_name.At(0));
+        var nameCol = Ui.Column(0, _caption, _name);
+        g.Children.Add(nameCol.At(0));
 
         var share = Ui.Ghost("Share", () => { }, "\uE72D");
         var copy = Ui.Accent("Copy code", () =>
@@ -155,14 +159,23 @@ public sealed partial class BuildPage : UserControl
         var viewport = new Grid();
         viewport.Children.Add(new Border
         {
-            CornerRadius = new CornerRadius(24), BorderBrush = ThemeBrushes.Line, BorderThickness = new Thickness(1), Background = ThemeBrushes.Bg,
+            CornerRadius = Ui.R, BorderBrush = ThemeBrushes.Line, BorderThickness = new Thickness(1), Background = ThemeBrushes.Bg,
             Child = Scene,
         });
-        var tools = Ui.Row(8, _exploded, _spin, _rgb, ToolButton("Reset view", "\uE72C", () => Scene.SetView(new { type = "view", reset = true })));
-        tools.HorizontalAlignment = HorizontalAlignment.Right;
-        tools.VerticalAlignment = VerticalAlignment.Top;
-        tools.Margin = new Thickness(14);
+        var tools = new Border
+        {
+            Background = ThemeBrushes.Surface, BorderBrush = ThemeBrushes.Line, BorderThickness = new Thickness(1), CornerRadius = Ui.R, Padding = new Thickness(3),
+            HorizontalAlignment = HorizontalAlignment.Right, VerticalAlignment = VerticalAlignment.Top, Margin = new Thickness(12),
+            Child = Ui.Row(2, _exploded, _spin, _rgb, new Border { Width = 1, Background = ThemeBrushes.Line, Margin = new Thickness(4, 4, 4, 4) },
+                ToolButton("Reset", "\uE72C", () => Scene.SetView(new { type = "view", reset = true }))),
+        };
         viewport.Children.Add(tools);
+        var corner = Ui.Label("");
+        corner.Margin = new Thickness(14, 12, 0, 0);
+        corner.HorizontalAlignment = HorizontalAlignment.Left;
+        corner.VerticalAlignment = VerticalAlignment.Top;
+        _viewportCaption = corner;
+        viewport.Children.Add(corner);
         g.Children.Add(viewport);
 
         for (var i = 0; i < 4; i++) _slots.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
@@ -177,9 +190,9 @@ public sealed partial class BuildPage : UserControl
     {
         var b = new Button
         {
-            Content = Ui.Row(6, new FontIcon { Glyph = glyph, FontSize = 14 }, new TextBlock { Text = text, VerticalAlignment = VerticalAlignment.Center }),
-            CornerRadius = new CornerRadius(999), Padding = new Thickness(12, 6, 14, 6), MinHeight = 36,
-            Background = ThemeBrushes.Surface, Foreground = ThemeBrushes.Text, BorderBrush = ThemeBrushes.Line, BorderThickness = new Thickness(1),
+            Content = Ui.Row(6, new FontIcon { Glyph = glyph, FontSize = 13 }, new TextBlock { Text = text, VerticalAlignment = VerticalAlignment.Center, FontFamily = Ui.Mono, FontSize = 12 }),
+            CornerRadius = Ui.RSmall, Padding = new Thickness(10, 5, 12, 5), MinHeight = 32,
+            Background = new SolidColorBrush(Microsoft.UI.Colors.Transparent), Foreground = ThemeBrushes.Text, BorderThickness = new Thickness(0),
         };
         b.Click += (_, _) => click();
         return b;
@@ -194,14 +207,14 @@ public sealed partial class BuildPage : UserControl
 
         // Summary
         var sum = Ui.Columns(Ui.Star(), Ui.Auto);
-        sum.Children.Add(Ui.Column(2, Ui.Muted("Total"), _total).At(0));
+        sum.Children.Add(Ui.Column(2, Ui.Label("TOTAL"), _total).At(0));
         var right = Ui.Column(4, _scoreLine, _wattsLine);
         right.VerticalAlignment = VerticalAlignment.Center;
         right.HorizontalAlignment = HorizontalAlignment.Right;
         _scoreLine.HorizontalTextAlignment = TextAlignment.Right;
         _wattsLine.HorizontalTextAlignment = TextAlignment.Right;
         sum.Children.Add(right.At(1));
-        g.Children.Add(Ui.Card(sum, 18));
+        g.Children.Add(Ui.Card(sum, 16));
 
         // Parts picker
         var head = Ui.Columns(Ui.Star(), Ui.Auto);
@@ -220,17 +233,18 @@ public sealed partial class BuildPage : UserControl
         picker.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
         picker.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
         picker.RowDefinitions.Add(new RowDefinition { Height = new GridLength(1, GridUnitType.Star) });
-        picker.Children.Add(head);
+        var headCol = Ui.Column(2, _pickCaption, head);
+        picker.Children.Add(headCol);
         picker.Children.Add(filters.At(0, 1));
         picker.Children.Add(scroller.At(0, 2));
-        var pickerCard = Ui.Card(picker, 18);
+        var pickerCard = Ui.Card(picker, 16);
         Grid.SetRow(pickerCard, 1);
         g.Children.Add(pickerCard);
 
         // Checks
         var checksHead = Ui.Row(10, _checksIcon, _checksHead);
         var checksBody = new ScrollViewer { Content = _checks, MaxHeight = 210, VerticalScrollBarVisibility = ScrollBarVisibility.Auto, Padding = new Thickness(0, 0, 12, 0) };
-        var checksCard = Ui.Card(Ui.Column(12, checksHead, checksBody), 18);
+        var checksCard = Ui.Card(Ui.Column(10, Ui.Label("CHECKS"), checksHead, checksBody), 16);
         Grid.SetRow(checksCard, 2);
         g.Children.Add(checksCard);
         return g;
@@ -242,9 +256,11 @@ public sealed partial class BuildPage : UserControl
     {
         if (_name.FocusState == FocusState.Unfocused) _name.Text = _s.Build.Name;
         _total.Text = _s.TotalText;
+        _caption.Text = $"BUILD · {_s.Resolved.Count}/8 PARTS · {(_s.Report.Problems > 0 ? _s.Report.Problems + " PROBLEM" + (_s.Report.Problems == 1 ? "" : "S") : "READY")}";
+        if (_viewportCaption is not null) _viewportCaption.Text = _s.Resolved.Case is { Case: { } cs } ? $"{_s.Resolved.Case.Name.ToUpperInvariant()} · {cs.DepthMm}×{cs.HeightMm}×{cs.WidthMm} MM" : "NO CASE";
         var b = _s.Bench;
-        _scoreLine.Text = b.Score > 0 ? $"Score {b.Score:N0} · {b.Tier}" : "Score: add parts";
-        _wattsLine.Text = b.PeakWatts > 0 ? $"~{b.PeakWatts} W at full load" : "";
+        _scoreLine.Text = b.Score > 0 ? $"{b.Score:N0} pts · {b.Tier}" : "Score: add parts";
+        _wattsLine.Text = b.PeakWatts > 0 ? $"{b.PeakWatts} W peak" : "";
         _undo.IsEnabled = _s.CanUndo;
         _redo.IsEnabled = _s.CanRedo;
         RenderSlots();
@@ -276,17 +292,22 @@ public sealed partial class BuildPage : UserControl
                 SlotState.Ok => ThemeBrushes.Good,
                 _ => ThemeBrushes.Track,
             };
-            var dot = new Ellipse { Width = 8, Height = 8, Fill = stateBrush, VerticalAlignment = VerticalAlignment.Center };
-            var top = Ui.Row(6, dot, Ui.Text(slot.Label, 12, ThemeBrushes.Muted, FontWeights.SemiBold, wrap: false));
+            var stripe = new Border { Height = 3, Background = on ? ThemeBrushes.Accent : stateBrush, CornerRadius = new CornerRadius(1) };
+            var top = Ui.Columns(Ui.Auto, Ui.Star(), Ui.Auto);
+            top.ColumnSpacing = 8;
+            top.Children.Add(Ui.Label($"{i + 1:00}", on ? ThemeBrushes.Accent : ThemeBrushes.Muted).At(0));
+            top.Children.Add(Ui.Label(slot.Label.ToUpperInvariant()).At(1));
+            if (slot.Price > 0) top.Children.Add(Ui.Label(Format.Money(slot.Price)).At(2));
             var value = Ui.Text(slot.Value, 13, slot.State == SlotState.Empty ? ThemeBrushes.Muted : ThemeBrushes.Text, FontWeights.SemiBold, wrap: false);
+            var inner = Ui.Column(7, stripe, top, value);
             var b = new Button
             {
-                Content = Ui.Column(4, top, value),
-                HorizontalAlignment = HorizontalAlignment.Stretch, HorizontalContentAlignment = HorizontalAlignment.Left,
-                Padding = new Thickness(14, 10, 14, 10), CornerRadius = new CornerRadius(16), MinHeight = 62,
+                Content = inner,
+                HorizontalAlignment = HorizontalAlignment.Stretch, HorizontalContentAlignment = HorizontalAlignment.Stretch,
+                Padding = new Thickness(12, 8, 12, 10), CornerRadius = Ui.R, MinHeight = 60,
                 Background = on ? ThemeBrushes.AccentSoft : ThemeBrushes.Surface,
-                BorderBrush = on ? ThemeBrushes.Accent : slot.State == SlotState.Problem ? ThemeBrushes.Bad : ThemeBrushes.Line,
-                BorderThickness = new Thickness(on || slot.State == SlotState.Problem ? 2 : 1),
+                BorderBrush = on ? ThemeBrushes.Accent : ThemeBrushes.Line,
+                BorderThickness = new Thickness(1),
             };
             ToolTipService.SetToolTip(b, slot.State == SlotState.Empty ? $"Choose a {slot.Label.ToLowerInvariant()}" : $"{slot.Label}: {slot.Value} ({Format.Money(slot.Price)})");
             var cat = slot.Category;
@@ -300,6 +321,7 @@ public sealed partial class BuildPage : UserControl
 
     void RenderList()
     {
+        _pickCaption.Text = $"SLOT {Categories.All.ToList().IndexOf(_s.Selected) + 1:00} OF 08 · {_s.Candidates.Count} PARTS";
         _list.Children.Clear();
         if (_s.Candidates.Count == 0)
         {
@@ -312,27 +334,27 @@ public sealed partial class BuildPage : UserControl
     UIElement CandidateCard(Candidate c)
     {
         var g = Ui.Columns(Ui.Auto, Ui.Star(), Ui.Auto);
-        g.Children.Add(new Ellipse
+        g.Children.Add(new Border
         {
-            Width = 16, Height = 16, Fill = Ui.Hex(c.Part.Color), Stroke = ThemeBrushes.Line, StrokeThickness = 1,
-            VerticalAlignment = VerticalAlignment.Top, Margin = new Thickness(0, 3, 0, 0),
+            Width = 4, CornerRadius = new CornerRadius(2), Background = c.Selected ? ThemeBrushes.Accent : c.Fits ? Ui.Hex(c.Part.Color) : ThemeBrushes.Bad,
+            BorderBrush = ThemeBrushes.Line, BorderThickness = new Thickness(c.Selected || !c.Fits ? 0 : 1),
         }.At(0));
         var text = Ui.Column(3,
             Ui.Text(c.Part.Name, 14, null, FontWeights.SemiBold),
-            Ui.Muted($"{c.Part.Brand} · {string.Join(" · ", c.Part.Facts)}", 12));
+            Ui.Label($"{c.Part.Brand} · {string.Join(" · ", c.Part.Facts)}"));
         if (!c.Fits) text.Children.Add(Ui.Text("Won't work: " + c.Reason, 12, ThemeBrushes.Bad, FontWeights.SemiBold));
         g.Children.Add(text.At(1));
-        var delta = Ui.Text(c.DeltaText, 12, c.Selected ? ThemeBrushes.Accent : c.ScoreDelta > 0 ? ThemeBrushes.Good : ThemeBrushes.Muted, FontWeights.SemiBold, wrap: false);
+        var delta = Ui.Num(c.DeltaText, 11, c.Selected ? ThemeBrushes.Accent : c.ScoreDelta > 0 ? ThemeBrushes.Good : ThemeBrushes.Muted);
         delta.HorizontalTextAlignment = TextAlignment.Right;
-        var price = Ui.Text(c.PriceText, 15, null, FontWeights.SemiBold, wrap: false);
+        var price = Ui.Num(c.PriceText, 15, null, bold: true);
         price.HorizontalTextAlignment = TextAlignment.Right;
         g.Children.Add(Ui.Column(2, price, delta).At(2));
         var b = new Button
         {
             Content = g, HorizontalAlignment = HorizontalAlignment.Stretch, HorizontalContentAlignment = HorizontalAlignment.Stretch,
-            Padding = new Thickness(14, 12, 14, 12), CornerRadius = new CornerRadius(16),
+            Padding = new Thickness(10, 10, 12, 10), CornerRadius = Ui.R,
             Background = c.Selected ? ThemeBrushes.AccentSoft : ThemeBrushes.Surface2,
-            BorderBrush = c.Selected ? ThemeBrushes.Accent : ThemeBrushes.Line, BorderThickness = new Thickness(c.Selected ? 2 : 1),
+            BorderBrush = c.Selected ? ThemeBrushes.Accent : ThemeBrushes.Line, BorderThickness = new Thickness(1),
             Opacity = c.Fits || c.Selected ? 1 : 0.78,
         };
         var id = c.Part.Id;
@@ -350,7 +372,7 @@ public sealed partial class BuildPage : UserControl
         {
             var brush = f.Severity switch { Severity.Problem => ThemeBrushes.Bad, Severity.Warning => ThemeBrushes.Warn, _ => ThemeBrushes.Muted };
             var row = Ui.Columns(Ui.Auto, Ui.Star());
-            row.Children.Add(new Ellipse { Width = 8, Height = 8, Fill = brush, VerticalAlignment = VerticalAlignment.Top, Margin = new Thickness(0, 6, 0, 0) }.At(0));
+            row.Children.Add(new Border { Width = 8, Height = 8, CornerRadius = new CornerRadius(1), Background = brush, VerticalAlignment = VerticalAlignment.Top, Margin = new Thickness(0, 6, 0, 0) }.At(0));
             row.Children.Add(Ui.Column(2, Ui.Text(f.Title, 13, null, FontWeights.SemiBold), Ui.Muted(f.Detail, 12)).At(1));
             var parts = f.Parts;
             row.Tapped += (_, _) => { if (parts.Length > 0) _s.Selected = parts[0]; };

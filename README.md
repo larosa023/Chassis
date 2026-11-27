@@ -6,7 +6,7 @@ Chassis is a free Windows app for building a PC in 3D and seeing how it would pe
 - **Know it fits.** Live checks catch the wrong CPU socket, the wrong kind of memory, a graphics card that's too long, a cooler that's too tall, a radiator or power supply that won't fit, and a power supply that's too weak. Parts that won't work are marked before you pick them.
 - **Benchmark it.** Estimated frame rates in four kinds of games at 1080p, 1440p and 4K, a CPU/GPU balance meter, multi-core and single-core scores, memory and SSD speeds, power draw, temperatures, noise and value per frame, all rolled into a Chassis Score.
 - **Garage.** Every build is saved as you go. Duplicate, compare any two side by side, and share a build as a short code a friend can paste into Chassis.
-- **Five themes:** Bench, Graphite, Circuit, Frost and Synthwave.
+- **Five themes:** Bench, Graphite, Circuit, Aluminum and Synthwave.
 - **Built-in updater.** New versions install with one click.
 
 ## How the benchmarks work

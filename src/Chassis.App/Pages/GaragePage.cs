@@ -39,7 +39,7 @@ public sealed partial class GaragePage : UserControl
     Grid Header()
     {
         var head = Ui.Columns(Ui.Star(), Ui.Auto);
-        head.Children.Add(Ui.Column(4, Ui.Title("Garage", 32), _count).At(0));
+        head.Children.Add(Ui.Column(4, Ui.Label("SAVED BUILDS"), Ui.Title("Garage", 32), _count).At(0));
         var open = Ui.Ghost("Open code", () =>
         {
             if (_s.Import(_code.Text, out var b)) { _code.Text = ""; _msg.Text = ""; OpenRequested?.Invoke(); }
@@ -59,7 +59,7 @@ public sealed partial class GaragePage : UserControl
         _body.Children.Add(_head);
         if (_msg.Text.Length > 0) _body.Children.Add(_msg);
 
-        var grid = new VariableSizedWrapGrid { Orientation = Orientation.Horizontal, ItemWidth = 372, ItemHeight = 272 };
+        var grid = new VariableSizedWrapGrid { Orientation = Orientation.Horizontal, ItemWidth = 360, ItemHeight = 262 };
         foreach (var b in _s.Garage.Builds) grid.Children.Add(BuildCard(b));
         _body.Children.Add(grid);
         _body.Children.Add(Compare());
@@ -82,7 +82,13 @@ public sealed partial class GaragePage : UserControl
         col.Children.Add(stats);
         var list = Ui.Column(3);
         foreach (var c in new[] { Category.Cpu, Category.Gpu, Category.Memory, Category.Case })
-            list.Children.Add(Ui.Text($"{Categories.Short(c)}  {r.Get(c)?.Name ?? "—"}", 13, r.Get(c) is null ? ThemeBrushes.Muted : ThemeBrushes.Text, wrap: false));
+        {
+            var line = Ui.Columns(Ui.Px(44), Ui.Star());
+            line.ColumnSpacing = 6;
+            line.Children.Add(Ui.Label(Categories.Short(c).ToUpperInvariant()).At(0));
+            line.Children.Add(Ui.Text(r.Get(c)?.Name ?? "—", 13, r.Get(c) is null ? ThemeBrushes.Muted : ThemeBrushes.Text, wrap: false).At(1));
+            list.Children.Add(line);
+        }
         list.Children.Add(Ui.Muted(r.Complete ? $"~{bench.Fps("aaa", Resolution.P1440).Fps:0} fps in open-world games at 1440p" : $"{r.Count} of 8 parts chosen", 12));
         col.Children.Add(list);
 
@@ -115,8 +121,8 @@ public sealed partial class GaragePage : UserControl
 
         return new Border
         {
-            Background = ThemeBrushes.Surface, BorderBrush = isOpen ? ThemeBrushes.Accent : ThemeBrushes.Line, BorderThickness = new Thickness(isOpen ? 2 : 1),
-            CornerRadius = new CornerRadius(22), Padding = new Thickness(20), Margin = new Thickness(0, 0, 16, 16), Child = col,
+            Background = ThemeBrushes.Surface, BorderBrush = isOpen ? ThemeBrushes.Accent : ThemeBrushes.Line, BorderThickness = new Thickness(isOpen ? 3 : 1, 1, 1, 1),
+            CornerRadius = Ui.R, Padding = new Thickness(18), Margin = new Thickness(0, 0, 14, 14), Child = col,
         };
     }
 
@@ -169,9 +175,9 @@ public sealed partial class GaragePage : UserControl
             table.Children.Add(Ui.Muted(row.Label, 14).At(0, i));
             var aWins = row.A != row.B && (row.HigherIsBetter ? row.A > row.B : row.A < row.B) && row.A > 0;
             var bWins = row.A != row.B && !aWins && row.B > 0;
-            table.Children.Add(Ui.Text(row.Fmt(row.A), 15, aWins ? ThemeBrushes.Good : ThemeBrushes.Text, aWins ? FontWeights.Bold : FontWeights.Normal).At(1, i));
-            table.Children.Add(Ui.Text(row.Fmt(row.B), 15, bWins ? ThemeBrushes.Good : ThemeBrushes.Text, bWins ? FontWeights.Bold : FontWeights.Normal).At(2, i));
+            table.Children.Add(Ui.Num(row.Fmt(row.A), 14, aWins ? ThemeBrushes.Good : ThemeBrushes.Text, aWins).At(1, i));
+            table.Children.Add(Ui.Num(row.Fmt(row.B), 14, bWins ? ThemeBrushes.Good : ThemeBrushes.Text, bWins).At(2, i));
         }
-        return Ui.Card(Ui.Column(16, Ui.Title("Compare", 22), Ui.Muted("Pick any two builds. The better number in each row is green."), table), 24);
+        return Ui.Card(Ui.Column(14, Ui.Label("SIDE BY SIDE"), Ui.Title("Compare", 22), Ui.Muted("Pick any two builds. The better number in each row is green."), table), 22);
     }
 }

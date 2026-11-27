@@ -39,14 +39,42 @@
   floor.rotation.x = -Math.PI / 2;
   floor.receiveShadow = true;
   scene.add(floor);
-  // Showroom turntable under the case.
-  const plinthM = new THREE.MeshStandardMaterial({ color: 0xffffff, roughness: 0.85, metalness: 0.0 });
-  const plinth = new THREE.Mesh(new THREE.CylinderGeometry(1, 1.03, 1, 96), plinthM);
+  // Workbench mat under the case: a flat pad with a measuring grid (1 cm minor, 5 cm major) and an accent edge.
+  const mat0 = new THREE.MeshStandardMaterial({ color: 0xffffff, roughness: 0.95, metalness: 0.0 });
+  const plinth = new THREE.Mesh(new THREE.BoxGeometry(1, 0.6, 1), mat0);
   plinth.receiveShadow = true;
   scene.add(plinth);
-  const plinthRing = new THREE.Mesh(new THREE.TorusGeometry(1, 0.006, 6, 128), new THREE.MeshBasicMaterial({ color: 0xff5a1f }));
-  plinthRing.rotation.x = Math.PI / 2;
-  scene.add(plinthRing);
+  const gridGroup = new THREE.Group();
+  scene.add(gridGroup);
+  const gridMinor = new THREE.LineBasicMaterial({ color: 0x888888, transparent: true, opacity: 0.18 });
+  const gridMajor = new THREE.LineBasicMaterial({ color: 0x888888, transparent: true, opacity: 0.38 });
+  const edgeM = new THREE.LineBasicMaterial({ color: 0xff5a1f });
+  function buildMat(w, d) {
+    while (gridGroup.children.length) { const c = gridGroup.children.pop(); c.geometry.dispose(); }
+    plinth.scale.set(w, 1, d);
+    plinth.position.set(0, -0.3 - 0.25, 0);
+    const minor = [], major = [];
+    for (let x = -w / 2; x <= w / 2 + 0.01; x += 1) (Math.round(x + w / 2) % 5 === 0 ? major : minor).push(x, 0, -d / 2, x, 0, d / 2);
+    for (let z = -d / 2; z <= d / 2 + 0.01; z += 1) (Math.round(z + d / 2) % 5 === 0 ? major : minor).push(-w / 2, 0, z, w / 2, 0, z);
+    for (const [arr, m] of [[minor, gridMinor], [major, gridMajor]]) {
+      const g = new THREE.BufferGeometry();
+      g.setAttribute('position', new THREE.Float32BufferAttribute(arr, 3));
+      const l = new THREE.LineSegments(g, m);
+      l.position.y = 0.02 - 0.25;
+      gridGroup.add(l);
+    }
+    // Accent corner brackets.
+    const k = 6, pts = [];
+    for (const sx of [-1, 1]) for (const sz of [-1, 1]) {
+      const x = sx * w / 2, z = sz * d / 2;
+      pts.push(x, 0, z, x - sx * k, 0, z, x, 0, z, x, 0, z - sz * k);
+    }
+    const eg = new THREE.BufferGeometry();
+    eg.setAttribute('position', new THREE.Float32BufferAttribute(pts, 3));
+    const e = new THREE.LineSegments(eg, edgeM);
+    e.position.y = 0.04 - 0.25;
+    gridGroup.add(e);
+  }
 
   // ---------- state ----------
   let build = null;          // last build message
@@ -91,7 +119,7 @@
     g.fillStyle = opts.bg || 'rgba(0,0,0,0)';
     g.fillRect(0, 0, w, h);
     g.fillStyle = opts.color || '#ffffff';
-    g.font = `${opts.weight || 700} ${opts.size || 54}px "Segoe UI Variable Display","Segoe UI",system-ui,sans-serif`;
+    g.font = `${opts.weight || 600} ${opts.size || 54}px "Chakra","Segoe UI",system-ui,sans-serif`;
     g.textAlign = opts.align || 'left';
     g.textBaseline = 'middle';
     g.fillText(text, opts.align === 'center' ? w / 2 : 12, h / 2);
@@ -487,10 +515,8 @@
       root.add(edges);
     }
     glow.position.set(0, L.H * 0.55, 0);
-    const pr = Math.hypot(L.D, L.W) / 2 + 6;
-    plinth.scale.set(pr, 1.6, pr); plinth.position.y = -1.6 / 2 - 0.8;
-    plinthRing.scale.set(pr * 1.03, pr * 1.03, 1); plinthRing.position.y = -0.8;
-    floor.position.y = -2.4;
+    buildMat(Math.ceil(L.D / 5) * 5 + 15, Math.ceil(L.W / 5) * 5 + 20);
+    floor.position.y = -0.9;
     if (!orbit.userMoved) frameCase(false);
   }
 
@@ -606,8 +632,10 @@
     hemi.intensity = theme.isDark ? 0.45 : 0.5;
     hemi.groundColor = col(theme.isDark ? '#2a2d36' : '#8890a0');
     glow.color = col(theme.accent);
-    plinthM.color = theme.isDark ? col(theme.bg).multiplyScalar(0.5) : col(theme.surface).offsetHSL(0, 0, -0.03);
-    plinthRing.material.color = col(theme.accent);
+    mat0.color = theme.isDark ? col(theme.surface).multiplyScalar(0.45) : col(theme.surface).offsetHSL(0, 0, -0.04);
+    gridMinor.opacity = theme.isDark ? 0.12 : 0.18; gridMajor.opacity = theme.isDark ? 0.26 : 0.38;
+    gridMinor.color = col(theme.muted); gridMajor.color = col(theme.muted);
+    edgeM.color = col(theme.accent);
   }
 
   function receive(m) {
@@ -668,5 +696,7 @@
     requestAnimationFrame(frame);
   }
   requestAnimationFrame(frame);
+  // Part labels are drawn with the Chakra font, so redraw once it has loaded.
+  if (document.fonts) Promise.all([document.fonts.load('600 20px Chakra'), document.fonts.load('500 11px Mono')]).then(() => { if (build) rebuild(); }, () => {});
   send({ type: 'ready' });
 })();

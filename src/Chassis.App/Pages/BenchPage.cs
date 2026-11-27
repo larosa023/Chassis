@@ -3,7 +3,6 @@ using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
 using Microsoft.UI.Xaml.Media;
-using Microsoft.UI.Xaml.Shapes;
 using Chassis.App.Theming;
 using Chassis.App.ViewModels;
 using Chassis.Core.Bench;
@@ -96,11 +95,11 @@ public sealed partial class BenchPage : UserControl
         var g = Ui.Columns(Ui.Star(), Ui.Auto);
         var score = new TextBlock
         {
-            Text = Format.Int(V(b.Score)), FontFamily = Ui.Display, FontSize = 72, FontWeight = FontWeights.Bold,
-            Foreground = ThemeBrushes.Accent, LineHeight = 76,
+            Text = Format.Int(V(b.Score)), FontFamily = Ui.MonoBold, FontSize = 68, FontWeight = FontWeights.Bold,
+            Foreground = ThemeBrushes.Accent, LineHeight = 74,
         };
         var pills = Ui.Row(8, Ui.Pill(b.Tier, ThemeBrushes.AccentSoft, ThemeBrushes.Accent, 13), Ui.Pill(Format.Money(b.Price), ThemeBrushes.Surface2, ThemeBrushes.Text, 13));
-        g.Children.Add(Ui.Column(6, Ui.Muted($"Chassis Score · {_s.Build.Name}", 14), score, pills,
+        g.Children.Add(Ui.Column(6, Ui.Label($"CHASSIS SCORE · {_s.Build.Name.ToUpperInvariant()}"), score, pills,
             Ui.Text(_reveal < 1 ? "Testing…" : _s.Bench.Verdict, 15)).At(0));
         var run = Ui.Accent(_running ? "Testing…" : "Run benchmarks", Run);
         run.IsEnabled = !_running;
@@ -118,27 +117,28 @@ public sealed partial class BenchPage : UserControl
         var g = Ui.Columns(Ui.Auto, Ui.Star());
         g.Children.Add(new FontIcon { Glyph = "\uE783", Foreground = ThemeBrushes.Bad, FontSize = 18 }.At(0));
         g.Children.Add(Ui.Text(text, 14).At(1));
-        return new Border { Background = ThemeBrushes.BadBg, BorderBrush = ThemeBrushes.Bad, BorderThickness = new Thickness(1.5), CornerRadius = new CornerRadius(16), Padding = new Thickness(16, 12, 16, 12), Child = g };
+        return new Border { Background = ThemeBrushes.BadBg, BorderBrush = ThemeBrushes.Bad, BorderThickness = new Thickness(3, 1, 1, 1), CornerRadius = Ui.R, Padding = new Thickness(14, 10, 14, 10), Child = g };
     }
 
     UIElement Gaming(BenchResult b)
     {
         var head = Ui.Columns(Ui.Star(), Ui.Auto);
-        head.Children.Add(Ui.Column(2, Ui.Title("Estimated frame rates", 22), Ui.Muted("High settings, no upscaling or frame generation.")).At(0));
+        head.Children.Add(Ui.Column(4, Ui.Label("ESTIMATED FRAME RATES"), Ui.Title("How it games", 22), Ui.Muted("High settings, no upscaling or frame generation.")).At(0));
         var seg = Ui.Row(4);
         foreach (var r in Estimator.Resolutions)
         {
             var t = new ToggleButton
             {
-                Content = Estimator.Label(r), IsChecked = r == _res, CornerRadius = new CornerRadius(999), MinWidth = 72, MinHeight = 36,
-                Background = ThemeBrushes.Surface2, Foreground = ThemeBrushes.Text, BorderThickness = new Thickness(0),
+                Content = Estimator.Label(r), IsChecked = r == _res, CornerRadius = Ui.RSmall, MinWidth = 64, MinHeight = 32, FontFamily = Ui.Mono, FontSize = 12,
+                Background = new SolidColorBrush(Microsoft.UI.Colors.Transparent), Foreground = ThemeBrushes.Text, BorderThickness = new Thickness(0),
             };
             var res = r;
             t.Click += (_, _) => { _res = res; Render(); };
             seg.Children.Add(t);
         }
-        seg.VerticalAlignment = VerticalAlignment.Center;
-        head.Children.Add(seg.At(1));
+        seg.Spacing = 2;
+        var segBox = new Border { Child = seg, Padding = new Thickness(3), CornerRadius = Ui.R, BorderBrush = ThemeBrushes.Line, BorderThickness = new Thickness(1), Background = ThemeBrushes.Surface2, VerticalAlignment = VerticalAlignment.Center };
+        head.Children.Add(segBox.At(1));
 
         var rows = Ui.Column(18);
         foreach (var game in Estimator.Games)
@@ -148,11 +148,10 @@ public sealed partial class BenchPage : UserControl
             var row = Ui.Columns(Ui.Px(230), Ui.Star(), Ui.Px(96), Ui.Px(120));
             row.Children.Add(Ui.Column(2, Ui.Text(game.Name, 15, null, FontWeights.SemiBold), Ui.Muted(game.Blurb, 12)).At(0));
             var fill = f.Fps >= 60 ? ThemeBrushes.Accent : ThemeBrushes.Warn;
-            var bar = Ui.Bar(V(f.Fps) / scale, fill, 14);
+            var bar = Ui.Bar(V(f.Fps) / scale, fill, 16, 48);
             bar.VerticalAlignment = VerticalAlignment.Center;
             row.Children.Add(bar.At(1));
-            var fps = Ui.Text(Format.Fps(V(f.Fps)), 20, null, FontWeights.Bold, wrap: false);
-            fps.FontFamily = Ui.Display;
+            var fps = Ui.Num(Format.Fps(V(f.Fps)), 18, null, bold: true);
             fps.HorizontalTextAlignment = TextAlignment.Right;
             fps.VerticalAlignment = VerticalAlignment.Center;
             row.Children.Add(fps.At(2));
@@ -177,12 +176,12 @@ public sealed partial class BenchPage : UserControl
         gradient.GradientStops.Add(new GradientStop { Color = ThemeBrushes.Warn.Color, Offset = 0 });
         gradient.GradientStops.Add(new GradientStop { Color = ThemeBrushes.Good.Color, Offset = 0.5 });
         gradient.GradientStops.Add(new GradientStop { Color = ThemeBrushes.Accent.Color, Offset = 1 });
-        track.Children.Add(new Border { Height = 10, CornerRadius = new CornerRadius(5), Background = gradient, VerticalAlignment = VerticalAlignment.Center, Opacity = 0.85 });
+        track.Children.Add(new Border { Height = 8, CornerRadius = new CornerRadius(1), Background = gradient, VerticalAlignment = VerticalAlignment.Center, Opacity = 0.85 });
         var marker = new Grid();
         marker.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(pos, GridUnitType.Star) });
         marker.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(28) });
         marker.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1 - pos, GridUnitType.Star) });
-        marker.Children.Add(new Ellipse { Width = 26, Height = 26, Fill = ThemeBrushes.Surface, Stroke = ThemeBrushes.Text, StrokeThickness = 3 }.At(1));
+        marker.Children.Add(new Border { Width = 10, Height = 28, CornerRadius = new CornerRadius(2), Background = ThemeBrushes.Text, BorderBrush = ThemeBrushes.Surface, BorderThickness = new Thickness(2) }.At(1));
         track.Children.Add(marker);
         var labels = Ui.Columns(Ui.Star(), Ui.Star(), Ui.Star());
         labels.Children.Add(Ui.Muted("Processor holds it back", 12).At(0));
@@ -193,7 +192,7 @@ public sealed partial class BenchPage : UserControl
         var text = amt < 0.12 ? "The processor and graphics card are well matched for 1440p gaming."
             : who == "CPU" ? $"At 1440p the processor limits frame rates by about {amt:P0}. A faster gaming CPU (the X3D chips are best) would help more than a bigger GPU."
             : $"At 1440p the graphics card is the limit, which is normal. The processor has about {amt:P0} more frames in it if you upgrade the GPU later.";
-        return Ui.Card(Ui.Column(14, Ui.Title("Balance", 22), track, labels, Ui.Text(text, 14)), 24);
+        return Ui.Panel("BALANCE · OPEN-WORLD AAA AT 1440P", Ui.Column(12, track, labels, Ui.Text(text, 14)), 22);
     }
 
     UIElement Stats(BenchResult b)
@@ -229,15 +228,15 @@ public sealed partial class BenchPage : UserControl
 
     static Border Stat(string title, string big, string unit, (string, string)[] rows, string note, bool warn, double? meter = null)
     {
-        var col = Ui.Column(8, Ui.Text(title, 14, ThemeBrushes.Muted, FontWeights.SemiBold));
-        var bigText = new TextBlock { Text = big, FontFamily = Ui.Display, FontSize = 32, FontWeight = FontWeights.Bold, Foreground = ThemeBrushes.Text };
+        var col = Ui.Column(8, Ui.Label(title.ToUpperInvariant()));
+        var bigText = Ui.Num(big, 28, null, bold: true);
         col.Children.Add(Ui.Column(0, bigText, Ui.Muted(unit, 12)));
-        if (meter is { } m and > 0) col.Children.Add(Ui.Bar(m, m > 0.85 ? ThemeBrushes.Bad : ThemeBrushes.Good, 8));
+        if (meter is { } m and > 0) col.Children.Add(Ui.Bar(m, m > 0.85 ? ThemeBrushes.Bad : ThemeBrushes.Good, 8, 24));
         foreach (var (k, v) in rows)
         {
             var row = Ui.Columns(Ui.Star(), Ui.Auto);
             row.Children.Add(Ui.Muted(k, 13).At(0));
-            row.Children.Add(Ui.Text(v, 13, null, FontWeights.SemiBold, wrap: false).At(1));
+            row.Children.Add(Ui.Num(v, 13).At(1));
             col.Children.Add(row);
         }
         col.Children.Add(Ui.Text(note, 13, warn ? ThemeBrushes.Bad : ThemeBrushes.Text));
