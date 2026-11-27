@@ -5,7 +5,7 @@ using Velopack.Sources;
 namespace Chassis.App.Services;
 
 /// <summary>Updates from GitHub Releases (the only network call Chassis makes).</summary>
-public sealed class VelopackUpdateSource : IUpdateSource
+public sealed class VelopackUpdateSource : Chassis.App.ViewModels.IUpdateSource
 {
     const string Repo = "https://github.com/larosa023/Chassis";
     readonly UpdateManager _mgr;
