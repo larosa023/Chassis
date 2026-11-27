@@ -1,0 +1,11 @@
+<Project>
+  <PropertyGroup>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <LangVersion>latest</LangVersion>
+    <Version>0.1.0</Version>
+    <Authors>Anthony LaRosa</Authors>
+    <Product>Chassis</Product>
+    <Copyright>Copyright (c) 2026 Anthony LaRosa. MIT License.</Copyright>
+  </PropertyGroup>
+</Project>
