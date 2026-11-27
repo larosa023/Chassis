@@ -59,7 +59,7 @@ public sealed partial class GaragePage : UserControl
         _body.Children.Add(_head);
         if (_msg.Text.Length > 0) _body.Children.Add(_msg);
 
-        var grid = new VariableSizedWrapGrid { Orientation = Orientation.Horizontal, ItemWidth = 372, ItemHeight = 330 };
+        var grid = new VariableSizedWrapGrid { Orientation = Orientation.Horizontal, ItemWidth = 372, ItemHeight = 272 };
         foreach (var b in _s.Garage.Builds) grid.Children.Add(BuildCard(b));
         _body.Children.Add(grid);
         _body.Children.Add(Compare());

@@ -432,7 +432,7 @@
 
   // Exploded view: where each part slides to (cm).
   const OUT = {
-    Motherboard: [0, 0, 2], Cpu: [0, 0, 9], Cooler: [0, 4, 22], Memory: [3, 0, 14], Gpu: [6, -6, 30], Storage: [0, -3, 8], Psu: [0, -2, 26], Case: [0, 0, 0],
+    Motherboard: [0, 0, 4], Cpu: [0, 2, 14], Cooler: [0, 10, 30], Memory: [6, 4, 20], Gpu: [8, -8, 40], Storage: [0, -6, 12], Psu: [0, -4, 34], Case: [0, 0, 0],
   };
   const BUILDERS = { Case: buildCase, Motherboard: buildBoard, Cpu: buildCpu, Cooler: buildCooler, Memory: buildMemory, Gpu: buildGpu, Storage: buildStorage, Psu: buildPsu };
   const SPEC = { Case: 'case', Motherboard: 'board', Cpu: 'cpu', Cooler: 'cooler', Memory: 'memory', Gpu: 'gpu', Storage: 'storage', Psu: 'psu' };
@@ -446,7 +446,7 @@
 
   function rebuild() {
     for (const k of Object.keys(parts)) { root.remove(parts[k].group); disposeTree(parts[k].group); }
-    for (const p of problemBoxes) { root.remove(p); p.geometry.dispose(); p.material.dispose(); }
+    for (const p of problemBoxes) { root.remove(p); disposeTree(p); }
     parts = {}; rgbMats = []; fans = []; problemBoxes = []; glassMats = [];
     if (!build) return;
     const L = layout(build);
@@ -477,6 +477,9 @@
       const size = bb.getSize(new THREE.Vector3()).addScalar(1.2), center = bb.getCenter(new THREE.Vector3());
       const edges = new THREE.LineSegments(new THREE.EdgesGeometry(new THREE.BoxGeometry(size.x, size.y, size.z)),
         new THREE.LineBasicMaterial({ color: 0xff3b30, transparent: true, opacity: 0.9, depthTest: false }));
+      const fill = new THREE.Mesh(new THREE.BoxGeometry(size.x, size.y, size.z),
+        new THREE.MeshBasicMaterial({ color: 0xff3b30, transparent: true, opacity: 0.14, depthWrite: false }));
+      edges.add(fill);
       edges.position.copy(center);
       edges.renderOrder = 20;
       edges.userData.cat = cat;
@@ -647,7 +650,8 @@
     for (const pb of problemBoxes) {
       const p = parts[pb.userData.cat];
       if (p) new THREE.Box3().setFromObject(p.group).getCenter(pb.position);
-      pb.material.opacity = 0.45 + 0.45 * Math.sin(time * 5);
+      pb.material.opacity = 0.55 + 0.45 * Math.sin(time * 5);
+      if (pb.children[0]) pb.children[0].material.opacity = 0.1 + 0.08 * Math.sin(time * 5);
     }
     for (const m of glassMats) m.opacity = 0.12 * (1 - explode) + 0.02;
     const accent = col(theme.accent);
